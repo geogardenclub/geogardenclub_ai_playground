@@ -1,6 +1,6 @@
 # firebase_vertexai_example
 
-<img src="example-screen.png">
+<img width="300px" src="example-screen.png">
 
 Sample app to show how to use Vertex AI for Firebase, modified to facilitate GGC Development.
 
