@@ -1,22 +1,9 @@
-// Copyright 2024 Google LLC
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//     http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'ExchangeRateTool.dart';
 import 'MessageWidget.dart';
 
 class ChatWidget extends StatefulWidget {
@@ -56,42 +43,6 @@ class _ChatWidgetState extends State<ChatWidget> {
       _chat = _model.startChat();
     });
   }
-
-  Future<Map<String, Object?>> findExchangeRate(
-    Map<String, Object?> arguments,
-  ) async =>
-      // This hypothetical API returns a JSON such as:
-      // {"base":"USD","date":"2024-04-17","rates":{"SEK": 0.091}}
-      {
-        'date': arguments['currencyDate'],
-        'base': arguments['currencyFrom'],
-        'rates': <String, Object?>{arguments['currencyTo']! as String: 0.091},
-      };
-
-  final exchangeRateTool = FunctionDeclaration(
-    'findExchangeRate',
-    'Returns the exchange rate between currencies on given date.',
-    Schema(
-      SchemaType.object,
-      properties: {
-        'currencyDate': Schema(
-          SchemaType.string,
-          description: 'A date in YYYY-MM-DD format or '
-              'the exact value "latest" if a time period is not specified.',
-        ),
-        'currencyFrom': Schema(
-          SchemaType.string,
-          description: 'The currency code of the currency to convert from, '
-              'such as "USD".',
-        ),
-        'currencyTo': Schema(
-          SchemaType.string,
-          description: 'The currency code of the currency to convert to, '
-              'such as "USD".',
-        ),
-      },
-    ),
-  );
 
   Future<void> initFirebase() async {
     await Firebase.initializeApp();
@@ -257,7 +208,7 @@ class _ChatWidgetState extends State<ChatWidget> {
           TextPart(message),
           FileData(
             'image/jpeg',
-            'gs://vertex-ai-example-ef5a2.appspot.com/foodpic.jpg',
+            'gs://ggc-app-2de7b.appspot.com/chapter-001/chapter-001.jpg',
           ),
         ]),
       ];
