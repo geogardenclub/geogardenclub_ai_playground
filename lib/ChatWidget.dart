@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 
 import 'ExchangeRateTool.dart';
 import 'MessageWidget.dart';
+import 'file_path.dart';
 
 class ChatWidget extends StatefulWidget {
   const ChatWidget({
@@ -248,12 +249,14 @@ class _ChatWidgetState extends State<ChatWidget> {
     try {
       ByteData catBytes = await rootBundle.load('assets/images/cat.jpg');
       ByteData sconeBytes = await rootBundle.load('assets/images/scones.jpg');
+      ByteData cherryTomatoBytes =
+          await rootBundle.load(FilePath.tomatoSeedPackage);
       final content = [
         Content.multi([
           TextPart(message),
           // The only accepted mime types are image/*.
-          DataPart('image/jpeg', catBytes.buffer.asUint8List()),
-          DataPart('image/jpeg', sconeBytes.buffer.asUint8List()),
+          DataPart('image/jpeg', cherryTomatoBytes.buffer.asUint8List()),
+          // DataPart('image/jpeg', sconeBytes.buffer.asUint8List()),
         ]),
       ];
       _generatedContent.add(
