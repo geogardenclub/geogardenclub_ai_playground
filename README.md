@@ -25,7 +25,7 @@ Once the app was working, I refactored the single main.dart file into a set of f
 
 ## Usage
 
-Once the app is running, you can play around with it as follows:
+Once the app is running, you can play around with the five behaviors implemented in the sample app, each represented by an icon at the bottom of the screen:
 
 1. Type a text prompt and hit return (or press the final "Send" icon).  This will send the text to the AI and show both your prompt and the AI's response in the screen. Note that you can have follow-on conversations; it remembers the state of the conversation.
 2. The "#" icon. Pressing this icon shows how to find out the number of tokens and billable characters for a prompt. The prompt is hard-wired in the code. 
