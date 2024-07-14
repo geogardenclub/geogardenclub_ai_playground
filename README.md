@@ -1,5 +1,7 @@
 # firebase_vertexai_example
 
+[](example-screen.png)
+
 Sample app to show how to use Vertex AI for Firebase, modified to facilitate GGC Development.
 
 This is referenced as the "sample app" in [Get started with the Gemini API using the Vertex AI for Firebase SDKs](https://firebase.google.com/docs/vertex-ai/get-started?platform=flutter). 
