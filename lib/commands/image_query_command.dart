@@ -7,7 +7,7 @@ import '../file_path.dart';
 class ImageQueryCommand extends StatelessWidget {
   const ImageQueryCommand(
       {super.key,
-      required this.loading,
+      required this.working,
       required this.setLoading,
       required this.addGeneratedContent,
       required this.model,
@@ -15,7 +15,7 @@ class ImageQueryCommand extends StatelessWidget {
       required this.textController,
       required this.textFieldFocus});
 
-  final bool loading;
+  final bool working;
   final void Function(bool, {bool scrollDown}) setLoading;
   final void Function(({Image? image, String? text, bool fromUser}))
       addGeneratedContent;
@@ -71,14 +71,14 @@ class ImageQueryCommand extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       tooltip: 'image prompt',
-      onPressed: !loading
+      onPressed: !working
           ? () async {
               await _sendImagePrompt(textController.text);
             }
           : null,
       icon: Icon(
         Icons.image,
-        color: loading
+        color: working
             ? Theme.of(context).colorScheme.secondary
             : Theme.of(context).colorScheme.primary,
       ),

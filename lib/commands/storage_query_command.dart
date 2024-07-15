@@ -6,7 +6,7 @@ import '../file_path.dart';
 class StorageQueryCommand extends StatelessWidget {
   const StorageQueryCommand(
       {super.key,
-      required this.loading,
+      required this.working,
       required this.setLoading,
       required this.addGeneratedContent,
       required this.model,
@@ -14,7 +14,7 @@ class StorageQueryCommand extends StatelessWidget {
       required this.textController,
       required this.textFieldFocus});
 
-  final bool loading;
+  final bool working;
   final void Function(bool, {bool scrollDown}) setLoading;
   final void Function(({Image? image, String? text, bool fromUser}))
       addGeneratedContent;
@@ -61,14 +61,14 @@ class StorageQueryCommand extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       tooltip: 'storage prompt',
-      onPressed: !loading
+      onPressed: !working
           ? () async {
               await _sendStorageUriPrompt(textController.text);
             }
           : null,
       icon: Icon(
         Icons.folder,
-        color: loading
+        color: working
             ? Theme.of(context).colorScheme.secondary
             : Theme.of(context).colorScheme.primary,
       ),

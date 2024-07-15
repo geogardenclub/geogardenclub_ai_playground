@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 class TokenCountCommand extends StatelessWidget {
   const TokenCountCommand(
       {super.key,
-      required this.loading,
+      required this.working,
       required this.setLoading,
       required this.model});
 
   final void Function(bool, {bool scrollDown}) setLoading;
-  final bool loading;
+  final bool working;
   final GenerativeModel? model;
 
   Future<void> testTokenCount() async {
@@ -29,14 +29,14 @@ class TokenCountCommand extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       tooltip: 'tokenCount Test',
-      onPressed: !loading
+      onPressed: !working
           ? () async {
               await testTokenCount();
             }
           : null,
       icon: Icon(
         Icons.numbers,
-        color: loading
+        color: working
             ? Theme.of(context).colorScheme.secondary
             : Theme.of(context).colorScheme.primary,
       ),

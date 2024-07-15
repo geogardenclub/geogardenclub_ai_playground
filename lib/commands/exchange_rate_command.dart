@@ -6,13 +6,13 @@ import 'exchange_rate_tool.dart';
 class ExchangeRateCommand extends StatelessWidget {
   const ExchangeRateCommand(
       {super.key,
-      required this.loading,
+      required this.working,
       required this.setLoading,
       required this.functionCallModel,
       required this.addGeneratedContent});
 
   final void Function(bool, {bool scrollDown}) setLoading;
-  final bool loading;
+  final bool working;
   final GenerativeModel? functionCallModel;
   final void Function(({Image? image, String? text, bool fromUser}))
       addGeneratedContent;
@@ -55,14 +55,14 @@ class ExchangeRateCommand extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       tooltip: 'function calling Test',
-      onPressed: !loading
+      onPressed: !working
           ? () async {
               await _testFunctionCalling();
             }
           : null,
       icon: Icon(
         Icons.functions,
-        color: loading
+        color: working
             ? Theme.of(context).colorScheme.secondary
             : Theme.of(context).colorScheme.primary,
       ),
