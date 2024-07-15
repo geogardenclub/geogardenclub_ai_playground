@@ -7,7 +7,7 @@ class StorageQueryCommand extends StatelessWidget {
   const StorageQueryCommand(
       {super.key,
       required this.working,
-      required this.setLoading,
+      required this.setWorking,
       required this.addGeneratedContent,
       required this.model,
       required this.showError,
@@ -15,7 +15,7 @@ class StorageQueryCommand extends StatelessWidget {
       required this.textFieldFocus});
 
   final bool working;
-  final void Function(bool, {bool scrollDown}) setLoading;
+  final void Function(bool, {bool scrollDown}) setWorking;
   final void Function(({Image? image, String? text, bool fromUser}))
       addGeneratedContent;
   final GenerativeModel? model;
@@ -24,7 +24,7 @@ class StorageQueryCommand extends StatelessWidget {
   final FocusNode textFieldFocus;
 
   Future<void> _sendStorageUriPrompt(String message) async {
-    setLoading(true);
+    setWorking(true);
     try {
       final content = [
         Content.multi([
@@ -45,14 +45,14 @@ class StorageQueryCommand extends StatelessWidget {
         showError('No response from API.');
         return;
       } else {
-        setLoading(false, scrollDown: true);
+        setWorking(false, scrollDown: true);
       }
     } catch (e) {
       showError(e.toString());
-      setLoading(false);
+      setWorking(false);
     } finally {
       textController.clear();
-      setLoading(false);
+      setWorking(false);
       textFieldFocus.requestFocus();
     }
   }

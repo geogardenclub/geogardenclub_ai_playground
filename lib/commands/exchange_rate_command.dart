@@ -7,18 +7,18 @@ class ExchangeRateCommand extends StatelessWidget {
   const ExchangeRateCommand(
       {super.key,
       required this.working,
-      required this.setLoading,
+      required this.setWorking,
       required this.functionCallModel,
       required this.addGeneratedContent});
 
-  final void Function(bool, {bool scrollDown}) setLoading;
+  final void Function(bool, {bool scrollDown}) setWorking;
   final bool working;
   final GenerativeModel? functionCallModel;
   final void Function(({Image? image, String? text, bool fromUser}))
       addGeneratedContent;
 
   Future<void> _testFunctionCalling() async {
-    setLoading(true);
+    setWorking(true);
     final chat = functionCallModel!.startChat();
     const prompt = 'How much is 50 US dollars worth in Euros?';
     addGeneratedContent((image: null, text: prompt, fromUser: true));
@@ -47,7 +47,7 @@ class ExchangeRateCommand extends StatelessWidget {
     // When the model responds with non-null text content, print it.
     if (response.text case final text?) {
       addGeneratedContent((image: null, text: text, fromUser: false));
-      setLoading(false);
+      setWorking(false);
     }
   }
 

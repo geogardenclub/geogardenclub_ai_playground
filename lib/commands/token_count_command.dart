@@ -5,15 +5,15 @@ class TokenCountCommand extends StatelessWidget {
   const TokenCountCommand(
       {super.key,
       required this.working,
-      required this.setLoading,
+      required this.setWorking,
       required this.model});
 
-  final void Function(bool, {bool scrollDown}) setLoading;
+  final void Function(bool, {bool scrollDown}) setWorking;
   final bool working;
   final GenerativeModel? model;
 
   Future<void> testTokenCount() async {
-    setLoading(true);
+    setWorking(true);
 
     if (model != null) {
       const prompt = 'tell a short story';
@@ -22,7 +22,7 @@ class TokenCountCommand extends StatelessWidget {
         'token: ${response.totalTokens}, billable characters: ${response.totalBillableCharacters}',
       );
     }
-    setLoading(false);
+    setWorking(false);
   }
 
   @override

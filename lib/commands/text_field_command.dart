@@ -6,12 +6,12 @@ class TextFieldCommand extends StatelessWidget {
       {super.key,
       required this.textFieldFocus,
       required this.textController,
-      required this.setLoading,
+      required this.setWorking,
       required this.addGeneratedContent,
       required this.showError,
       required this.chat});
 
-  final void Function(bool, {bool scrollDown}) setLoading;
+  final void Function(bool, {bool scrollDown}) setWorking;
   final void Function(({Image? image, String? text, bool fromUser}))
       addGeneratedContent;
   final ChatSession? chat;
@@ -21,7 +21,7 @@ class TextFieldCommand extends StatelessWidget {
   final TextEditingController textController;
 
   Future<void> _sendChatMessage(String message) async {
-    setLoading(true);
+    setWorking(true);
     try {
       addGeneratedContent((image: null, text: message, fromUser: true));
       var response = await chat!.sendMessage(
@@ -34,14 +34,14 @@ class TextFieldCommand extends StatelessWidget {
         showError('No response from API.');
         return;
       } else {
-        setLoading(false, scrollDown: true);
+        setWorking(false, scrollDown: true);
       }
     } catch (e) {
       showError(e.toString());
-      setLoading(false);
+      setWorking(false);
     } finally {
       textController.clear();
-      setLoading(false);
+      setWorking(false);
       textFieldFocus.requestFocus();
     }
   }

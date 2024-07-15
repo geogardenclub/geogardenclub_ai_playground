@@ -64,7 +64,7 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  void setLoading(bool working, {bool scrollDown = false}) {
+  void setWorking(bool working, {bool scrollDown = false}) {
     setState(() {
       _working = working;
       if (scrollDown) {
@@ -99,7 +99,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     TextFieldCommand(
                       textFieldFocus: _textFieldFocus,
                       textController: _textController,
-                      setLoading: setLoading,
+                      setWorking: setWorking,
                       addGeneratedContent: (content) =>
                           _generatedContent.add(content),
                       showError: _showError,
@@ -110,18 +110,18 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                     TokenCountCommand(
                       working: _working,
-                      setLoading: setLoading,
+                      setWorking: setWorking,
                       model: _model,
                     ),
                     ExchangeRateCommand(
                         working: _working,
-                        setLoading: setLoading,
+                        setWorking: setWorking,
                         functionCallModel: _functionCallModel,
                         addGeneratedContent: (content) =>
                             _generatedContent.add(content)),
                     ImageQueryCommand(
                         working: _working,
-                        setLoading: setLoading,
+                        setWorking: setWorking,
                         addGeneratedContent: (content) =>
                             _generatedContent.add(content),
                         model: _model,
@@ -130,7 +130,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         textFieldFocus: _textFieldFocus),
                     StorageQueryCommand(
                         working: _working,
-                        setLoading: setLoading,
+                        setWorking: setWorking,
                         addGeneratedContent: (content) =>
                             _generatedContent.add(content),
                         model: _model,
@@ -141,7 +141,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       TextSendCommand(
                         textFieldFocus: _textFieldFocus,
                         textController: _textController,
-                        setLoading: setLoading,
+                        setWorking: setWorking,
                         addGeneratedContent: (content) =>
                             _generatedContent.add(content),
                         showError: _showError,
