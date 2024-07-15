@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'MessageWidget.dart';
+import 'message_widget.dart';
 
 class GeneratedContent extends StatelessWidget {
   const GeneratedContent(
