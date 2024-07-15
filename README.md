@@ -7,7 +7,7 @@ This is a highly refactored version of the "sample app" in [Get started with the
 The sample app is pretty cool because it provides a nice illustration of several important concepts:
 
 1. How to choose and initialize a Gemini model in Flutter, using the (currently recommended) Firebase VertexAI interface.
-2. How to implement a UI in Flutter for displaying a chat session between a user and the Gemini model.
+2. How to implement a UI in Flutter for displaying a chat session between a user and the Gemini model. This includes preventing the user from initiating another request while the model is still working on the previous request.
 3. How to use several important Gemini interaction modalities, including text only, text plus images, text plus Firebase Storage files, and text plus a "Gemini Function Call" (which is the way you get Gemini models to interact with external APIs).
 
 ## Installation
@@ -20,7 +20,9 @@ You should be able to just download and run the app without changes.
 
 ## Structure
 
-Once the app was working, I refactored the single main.dart file into a set of files in order to more clearly indicate its structure. The main.dart file invokes FirebaseVertexAiExample to kick things off.
+Once the app was working, I refactored the single main.dart file into a set of files in order to more clearly indicate its structure, and to facilitate its use to explore what the Gemini model can do when provided with GGC data. The current structure encapsulates each type of interaction with the Gemini model as an instance of a "command".  This makes it straightforward to create a new "command" like "GgcDataCommand" that sets up function calls to the GGC database and allows the user to ask questions about it. 
+
+The main.dart file invokes FirebaseVertexAiExample to kick things off.
 
 The two top-level classes are:
 
