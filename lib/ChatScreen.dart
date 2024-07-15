@@ -1,12 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:vertex_ai_example/commands/ExchangeRateCommand.dart';
+import 'package:vertex_ai_example/commands/ImageQueryCommand.dart';
 
 import 'ExchangeRateTool.dart';
 import 'GeneratedContent.dart';
 import 'TextPrompt.dart';
-import 'file_path.dart';
+import 'commands/TokenCountCommand.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key, required this.title});
@@ -17,9 +18,9 @@ class ChatScreen extends StatefulWidget {
 }
 
 class _ChatScreenState extends State<ChatScreen> {
-  late final GenerativeModel _model;
-  late final GenerativeModel _functionCallModel;
-  late final ChatSession _chat;
+  GenerativeModel? _model;
+  GenerativeModel? _functionCallModel;
+  ChatSession? _chat;
   final ScrollController _scrollController = ScrollController();
   final TextEditingController _textController = TextEditingController();
   final FocusNode _textFieldFocus = FocusNode();
@@ -41,7 +42,7 @@ class _ChatScreenState extends State<ChatScreen> {
           Tool(functionDeclarations: [exchangeRateTool]),
         ],
       );
-      _chat = _model.startChat();
+      _chat = _model!.startChat();
     });
   }
 
@@ -61,9 +62,12 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  void setLoading(bool loading) {
+  void setLoading(bool loading, {bool scrollDown = false}) {
     setState(() {
       _loading = loading;
+      if (scrollDown) {
+        _scrollDown();
+      }
     });
   }
 
@@ -98,48 +102,26 @@ class _ChatScreenState extends State<ChatScreen> {
                     const SizedBox.square(
                       dimension: 15,
                     ),
-                    IconButton(
-                      tooltip: 'tokenCount Test',
-                      onPressed: !_loading
-                          ? () async {
-                              await _testCountToken();
-                            }
-                          : null,
-                      icon: Icon(
-                        Icons.numbers,
-                        color: _loading
-                            ? Theme.of(context).colorScheme.secondary
-                            : Theme.of(context).colorScheme.primary,
-                      ),
+                    TokenCountCommand(
+                      loading: _loading,
+                      setLoading: setLoading,
+                      model: _model,
                     ),
-                    IconButton(
-                      tooltip: 'function calling Test',
-                      onPressed: !_loading
-                          ? () async {
-                              await _testFunctionCalling();
-                            }
-                          : null,
-                      icon: Icon(
-                        Icons.functions,
-                        color: _loading
-                            ? Theme.of(context).colorScheme.secondary
-                            : Theme.of(context).colorScheme.primary,
-                      ),
-                    ),
-                    IconButton(
-                      tooltip: 'image prompt',
-                      onPressed: !_loading
-                          ? () async {
-                              await _sendImagePrompt(_textController.text);
-                            }
-                          : null,
-                      icon: Icon(
-                        Icons.image,
-                        color: _loading
-                            ? Theme.of(context).colorScheme.secondary
-                            : Theme.of(context).colorScheme.primary,
-                      ),
-                    ),
+                    ExchangeRateCommand(
+                        loading: _loading,
+                        setLoading: setLoading,
+                        functionCallModel: _functionCallModel,
+                        addGeneratedContent: (content) =>
+                            _generatedContent.add(content)),
+                    ImageQueryCommand(
+                        loading: _loading,
+                        setLoading: setLoading,
+                        addGeneratedContent: (content) =>
+                            _generatedContent.add(content),
+                        model: _model,
+                        showError: _showError,
+                        textController: _textController,
+                        textFieldFocus: _textFieldFocus),
                     IconButton(
                       tooltip: 'storage prompt',
                       onPressed: !_loading
@@ -175,9 +157,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Future<void> _sendStorageUriPrompt(String message) async {
-    setState(() {
-      _loading = true;
-    });
+    setLoading(true);
     try {
       final content = [
         Content.multi([
@@ -190,7 +170,7 @@ class _ChatScreenState extends State<ChatScreen> {
       ];
       _generatedContent.add((image: null, text: message, fromUser: true));
 
-      var response = await _model.generateContent(content);
+      var response = await _model!.generateContent(content);
       var text = response.text;
       _generatedContent.add((image: null, text: text, fromUser: false));
 
@@ -198,80 +178,14 @@ class _ChatScreenState extends State<ChatScreen> {
         _showError('No response from API.');
         return;
       } else {
-        setState(() {
-          _loading = false;
-          _scrollDown();
-        });
+        setLoading(false, scrollDown: true);
       }
     } catch (e) {
       _showError(e.toString());
-      setState(() {
-        _loading = false;
-      });
+      setLoading(false);
     } finally {
       _textController.clear();
-      setState(() {
-        _loading = false;
-      });
-      _textFieldFocus.requestFocus();
-    }
-  }
-
-  Future<void> _sendImagePrompt(String message) async {
-    setState(() {
-      _loading = true;
-    });
-    try {
-      ByteData catBytes = await rootBundle.load('assets/images/cat.jpg');
-      ByteData sconeBytes = await rootBundle.load('assets/images/scones.jpg');
-      ByteData cherryTomatoBytes =
-          await rootBundle.load(FilePath.tomatoSeedPackage);
-      final content = [
-        Content.multi([
-          TextPart(message),
-          // The only accepted mime types are image/*.
-          DataPart('image/jpeg', cherryTomatoBytes.buffer.asUint8List()),
-          // DataPart('image/jpeg', sconeBytes.buffer.asUint8List()),
-        ]),
-      ];
-      _generatedContent.add(
-        (
-          image: Image.asset('assets/images/cat.jpg'),
-          text: message,
-          fromUser: true
-        ),
-      );
-      _generatedContent.add(
-        (
-          image: Image.asset('assets/images/scones.jpg'),
-          text: null,
-          fromUser: true
-        ),
-      );
-
-      var response = await _model.generateContent(content);
-      var text = response.text;
-      _generatedContent.add((image: null, text: text, fromUser: false));
-
-      if (text == null) {
-        _showError('No response from API.');
-        return;
-      } else {
-        setState(() {
-          _loading = false;
-          _scrollDown();
-        });
-      }
-    } catch (e) {
-      _showError(e.toString());
-      setState(() {
-        _loading = false;
-      });
-    } finally {
-      _textController.clear();
-      setState(() {
-        _loading = false;
-      });
+      setLoading(false);
       _textFieldFocus.requestFocus();
     }
   }
@@ -280,7 +194,7 @@ class _ChatScreenState extends State<ChatScreen> {
     setLoading(true);
     try {
       _generatedContent.add((image: null, text: message, fromUser: true));
-      var response = await _chat.sendMessage(
+      var response = await _chat!.sendMessage(
         Content.text(message),
       );
       var text = response.text;
@@ -290,76 +204,16 @@ class _ChatScreenState extends State<ChatScreen> {
         _showError('No response from API.');
         return;
       } else {
-        setState(() {
-          _loading = false;
-          _scrollDown();
-        });
+        setLoading(false, scrollDown: true);
       }
     } catch (e) {
       _showError(e.toString());
-      setState(() {
-        _loading = false;
-      });
+      setLoading(false);
     } finally {
       _textController.clear();
-      setState(() {
-        _loading = false;
-      });
+      setLoading(false);
       _textFieldFocus.requestFocus();
     }
-  }
-
-  Future<void> _testFunctionCalling() async {
-    setState(() {
-      _loading = true;
-    });
-    final chat = _functionCallModel.startChat();
-    const prompt = 'How much is 50 US dollars worth in Swedish krona?';
-
-    // Send the message to the generative model.
-    var response = await chat.sendMessage(Content.text(prompt));
-
-    final functionCalls = response.functionCalls.toList();
-    // When the model response with a function call, invoke the function.
-    if (functionCalls.isNotEmpty) {
-      final functionCall = functionCalls.first;
-      final result = switch (functionCall.name) {
-        // Forward arguments to the hypothetical API.
-        'findExchangeRate' => await findExchangeRate(functionCall.args),
-        // Throw an exception if the model attempted to call a function that was
-        // not declared.
-        _ => throw UnimplementedError(
-            'Function not implemented: ${functionCall.name}',
-          )
-      };
-      // Send the response to the model so that it can use the result to generate
-      // text for the user.
-      response = await chat
-          .sendMessage(Content.functionResponse(functionCall.name, result));
-    }
-    // When the model responds with non-null text content, print it.
-    if (response.text case final text?) {
-      _generatedContent.add((image: null, text: text, fromUser: false));
-      setState(() {
-        _loading = false;
-      });
-    }
-  }
-
-  Future<void> _testCountToken() async {
-    setState(() {
-      _loading = true;
-    });
-
-    const prompt = 'tell a short story';
-    var response = await _model.countTokens([Content.text(prompt)]);
-    print(
-      'token: ${response.totalTokens}, billable characters: ${response.totalBillableCharacters}',
-    );
-
-    setState(() {
-      _loading = false;
-    });
   }
 
   void _showError(String message) {
