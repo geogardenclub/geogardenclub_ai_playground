@@ -7,8 +7,9 @@ class FirebaseVertexAiExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String title = 'Flutter + Vertex AI';
     return MaterialApp(
-      title: 'Flutter + Vertex AI',
+      title: title,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(
           brightness: Brightness.dark,
@@ -16,7 +17,7 @@ class FirebaseVertexAiExample extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: const ChatScreen(title: 'Flutter + Vertex AI'),
+      home: ChatScreen(title: title),
     );
   }
 }

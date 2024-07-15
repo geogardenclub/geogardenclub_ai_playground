@@ -14,14 +14,15 @@ You should be able to just download and run the app without changes.
 
 ## Structure
 
-Once the app was working, I refactored the single main.dart file into a set of files in order to more clearly indicate its structure:
+Once the app was working, I refactored the single main.dart file into a set of files in order to more clearly indicate its structure. The top-level files are:
 
 * main.dart:  Runs FirebaseVertexAiExample.
 * FirebaseVertexAiExample.dart: Creates a MaterialApp that displays a ChatScreen.
-* ChatScreen: Creates a Scaffold that displays a ChatWidget.
-* ChatWidget: This is where the magic happens. Takes a prompt from the user and passes it to the AI model. Results are displayed using MessageWidget.
+* ChatScreen: Takes a prompt from the user,passes it to the AI model, and displays the response.
+
+ChatScreen is implemented using the following components:
 * MessageWidget: Displays the prompt from the user and the results from the AI in the ChatWidget window.
-* ExchangeRateTool: This file illustrates how to connect the AI to an external API.
+* ExchangeRateTool: A mockup of an external API that returns exchange rates, packaged as a Gemini "tool".
 
 ## Usage
 
