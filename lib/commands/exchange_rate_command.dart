@@ -1,7 +1,7 @@
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
 
-import '../ExchangeRateTool.dart';
+import 'exchange_rate_tool.dart';
 
 class ExchangeRateCommand extends StatelessWidget {
   const ExchangeRateCommand(
@@ -20,7 +20,8 @@ class ExchangeRateCommand extends StatelessWidget {
   Future<void> _testFunctionCalling() async {
     setLoading(true);
     final chat = functionCallModel!.startChat();
-    const prompt = 'How much is 50 US dollars worth in Swedish krona?';
+    const prompt = 'How much is 50 US dollars worth in Euros?';
+    addGeneratedContent((image: null, text: prompt, fromUser: true));
 
     // Send the message to the generative model.
     var response = await chat.sendMessage(Content.text(prompt));

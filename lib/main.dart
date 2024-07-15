@@ -13,7 +13,8 @@
 // limitations under the License.
 
 import 'package:flutter/material.dart';
-import 'package:vertex_ai_example/FirebaseVertexAiExample.dart';
+
+import 'firebase_vertexai_example.dart';
 
 void main() {
   runApp(const FirebaseVertexAiExample());

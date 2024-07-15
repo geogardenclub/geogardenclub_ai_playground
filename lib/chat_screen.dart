@@ -1,13 +1,15 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
-import 'package:vertex_ai_example/commands/ExchangeRateCommand.dart';
-import 'package:vertex_ai_example/commands/ImageQueryCommand.dart';
 
-import 'ExchangeRateTool.dart';
-import 'GeneratedContent.dart';
-import 'TextPrompt.dart';
-import 'commands/TokenCountCommand.dart';
+import 'commands/exchange_rate_command.dart';
+import 'commands/exchange_rate_tool.dart';
+import 'commands/image_query_command.dart';
+import 'commands/storage_query_command.dart';
+import 'commands/text_field_command.dart';
+import 'commands/text_send_command.dart';
+import 'commands/token_count_command.dart';
+import 'generated_content.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key, required this.title});
@@ -94,10 +96,14 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 child: Row(
                   children: [
-                    TextPrompt(
+                    TextFieldCommand(
                       textFieldFocus: _textFieldFocus,
                       textController: _textController,
-                      sendChatMessage: _sendChatMessage,
+                      setLoading: setLoading,
+                      addGeneratedContent: (content) =>
+                          _generatedContent.add(content),
+                      showError: _showError,
+                      chat: _chat,
                     ),
                     const SizedBox.square(
                       dimension: 15,
@@ -122,29 +128,24 @@ class _ChatScreenState extends State<ChatScreen> {
                         showError: _showError,
                         textController: _textController,
                         textFieldFocus: _textFieldFocus),
-                    IconButton(
-                      tooltip: 'storage prompt',
-                      onPressed: !_loading
-                          ? () async {
-                              await _sendStorageUriPrompt(_textController.text);
-                            }
-                          : null,
-                      icon: Icon(
-                        Icons.folder,
-                        color: _loading
-                            ? Theme.of(context).colorScheme.secondary
-                            : Theme.of(context).colorScheme.primary,
-                      ),
-                    ),
+                    StorageQueryCommand(
+                        loading: _loading,
+                        setLoading: setLoading,
+                        addGeneratedContent: (content) =>
+                            _generatedContent.add(content),
+                        model: _model,
+                        showError: _showError,
+                        textController: _textController,
+                        textFieldFocus: _textFieldFocus),
                     if (!_loading)
-                      IconButton(
-                        onPressed: () async {
-                          await _sendChatMessage(_textController.text);
-                        },
-                        icon: Icon(
-                          Icons.send,
-                          color: Theme.of(context).colorScheme.primary,
-                        ),
+                      TextSendCommand(
+                        textFieldFocus: _textFieldFocus,
+                        textController: _textController,
+                        setLoading: setLoading,
+                        addGeneratedContent: (content) =>
+                            _generatedContent.add(content),
+                        showError: _showError,
+                        chat: _chat,
                       )
                     else
                       const CircularProgressIndicator(),
@@ -154,66 +155,6 @@ class _ChatScreenState extends State<ChatScreen> {
             ],
           ),
         ));
-  }
-
-  Future<void> _sendStorageUriPrompt(String message) async {
-    setLoading(true);
-    try {
-      final content = [
-        Content.multi([
-          TextPart(message),
-          FileData(
-            'image/jpeg',
-            'gs://ggc-app-2de7b.appspot.com/chapter-001/chapter-001.jpg',
-          ),
-        ]),
-      ];
-      _generatedContent.add((image: null, text: message, fromUser: true));
-
-      var response = await _model!.generateContent(content);
-      var text = response.text;
-      _generatedContent.add((image: null, text: text, fromUser: false));
-
-      if (text == null) {
-        _showError('No response from API.');
-        return;
-      } else {
-        setLoading(false, scrollDown: true);
-      }
-    } catch (e) {
-      _showError(e.toString());
-      setLoading(false);
-    } finally {
-      _textController.clear();
-      setLoading(false);
-      _textFieldFocus.requestFocus();
-    }
-  }
-
-  Future<void> _sendChatMessage(String message) async {
-    setLoading(true);
-    try {
-      _generatedContent.add((image: null, text: message, fromUser: true));
-      var response = await _chat!.sendMessage(
-        Content.text(message),
-      );
-      var text = response.text;
-      _generatedContent.add((image: null, text: text, fromUser: false));
-
-      if (text == null) {
-        _showError('No response from API.');
-        return;
-      } else {
-        setLoading(false, scrollDown: true);
-      }
-    } catch (e) {
-      _showError(e.toString());
-      setLoading(false);
-    } finally {
-      _textController.clear();
-      setLoading(false);
-      _textFieldFocus.requestFocus();
-    }
   }
 
   void _showError(String message) {

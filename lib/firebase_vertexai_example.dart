@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'ChatScreen.dart';
+import 'chat_screen.dart';
 
 class FirebaseVertexAiExample extends StatelessWidget {
   const FirebaseVertexAiExample({super.key});

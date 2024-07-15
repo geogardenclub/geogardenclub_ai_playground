@@ -2,9 +2,7 @@
 
 <img width="300px" src="example-screen.png">
 
-Sample app to show how to use Vertex AI for Firebase, modified to facilitate GGC Development.
-
-This is referenced as the "sample app" in [Get started with the Gemini API using the Vertex AI for Firebase SDKs](https://firebase.google.com/docs/vertex-ai/get-started?platform=flutter). 
+This is a highly refactored version of the "sample app" in [Get started with the Gemini API using the Vertex AI for Firebase SDKs](https://firebase.google.com/docs/vertex-ai/get-started?platform=flutter). 
 
 ## Installation
 
@@ -14,22 +12,22 @@ You should be able to just download and run the app without changes.
 
 ## Structure
 
-Once the app was working, I refactored the single main.dart file into a set of files in order to more clearly indicate its structure. The top-level files are:
+Once the app was working, I refactored the single main.dart file into a set of files in order to more clearly indicate its structure. The main.dart file invokes FirebaseVertexAiExample to kick things off.
 
-* main.dart:  Runs FirebaseVertexAiExample.
-* FirebaseVertexAiExample.dart: Creates a MaterialApp that displays a ChatScreen.
-* ChatScreen: Takes a prompt from the user,passes it to the AI model, and displays the response.
+The two top-level classes are:
 
-ChatScreen is implemented using the following components:
-* MessageWidget: Displays the prompt from the user and the results from the AI in the ChatWidget window.
-* ExchangeRateTool: A mockup of an external API that returns exchange rates, packaged as a Gemini "tool".
+* FirebaseVertexAiExample: Creates a MaterialApp that displays a ChatScreen.
+* ChatScreen: Selects and initializes a Gemini AI model. Then displays a screen that processes a "command" invoked the user. Each command gathers some data, passes the data to the Gemini model, and displays the data and the response.
 
-## Usage
+ChatScreen is implemented using the following classes:
+* MessageWidget: Displays a single command from the user and the results from the AI in the ChatWidget window to that prompt.
+* GeneratedContent: A Widget displaying the sequence of commands and responses as a list of MessageWidgets.
 
-Once the app is running, you can play around with the five behaviors implemented in the sample app, each represented by an icon at the bottom of the screen:
+At the bottom of the ChatScreen is a row of "commands" that enable the user to interact with the Gemini model in various ways. These commands are located in the commands/ subdirectory:
 
-1. Type a text prompt and hit return (or press the final "Send" icon).  This will send the text to the AI and show both your prompt and the AI's response in the screen. Note that you can have follow-on conversations; it remembers the state of the conversation.
-2. The "#" icon. Pressing this icon shows how to find out the number of tokens and billable characters for a prompt. The prompt is hard-wired in the code. 
-3. The "Sigma" icon. Pressing this icon invokes the ExchangeRateTool with a hard-wired prompt. The AI's response (but not the prompt) is displayed in the screen.
-4. The "Image" icon. Pressing this icon (along with your supplied text prompt) sends two pictures (hard-wired) plus your prompt to the AI and provides the response by the AI.  The pictures are of a cat and a plate of food. So, you could provide a prompt like "What is this cat?" or "What is that food?" and the AI will provide a response based on your prompt and the images. 
-5. The "Folder" icon. Pressing this icon (along with your supplied text prompt) sends the prompt and a URI to a GGC Firebase Storage file to the AI. Currently, the file URI is hardcoded as: gs://ggc-app-2de7b.appspot.com/chapter-001/chapter-001.jpg.You can provide a prompt like "What is in this picture?" and the AI will return a text summary of the contents of the picture.  *Note: to make this example work, I had to provide public read-only access to the GGC Firebase Storage using its Rules. We should revoke public access once we no longer need to experiment with this app which does not include authentication.* 
+* ExchangeRateCommand (Sigma icon): Illustrates how to define and invoke a Gemini "function call". In this case, the command implements a fake API to an exchange rate application. Pressing the icon generates a fake user prompt and call to the API which is processed by the Gemini model and whose response is printed.
+* TextFieldCommand (Text field): The user can enter any text into the field and press return (or the Send icon). The prompt is sent to the Gemini model and this prompt as well as the response is printed.
+* TokenCountCommand (hashtag icon): Pressing this icon illustrates how to obtain the token count and billable characters associated with a prompt. This information is printed to the console.
+* ImageQueryCommand (image icon): Pressing this icon sends a hardcoded image to the Gemini model, along with the text provided by the user in the TextField. You can edit the image to be sent by editing the code in the ImageQueryCommand class. 
+* StorageQueryCommand (folder icon): This works just like the ImageQueryCommand, except that rather than sending an image (encoded as a byte stream) to the Gemini Model, the command instead sends the URI to a Google Storage file along with the text provided by the user. This URI is hardcoded in the StorageQueryCommand file.
+* TextSendCommand (send icon): Sends the text in the TextField. Equivalent to pressing "return" in the TextField. Both the text and the Gemini model's response are printed.
