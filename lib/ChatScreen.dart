@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'ExchangeRateTool.dart';
-import 'MessageWidget.dart';
+import 'GeneratedContent.dart';
+import 'TextPrompt.dart';
 import 'file_path.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -60,29 +61,14 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
+  void setLoading(bool loading) {
+    setState(() {
+      _loading = loading;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final textFieldDecoration = InputDecoration(
-      contentPadding: const EdgeInsets.all(15),
-      hintText: 'Enter a prompt...',
-      border: OutlineInputBorder(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(14),
-        ),
-        borderSide: BorderSide(
-          color: Theme.of(context).colorScheme.secondary,
-        ),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(14),
-        ),
-        borderSide: BorderSide(
-          color: Theme.of(context).colorScheme.secondary,
-        ),
-      ),
-    );
-
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
@@ -93,19 +79,9 @@ class _ChatScreenState extends State<ChatScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
-                child: ListView.builder(
-                  controller: _scrollController,
-                  itemBuilder: (context, idx) {
-                    var content = _generatedContent[idx];
-                    return MessageWidget(
-                      text: content.text,
-                      image: content.image,
-                      isFromUser: content.fromUser,
-                    );
-                  },
-                  itemCount: _generatedContent.length,
-                ),
+              GeneratedContent(
+                scrollController: _scrollController,
+                generatedContent: _generatedContent,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(
@@ -114,14 +90,10 @@ class _ChatScreenState extends State<ChatScreen> {
                 ),
                 child: Row(
                   children: [
-                    Expanded(
-                      child: TextField(
-                        autofocus: true,
-                        focusNode: _textFieldFocus,
-                        decoration: textFieldDecoration,
-                        controller: _textController,
-                        onSubmitted: _sendChatMessage,
-                      ),
+                    TextPrompt(
+                      textFieldFocus: _textFieldFocus,
+                      textController: _textController,
+                      sendChatMessage: _sendChatMessage,
                     ),
                     const SizedBox.square(
                       dimension: 15,
@@ -305,10 +277,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   Future<void> _sendChatMessage(String message) async {
-    setState(() {
-      _loading = true;
-    });
-
+    setLoading(true);
     try {
       _generatedContent.add((image: null, text: message, fromUser: true));
       var response = await _chat.sendMessage(
