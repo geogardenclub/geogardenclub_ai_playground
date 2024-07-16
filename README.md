@@ -24,11 +24,13 @@ Once you've connected your instance of the app to Firebase, you should be able t
 flutter run
 ```
 
-If all goes as planned, then the app will come up. Typing a query such as "Where is Bellingham?" should result in a screen like this, which verifies that the app is successfully interacting with a Gemini model:
+If all goes as planned, then the app will come up. Typing a query such as "Where is Bellingham?" and hitting return should result in a screen like this, which verifies that the app is successfully interacting with a Gemini model:
 
 <img width="300px" src="example-screen.png">
 
-## Structure
+Note that the number and type of icons at the bottom of the screen may differ from what appears in this image. That's because each icon is connected to a different "command" (explained below) and not all of them might be displayed in the UI at any one time.
+
+## Design
 
 As noted above, I refactored the single main.dart file of the sample app into a set of files in order to more clearly indicate its structure, and to facilitate its use to explore what the Gemini model can do when provided with GGC data.
 
@@ -38,14 +40,14 @@ The main.dart file invokes FirebaseVertexAiExample to kick things off.
 
 The two top-level classes are:
 
-* FirebaseVertexAiExample: Creates a MaterialApp that displays a ChatScreen.
+* GeoGardenClubAiExample: Creates a MaterialApp that displays a ChatScreen.
 * ChatScreen: Selects and initializes a Gemini AI model. Then displays a screen that processes a "command" invoked the user. Each command gathers some data, passes the data to the Gemini model, and displays the data and the response.
 
-ChatScreen is implemented using the following classes:
+The ChatScreen UI is implemented using the following classes:
 * MessageWidget: Displays a single command from the user and the results from the AI in the ChatWidget window to that prompt.
 * GeneratedContent: A Widget displaying the sequence of commands and responses as a list of MessageWidgets.
 
-At the bottom of the ChatScreen is a row of "commands" that enable the user to interact with the Gemini model in various ways. These commands are located in the commands/ subdirectory:
+At the bottom of the ChatScreen is a row of "commands" that enable the user to interact with the Gemini model in various ways. These commands are located in the commands/ subdirectory. Here are the currently implemented commands:
 
 * ExchangeRateCommand (Sigma icon): Illustrates how to define and invoke a Gemini "function call". In this case, the command implements a fake API to an exchange rate application. Pressing the icon generates a fake user prompt and call to the API which is processed by the Gemini model and whose response is printed.
 * TextFieldCommand (Text field): The user can enter any text into the field and press return (or the Send icon). The prompt is sent to the Gemini model and this prompt as well as the response is printed.
