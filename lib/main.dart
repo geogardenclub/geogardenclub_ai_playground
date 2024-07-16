@@ -14,8 +14,8 @@
 
 import 'package:flutter/material.dart';
 
-import 'firebase_vertexai_example.dart';
+import 'geogardenclub_ai_playground.dart';
 
 void main() {
-  runApp(const FirebaseVertexAiExample());
+  runApp(const GeoGardenClubAiPlayground());
 }

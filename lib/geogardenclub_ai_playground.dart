@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'chat_screen.dart';
 
-class FirebaseVertexAiExample extends StatelessWidget {
-  const FirebaseVertexAiExample({super.key});
+class GeoGardenClubAiPlayground extends StatelessWidget {
+  const GeoGardenClubAiPlayground({super.key});
 
   @override
   Widget build(BuildContext context) {
-    String title = 'Flutter + Vertex AI';
+    String title = 'GeoGardenClub AI Playground';
     return MaterialApp(
       title: title,
       theme: ThemeData(

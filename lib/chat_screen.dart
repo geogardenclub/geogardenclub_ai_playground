@@ -33,18 +33,20 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   void initState() {
     super.initState();
-
-    initFirebase().then((value) {
-      _model = FirebaseVertexAI.instance.generativeModel(
-        model: 'gemini-1.5-flash-preview-0514',
-      );
-      _functionCallModel = FirebaseVertexAI.instance.generativeModel(
-        model: 'gemini-1.5-flash-preview-0514',
-        tools: [
-          Tool(functionDeclarations: [exchangeRateTool]),
-        ],
-      );
-      _chat = _model!.startChat();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      initFirebase().then((value) {
+        _model = FirebaseVertexAI.instance.generativeModel(
+          model: 'gemini-1.5-flash-preview-0514',
+        );
+        _functionCallModel = FirebaseVertexAI.instance.generativeModel(
+          model: 'gemini-1.5-flash-preview-0514',
+          tools: [
+            Tool(functionDeclarations: [exchangeRateTool]),
+          ],
+        );
+        _chat = _model!.startChat();
+        setState(() {});
+      });
     });
   }
 

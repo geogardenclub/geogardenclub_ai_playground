@@ -1,26 +1,38 @@
-# firebase_vertexai_example
+# GeoGardenClub_AI_Playground
 
-<img width="300px" src="example-screen.png">
+GeoGardenClub_AI_Playground is a refactored and extended version of the [sample app](https://github.com/firebase/flutterfire/tree/master/packages/firebase_vertexai/firebase_vertexai/example) in [Get started with the Gemini API using the Vertex AI for Firebase SDKs](https://firebase.google.com/docs/vertex-ai/get-started?platform=flutter). 
 
-This is a highly refactored version of the "sample app" in [Get started with the Gemini API using the Vertex AI for Firebase SDKs](https://firebase.google.com/docs/vertex-ai/get-started?platform=flutter). 
-
-The sample app is pretty cool because it provides a nice illustration of several important concepts:
+The original sample app is pretty cool because it provides a nice illustration of several important concepts:
 
 1. How to choose and initialize a Gemini model in Flutter, using the (currently recommended) Firebase VertexAI interface.
 2. How to implement a UI in Flutter for displaying a chat session between a user and the Gemini model. This includes preventing the user from initiating another request while the model is still working on the previous request.
 3. How to use several important Gemini interaction modalities, including text only, text plus images, text plus Firebase Storage files, and text plus a "Gemini Function Call" (which is the way you get Gemini models to interact with external APIs).
 
+For this app, the original sample app was first refactored from a single main.dart file containing all of the code into a dozen files.  This refactoring helps to clarify the design and separates the UI code from model code. It also makes it easier to extend the system with new functionality to explore the integration of Gemini models with GeoGardenClub data, and solicit help in the design of the integration by encapsulating GGC specific code into a few files.   
+
 ## Installation
 
-The documentation states it needs to be connected to a Firebase project, so I've connected it to the Firebase ggc_app database following the instructions in the Getting Started page referenced above.
+Install this system according to the documentation in [Get started with the Gemini API using the Vertex AI for Firebase SDKs](https://firebase.google.com/docs/vertex-ai/get-started?platform=flutter). 
 
-In addition, to get the Firebase Storage command to work, I needed to enable public read-only access to the GGC Firebase Storage files.  This access should be revoked once we no longer need to play around with this app.
+Specifically, you must [Set up a Firebase project and connect your app to Firebase](https://firebase.google.com/docs/vertex-ai/get-started?platform=flutter).   You do not need to perform the remaining steps in the documentation page ("Add the SDK", "Initialize the Vertex AI service and the generative model", "Call the Vertex AI Gemini API"); these have already been done in the app.
 
-You should be able to just download and run the app without changes. 
+Note that GeoGardeClub_AI_Playground does not actually read or write to the connected Firebase project; you just need this connection in order to define and use the Gemini models through the Vertex AI APIs.
+
+Once you've connected your instance of the app to Firebase, you should be able to run the app as a normal Flutter project. For example, with:
+
+```
+flutter run
+```
+
+If all goes as planned, then the app will come up. Typing a query such as "Where is Bellingham?" should result in a screen like this, which verifies that the app is successfully interacting with a Gemini model:
+
+<img width="300px" src="example-screen.png">
 
 ## Structure
 
-Once the app was working, I refactored the single main.dart file into a set of files in order to more clearly indicate its structure, and to facilitate its use to explore what the Gemini model can do when provided with GGC data. The current structure encapsulates each type of interaction with the Gemini model as an instance of a "command".  This makes it straightforward to create a new "command" like "GgcDataCommand" that sets up function calls to the GGC database and allows the user to ask questions about it. 
+As noted above, I refactored the single main.dart file of the sample app into a set of files in order to more clearly indicate its structure, and to facilitate its use to explore what the Gemini model can do when provided with GGC data.
+
+The current structure encapsulates each type of interaction with the Gemini model as an instance of a "command".  This makes it straightforward to create a new "command" like "GgcDataCommand" that sets up function calls to the GGC database and allows the user to ask questions about it. 
 
 The main.dart file invokes FirebaseVertexAiExample to kick things off.
 

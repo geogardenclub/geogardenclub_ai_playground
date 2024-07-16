@@ -1,5 +1,5 @@
-name: vertex_ai_example
-description: "Example project to show how to use the Vertex AI SDK."
+name: geogardenclub_ai_playground
+description: "Explores use of Firebase Vertex AI with GeoGardenClub data. Based on firebase_vertexai_example."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
