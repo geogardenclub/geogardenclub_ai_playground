@@ -37,11 +37,11 @@ final gardenerNamesTool = FunctionDeclaration(
 Future<Map<String, Object?>> findGgcGardens(
     Map<String, Object?> arguments) async {
   final gardenMap = {
-    '@joe': ['Joe\'s Garden 1', 'Joe\'s Garden 2'],
-    '@jane': ['Jane\'s Garden 1'],
-    '@jim': ['Jim\'s Garden 1', 'Jim\'s Garden 2', 'Jim\'s Garden 3']
+    '@joe': ["Joe's Garden 1", "Joe's Garden 2"],
+    '@jane': ["Jane's Garden 1"],
+    '@jim': ["Jim's Garden 1", "Jim's Garden 2", "Jim's Garden 3"]
   };
-  String gardener = arguments['gardener'] as String;
+  String gardener = arguments['gardener']! as String;
   return {
     'gardens': gardenMap[gardener] ?? [],
   };

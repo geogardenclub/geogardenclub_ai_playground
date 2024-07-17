@@ -108,17 +108,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           textController: _textController,
                           setWorking: setWorking)
                     ]),
-                    Row(children: [
-                      GgcCommand(
-                        working: _working,
-                        setWorking: setWorking,
-                        functionCallModel: _functionCallModel,
-                        textController: _textController,
-                        textFieldFocus: _textFieldFocus,
-                        showError: _showError,
-                        addGeneratedContent: (content) =>
-                            _generatedContent.add(content),
-                      ),
+                    Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                       ExchangeRateCommand(
                           working: _working,
                           setWorking: setWorking,
@@ -146,18 +136,26 @@ class _ChatScreenState extends State<ChatScreen> {
                           showError: _showError,
                           textController: _textController,
                           textFieldFocus: _textFieldFocus),
-                      if (!_working)
-                        TextSendCommand(
-                          textFieldFocus: _textFieldFocus,
-                          textController: _textController,
-                          setWorking: setWorking,
-                          addGeneratedContent: (content) =>
-                              _generatedContent.add(content),
-                          showError: _showError,
-                          chat: _chat,
-                        )
-                      else
-                        const CircularProgressIndicator(),
+                      TextSendCommand(
+                        textFieldFocus: _textFieldFocus,
+                        textController: _textController,
+                        setWorking: setWorking,
+                        addGeneratedContent: (content) =>
+                            _generatedContent.add(content),
+                        showError: _showError,
+                        chat: _chat,
+                      ),
+                      GgcCommand(
+                        working: _working,
+                        setWorking: setWorking,
+                        functionCallModel: _functionCallModel,
+                        textController: _textController,
+                        textFieldFocus: _textFieldFocus,
+                        showError: _showError,
+                        addGeneratedContent: (content) =>
+                            _generatedContent.add(content),
+                      ),
+                      if (_working) const CircularProgressIndicator(),
                     ]),
                   ])),
             ],

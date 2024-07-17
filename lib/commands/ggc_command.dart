@@ -1,8 +1,8 @@
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
-import 'package:geogardenclub_ai_playground/commands/ggc_tools.dart';
 
 import 'command_button.dart';
+import 'ggc_tools.dart';
 
 class GgcCommand extends StatelessWidget {
   const GgcCommand(

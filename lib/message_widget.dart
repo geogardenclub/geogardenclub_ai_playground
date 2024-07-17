@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 
 class MessageWidget extends StatelessWidget {
-  final Image? image;
-  final String? text;
-  final bool isFromUser;
-
   const MessageWidget({
     super.key,
     this.image,
     this.text,
     required this.isFromUser,
   });
+
+  final Image? image;
+  final String? text;
+  final bool isFromUser;
 
   @override
   Widget build(BuildContext context) {
