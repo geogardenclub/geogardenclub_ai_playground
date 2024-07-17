@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../file_path.dart';
+import 'command_button.dart';
 
 class ImageQueryCommand extends StatelessWidget {
   const ImageQueryCommand(
@@ -27,8 +28,6 @@ class ImageQueryCommand extends StatelessWidget {
   Future<void> _sendImagePrompt(String message) async {
     setWorking(true);
     try {
-      ByteData catBytes = await rootBundle.load('assets/images/cat.jpg');
-      ByteData sconeBytes = await rootBundle.load('assets/images/scones.jpg');
       ByteData cherryTomatoBytes =
           await rootBundle.load(FilePath.tomatoSeedPackage);
       final content = [
@@ -69,19 +68,11 @@ class ImageQueryCommand extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      tooltip: 'image prompt',
-      onPressed: !working
-          ? () async {
-              await _sendImagePrompt(textController.text);
-            }
-          : null,
-      icon: Icon(
-        Icons.image,
-        color: working
-            ? Theme.of(context).colorScheme.secondary
-            : Theme.of(context).colorScheme.primary,
-      ),
-    );
+    return CommandButton(
+        icon: Icons.image,
+        working: working,
+        onPressed: () async {
+          await _sendImagePrompt(textController.text);
+        });
   }
 }

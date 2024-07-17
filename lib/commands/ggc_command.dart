@@ -1,10 +1,11 @@
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
+import 'package:geogardenclub_ai_playground/commands/ggc_tools.dart';
 
-import 'exchange_rate_tool.dart';
+import 'command_button.dart';
 
-class ExchangeRateCommand extends StatelessWidget {
-  const ExchangeRateCommand(
+class GgcCommand extends StatelessWidget {
+  const GgcCommand(
       {super.key,
       required this.working,
       required this.setWorking,
@@ -17,10 +18,10 @@ class ExchangeRateCommand extends StatelessWidget {
   final void Function(({Image? image, String? text, bool fromUser}))
       addGeneratedContent;
 
-  Future<void> _exchangeRateChat() async {
+  Future<void> _ggcChat() async {
     setWorking(true);
     final chat = functionCallModel!.startChat();
-    const prompt = 'How much is 50 US dollars worth in Euros?';
+    const prompt = 'How many gardeners are in GeoGardenClub?';
     addGeneratedContent((image: null, text: prompt, fromUser: true));
 
     // Send the message to the generative model.
@@ -31,8 +32,8 @@ class ExchangeRateCommand extends StatelessWidget {
     if (functionCalls.isNotEmpty) {
       final functionCall = functionCalls.first;
       final result = switch (functionCall.name) {
-        // Forward arguments to the hypothetical API.
-        'findExchangeRate' => await findExchangeRate(functionCall.args),
+        // Forward arguments to the mockup GGC API.
+        'findGgcGardeners' => await findGgcGardeners(functionCall.args),
         // Throw an exception if the model attempted to call a function that was
         // not declared.
         _ => throw UnimplementedError(
@@ -53,19 +54,11 @@ class ExchangeRateCommand extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      tooltip: 'function calling Test',
-      onPressed: !working
-          ? () async {
-              await _exchangeRateChat();
-            }
-          : null,
-      icon: Icon(
-        Icons.functions,
-        color: working
-            ? Theme.of(context).colorScheme.secondary
-            : Theme.of(context).colorScheme.primary,
-      ),
-    );
+    return CommandButton(
+        icon: Icons.yard,
+        working: working,
+        onPressed: () async {
+          await _ggcChat();
+        });
   }
 }

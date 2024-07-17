@@ -1,6 +1,8 @@
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
 
+import 'command_button.dart';
+
 class TextSendCommand extends StatelessWidget {
   const TextSendCommand(
       {super.key,
@@ -48,14 +50,11 @@ class TextSendCommand extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: () async {
-        await _sendChatMessage(textController.text);
-      },
-      icon: Icon(
-        Icons.send,
-        color: Theme.of(context).colorScheme.primary,
-      ),
-    );
+    return CommandButton(
+        icon: Icons.send,
+        working: false,
+        onPressed: () async {
+          await _sendChatMessage(textController.text);
+        });
   }
 }

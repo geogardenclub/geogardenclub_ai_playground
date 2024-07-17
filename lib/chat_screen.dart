@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 
 import 'commands/exchange_rate_command.dart';
 import 'commands/exchange_rate_tool.dart';
+import 'commands/ggc_command.dart';
+import 'commands/ggc_tools.dart';
 import 'commands/image_query_command.dart';
 import 'commands/storage_query_command.dart';
 import 'commands/text_field_command.dart';
 import 'commands/text_send_command.dart';
-import 'commands/token_count_command.dart';
 import 'generated_content.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -41,7 +42,7 @@ class _ChatScreenState extends State<ChatScreen> {
         _functionCallModel = FirebaseVertexAI.instance.generativeModel(
           model: 'gemini-1.5-flash-preview-0514',
           tools: [
-            Tool(functionDeclarations: [exchangeRateTool]),
+            Tool(functionDeclarations: [exchangeRateTool, gardenerNamesTool]),
           ],
         );
         _chat = _model!.startChat();
@@ -110,10 +111,12 @@ class _ChatScreenState extends State<ChatScreen> {
                     const SizedBox.square(
                       dimension: 15,
                     ),
-                    TokenCountCommand(
+                    GgcCommand(
                       working: _working,
                       setWorking: setWorking,
-                      model: _model,
+                      functionCallModel: _functionCallModel,
+                      addGeneratedContent: (content) =>
+                          _generatedContent.add(content),
                     ),
                     ExchangeRateCommand(
                         working: _working,

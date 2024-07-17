@@ -2,6 +2,7 @@ import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
 
 import '../file_path.dart';
+import 'command_button.dart';
 
 class StorageQueryCommand extends StatelessWidget {
   const StorageQueryCommand(
@@ -59,19 +60,11 @@ class StorageQueryCommand extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      tooltip: 'storage prompt',
-      onPressed: !working
-          ? () async {
-              await _sendStorageUriPrompt(textController.text);
-            }
-          : null,
-      icon: Icon(
-        Icons.folder,
-        color: working
-            ? Theme.of(context).colorScheme.secondary
-            : Theme.of(context).colorScheme.primary,
-      ),
-    );
+    return CommandButton(
+        icon: Icons.folder,
+        working: working,
+        onPressed: () async {
+          await _sendStorageUriPrompt(textController.text);
+        });
   }
 }

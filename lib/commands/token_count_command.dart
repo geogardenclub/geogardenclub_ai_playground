@@ -1,6 +1,8 @@
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
 
+import 'command_button.dart';
+
 class TokenCountCommand extends StatelessWidget {
   const TokenCountCommand(
       {super.key,
@@ -12,7 +14,7 @@ class TokenCountCommand extends StatelessWidget {
   final bool working;
   final GenerativeModel? model;
 
-  Future<void> testTokenCount() async {
+  Future<void> _testTokenCount() async {
     setWorking(true);
 
     if (model != null) {
@@ -27,19 +29,11 @@ class TokenCountCommand extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      tooltip: 'tokenCount Test',
-      onPressed: !working
-          ? () async {
-              await testTokenCount();
-            }
-          : null,
-      icon: Icon(
-        Icons.numbers,
-        color: working
-            ? Theme.of(context).colorScheme.secondary
-            : Theme.of(context).colorScheme.primary,
-      ),
-    );
+    return CommandButton(
+        icon: Icons.numbers,
+        working: working,
+        onPressed: () async {
+          await _testTokenCount();
+        });
   }
 }
