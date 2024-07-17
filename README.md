@@ -16,7 +16,7 @@ Install this system according to the documentation in [Get started with the Gemi
 
 Specifically, you must [Set up a Firebase project and connect your app to Firebase](https://firebase.google.com/docs/vertex-ai/get-started?platform=flutter).   You do not need to perform the remaining steps in the documentation page ("Add the SDK", "Initialize the Vertex AI service and the generative model", "Call the Vertex AI Gemini API"); these have already been done in the app.
 
-Note that GeoGardeClub_AI_Playground does not actually read or write to the connected Firebase project; you just need this connection in order to define and use the Gemini models through the Vertex AI APIs.
+Note that GeoGardeClub_AI_Playground does not actually read or write to the connected Firebase database; you just need this connection in order to define and use the Gemini models through the Vertex AI APIs.
 
 Once you've connected your instance of the app to Firebase, you should be able to run the app as a normal Flutter project. For example, with:
 
@@ -24,7 +24,7 @@ Once you've connected your instance of the app to Firebase, you should be able t
 flutter run
 ```
 
-If all goes as planned, then the app will come up. Typing a query such as "Where is Bellingham?" and hitting return should result in a screen like this, which verifies that the app is successfully interacting with a Gemini model:
+If all goes according to plan, the app will come up. Typing a query such as "Where is Bellingham?" and hitting return should result in a screen like this, which verifies that the app is successfully interacting with a Gemini model:
 
 <img width="300px" src="example-screen.png">
 
@@ -47,11 +47,17 @@ The ChatScreen UI is implemented using the following classes:
 * MessageWidget: Displays a single command from the user and the results from the AI in the ChatWidget window to that prompt.
 * GeneratedContent: A Widget displaying the sequence of commands and responses as a list of MessageWidgets.
 
-At the bottom of the ChatScreen is a row of "commands" that enable the user to interact with the Gemini model in various ways. These commands are located in the commands/ subdirectory. Here are the currently implemented commands:
+At the bottom of the ChatScreen is a row of "commands" that enable the user to interact with the Gemini model in various ways. These commands are located in the commands/ subdirectory. The following commands implement the functionality available as part of the sample app:
 
-* ExchangeRateCommand (Sigma icon): Illustrates how to define and invoke a Gemini "function call". In this case, the command implements a fake API to an exchange rate application. Pressing the icon generates a fake user prompt and call to the API which is processed by the Gemini model and whose response is printed.
 * TextFieldCommand (Text field): The user can enter any text into the field and press return (or the Send icon). The prompt is sent to the Gemini model and this prompt as well as the response is printed.
+* ExchangeRateCommand (Sigma icon): Illustrates how to define and invoke a Gemini "function call". In this case, the command implements a fake API to an exchange rate application. Pressing the icon generates a fake user prompt and call to the API which is processed by the Gemini model and whose response is printed.
 * TokenCountCommand (hashtag icon): Pressing this icon illustrates how to obtain the token count and billable characters associated with a prompt. This information is printed to the console.
 * ImageQueryCommand (image icon): Pressing this icon sends a hardcoded image to the Gemini model, along with the text provided by the user in the TextField. You can edit the image to be sent by editing the code in the ImageQueryCommand class. 
 * StorageQueryCommand (folder icon): This works just like the ImageQueryCommand, except that rather than sending an image (encoded as a byte stream) to the Gemini Model, the command instead sends the URI to a Google Storage file along with the text provided by the user. This URI is hardcoded in the StorageQueryCommand file.
 * TextSendCommand (send icon): Sends the text in the TextField. Equivalent to pressing "return" in the TextField. Both the text and the Gemini model's response are printed.
+
+## Reasoning about GeoGardenClub data
+
+All of the above is just preliminary to the real focus of this app: exploring the best approach to enabling a Gemini model to reason about and answer questions regarding GeoGardenClub data. To do this, this app emulates the approach taken by the original sample to illustrate how a model can interact with an external API. The original app implements an "exchange rate tool" as an async function that, instead of actually calling an external service, immediately returns a JSON-style object that emulates what such as service might return. 
+
+Similarly, this app implements a variety of tools that return objects similar to what might be returned by a call to an actual GeoGardenClub database. 
