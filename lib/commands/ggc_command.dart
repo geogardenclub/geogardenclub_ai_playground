@@ -28,26 +28,27 @@ class GgcCommand extends StatelessWidget {
     addGeneratedContent((image: null, text: message, fromUser: true));
 
     // Send the message to the generative model.
-    var response = await chat.sendMessage(Content.text(message));
+    GenerateContentResponse response =
+        await chat.sendMessage(Content.text(message));
+    List<FunctionCall> functionCalls = response.functionCalls.toList();
 
-    final functionCalls = response.functionCalls.toList();
-    // When the model response with a function call, invoke the function.
-    if (functionCalls.isNotEmpty) {
-      final functionCall = functionCalls.first;
-      final result = switch (functionCall.name) {
+    // While the model responds with a desire to call functions, do it.
+    while (functionCalls.isNotEmpty) {
+      FunctionCall functionCall = functionCalls.first;
+      print('Function call: ${functionCall.name}');
+      Map<String, Object?> result = switch (functionCall.name) {
         // Forward arguments to the mockup GGC API.
         'findGgcGardeners' => await findGgcGardeners(functionCall.args),
-        // Throw an exception if the model attempted to call a function that was
-        // not declared.
-        _ => throw UnimplementedError(
-            'Function not implemented: ${functionCall.name}',
-          )
+        'findGgcGardens' => await findGgcGardens(functionCall.args),
+        _ => throw UnimplementedError('Not implemented: ${functionCall.name}')
       };
-      // Send the response to the model so that it can use the result to generate
-      // text for the user.
+      // Send the response to the model.
       response = await chat
           .sendMessage(Content.functionResponse(functionCall.name, result));
+      // see if the model wants to call more functions
+      functionCalls = response.functionCalls.toList();
     }
+
     // When the model responds with non-null text content, print it.
     if (response.text case final text?) {
       addGeneratedContent((image: null, text: text, fromUser: false));

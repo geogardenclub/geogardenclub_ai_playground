@@ -42,7 +42,11 @@ class _ChatScreenState extends State<ChatScreen> {
         _functionCallModel = FirebaseVertexAI.instance.generativeModel(
           model: 'gemini-1.5-flash-preview-0514',
           tools: [
-            Tool(functionDeclarations: [exchangeRateTool, gardenerNamesTool]),
+            Tool(functionDeclarations: [
+              exchangeRateTool,
+              gardenerNamesTool,
+              gardenNamesTool
+            ]),
           ],
         );
         _chat = _model!.startChat();
