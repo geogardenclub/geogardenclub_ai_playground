@@ -115,12 +115,16 @@ class _ChatScreenState extends State<ChatScreen> {
                         functionCallModel: _functionCallModel,
                         textController: _textController,
                         textFieldFocus: _textFieldFocus,
+                        showError: _showError,
                         addGeneratedContent: (content) =>
                             _generatedContent.add(content),
                       ),
                       ExchangeRateCommand(
                           working: _working,
                           setWorking: setWorking,
+                          textController: _textController,
+                          textFieldFocus: _textFieldFocus,
+                          showError: _showError,
                           functionCallModel: _functionCallModel,
                           addGeneratedContent: (content) =>
                               _generatedContent.add(content)),

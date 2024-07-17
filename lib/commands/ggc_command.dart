@@ -12,6 +12,7 @@ class GgcCommand extends StatelessWidget {
       required this.functionCallModel,
       required this.addGeneratedContent,
       required this.textFieldFocus,
+      required this.showError,
       required this.textController});
 
   final void Function(bool) setWorking;
@@ -21,37 +22,44 @@ class GgcCommand extends StatelessWidget {
       addGeneratedContent;
   final TextEditingController textController;
   final FocusNode textFieldFocus;
+  final void Function(String) showError;
 
   Future<void> _ggcChat(String message) async {
     setWorking(true);
-    final chat = functionCallModel!.startChat();
-    addGeneratedContent((image: null, text: message, fromUser: true));
+    try {
+      final chat = functionCallModel!.startChat();
+      addGeneratedContent((image: null, text: message, fromUser: true));
 
-    // Send the message to the generative model.
-    GenerateContentResponse response =
-        await chat.sendMessage(Content.text(message));
-    List<FunctionCall> functionCalls = response.functionCalls.toList();
+      // Send the message to the generative model.
+      GenerateContentResponse response =
+          await chat.sendMessage(Content.text(message));
+      List<FunctionCall> functionCalls = response.functionCalls.toList();
 
-    // While the model responds with a desire to call functions, do it.
-    while (functionCalls.isNotEmpty) {
-      FunctionCall functionCall = functionCalls.first;
-      print('Function call: ${functionCall.name}');
-      Map<String, Object?> result = switch (functionCall.name) {
-        // Forward arguments to the mockup GGC API.
-        'findGgcGardeners' => await findGgcGardeners(functionCall.args),
-        'findGgcGardens' => await findGgcGardens(functionCall.args),
-        _ => throw UnimplementedError('Not implemented: ${functionCall.name}')
-      };
-      // Send the response to the model.
-      response = await chat
-          .sendMessage(Content.functionResponse(functionCall.name, result));
-      // see if the model wants to call more functions
-      functionCalls = response.functionCalls.toList();
-    }
+      // While the model responds with a desire to call functions, do it.
+      while (functionCalls.isNotEmpty) {
+        FunctionCall functionCall = functionCalls.first;
+        print('Function call: ${functionCall.name}');
+        Map<String, Object?> result = switch (functionCall.name) {
+          // Forward arguments to the mockup GGC API.
+          'findGgcGardeners' => await findGgcGardeners(functionCall.args),
+          'findGgcGardens' => await findGgcGardens(functionCall.args),
+          _ => throw UnimplementedError('Not implemented: ${functionCall.name}')
+        };
+        // Send the response to the model.
+        response = await chat
+            .sendMessage(Content.functionResponse(functionCall.name, result));
+        // see if the model wants to call more functions
+        functionCalls = response.functionCalls.toList();
+      }
 
-    // When the model responds with non-null text content, print it.
-    if (response.text case final text?) {
-      addGeneratedContent((image: null, text: text, fromUser: false));
+      // When the model responds with non-null text content, print it.
+      if (response.text case final text?) {
+        addGeneratedContent((image: null, text: text, fromUser: false));
+      }
+    } catch (e) {
+      showError(e.toString());
+      setWorking(false);
+    } finally {
       textController.clear();
       setWorking(false);
       textFieldFocus.requestFocus();

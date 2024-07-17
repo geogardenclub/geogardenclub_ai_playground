@@ -11,33 +11,6 @@ class PromptTextField extends StatelessWidget {
   final FocusNode textFieldFocus;
   final TextEditingController textController;
 
-  // Saving this as an illustration of how to support error handling.
-  // Future<void> _sendChatMessage(String message) async {
-  //   setWorking(true);
-  //   try {
-  //     addGeneratedContent((image: null, text: message, fromUser: true));
-  //     var response = await chat!.sendMessage(
-  //       Content.text(message),
-  //     );
-  //     var text = response.text;
-  //     addGeneratedContent((image: null, text: text, fromUser: false));
-  //
-  //     if (text == null) {
-  //       showError('No response from API.');
-  //       return;
-  //     } else {
-  //       setWorking(false, scrollDown: true);
-  //     }
-  //   } catch (e) {
-  //     showError(e.toString());
-  //     setWorking(false);
-  //   } finally {
-  //     textController.clear();
-  //     setWorking(false);
-  //     textFieldFocus.requestFocus();
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     final textFieldDecoration = InputDecoration(

@@ -58,7 +58,6 @@ class ImageQueryCommand extends StatelessWidget {
       }
     } catch (e) {
       showError(e.toString());
-      setWorking(false);
     } finally {
       textController.clear();
       setWorking(false);

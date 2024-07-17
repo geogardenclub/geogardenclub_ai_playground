@@ -1,6 +1,7 @@
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
 
+import 'command_button.dart';
 import 'exchange_rate_tool.dart';
 
 class ExchangeRateCommand extends StatelessWidget {
@@ -9,63 +10,69 @@ class ExchangeRateCommand extends StatelessWidget {
       required this.working,
       required this.setWorking,
       required this.functionCallModel,
-      required this.addGeneratedContent});
+      required this.addGeneratedContent,
+      required this.showError,
+      required this.textFieldFocus,
+      required this.textController});
 
   final void Function(bool) setWorking;
   final bool working;
   final GenerativeModel? functionCallModel;
   final void Function(({Image? image, String? text, bool fromUser}))
       addGeneratedContent;
+  final FocusNode textFieldFocus;
+  final TextEditingController textController;
+  final void Function(String) showError;
 
-  Future<void> _exchangeRateChat() async {
+  Future<void> _exchangeRateChat(String message) async {
     setWorking(true);
-    final chat = functionCallModel!.startChat();
-    const prompt = 'How much is 50 US dollars worth in Euros?';
-    addGeneratedContent((image: null, text: prompt, fromUser: true));
+    try {
+      final chat = functionCallModel!.startChat();
+      addGeneratedContent((image: null, text: message, fromUser: true));
 
-    // Send the message to the generative model.
-    var response = await chat.sendMessage(Content.text(prompt));
+      // Send the message to the generative model.
+      var response = await chat.sendMessage(Content.text(message));
 
-    final functionCalls = response.functionCalls.toList();
-    // When the model response with a function call, invoke the function.
-    if (functionCalls.isNotEmpty) {
-      final functionCall = functionCalls.first;
-      final result = switch (functionCall.name) {
-        // Forward arguments to the hypothetical API.
-        'findExchangeRate' => await findExchangeRate(functionCall.args),
-        // Throw an exception if the model attempted to call a function that was
-        // not declared.
-        _ => throw UnimplementedError(
-            'Function not implemented: ${functionCall.name}',
-          )
-      };
-      // Send the response to the model so that it can use the result to generate
-      // text for the user.
-      response = await chat
-          .sendMessage(Content.functionResponse(functionCall.name, result));
-    }
-    // When the model responds with non-null text content, print it.
-    if (response.text case final text?) {
-      addGeneratedContent((image: null, text: text, fromUser: false));
+      final functionCalls = response.functionCalls.toList();
+      // When the model response with a function call, invoke the function.
+      if (functionCalls.isNotEmpty) {
+        final functionCall = functionCalls.first;
+        final result = switch (functionCall.name) {
+          // Forward arguments to the hypothetical API.
+          'findExchangeRate' => await findExchangeRate(functionCall.args),
+          // Throw an exception if the model attempted to call a function that was
+          // not declared.
+          _ => throw UnimplementedError(
+              'Function not implemented: ${functionCall.name}',
+            )
+        };
+        // Send the response to the model so that it can use the result to generate
+        // text for the user.
+        response = await chat
+            .sendMessage(Content.functionResponse(functionCall.name, result));
+      }
+      // When the model responds with non-null text content, print it.
+      if (response.text case final text?) {
+        addGeneratedContent((image: null, text: text, fromUser: false));
+        setWorking(false);
+      }
+    } catch (e) {
+      showError(e.toString());
       setWorking(false);
+    } finally {
+      textController.clear();
+      setWorking(false);
+      textFieldFocus.requestFocus();
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return IconButton(
-      tooltip: 'function calling Test',
-      onPressed: !working
-          ? () async {
-              await _exchangeRateChat();
-            }
-          : null,
-      icon: Icon(
-        Icons.functions,
-        color: working
-            ? Theme.of(context).colorScheme.secondary
-            : Theme.of(context).colorScheme.primary,
-      ),
-    );
+    return CommandButton(
+        icon: Icons.functions,
+        working: working,
+        onPressed: () async {
+          await _exchangeRateChat(textController.text);
+        });
   }
 }
