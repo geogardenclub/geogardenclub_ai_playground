@@ -93,57 +93,13 @@ class _ChatScreenState extends State<ChatScreen> {
                 generatedContent: _generatedContent,
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
-                  vertical: 25,
-                  horizontal: 15,
-                ),
-                child: Row(
-                  children: [
-                    TextFieldCommand(
-                      textFieldFocus: _textFieldFocus,
-                      textController: _textController,
-                      setWorking: setWorking,
-                      addGeneratedContent: (content) =>
-                          _generatedContent.add(content),
-                      showError: _showError,
-                      chat: _chat,
-                    ),
-                    const SizedBox.square(
-                      dimension: 15,
-                    ),
-                    GgcCommand(
-                      working: _working,
-                      setWorking: setWorking,
-                      functionCallModel: _functionCallModel,
-                      addGeneratedContent: (content) =>
-                          _generatedContent.add(content),
-                    ),
-                    ExchangeRateCommand(
-                        working: _working,
-                        setWorking: setWorking,
-                        functionCallModel: _functionCallModel,
-                        addGeneratedContent: (content) =>
-                            _generatedContent.add(content)),
-                    ImageQueryCommand(
-                        working: _working,
-                        setWorking: setWorking,
-                        addGeneratedContent: (content) =>
-                            _generatedContent.add(content),
-                        model: _model,
-                        showError: _showError,
-                        textController: _textController,
-                        textFieldFocus: _textFieldFocus),
-                    StorageQueryCommand(
-                        working: _working,
-                        setWorking: setWorking,
-                        addGeneratedContent: (content) =>
-                            _generatedContent.add(content),
-                        model: _model,
-                        showError: _showError,
-                        textController: _textController,
-                        textFieldFocus: _textFieldFocus),
-                    if (!_working)
-                      TextSendCommand(
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 25,
+                    horizontal: 15,
+                  ),
+                  child: Column(children: [
+                    Row(children: [
+                      TextFieldCommand(
                         textFieldFocus: _textFieldFocus,
                         textController: _textController,
                         setWorking: setWorking,
@@ -152,11 +108,55 @@ class _ChatScreenState extends State<ChatScreen> {
                         showError: _showError,
                         chat: _chat,
                       )
-                    else
-                      const CircularProgressIndicator(),
-                  ],
-                ),
-              ),
+                    ]),
+                    Row(children: [
+                      GgcCommand(
+                        working: _working,
+                        setWorking: setWorking,
+                        functionCallModel: _functionCallModel,
+                        textController: _textController,
+                        textFieldFocus: _textFieldFocus,
+                        addGeneratedContent: (content) =>
+                            _generatedContent.add(content),
+                      ),
+                      ExchangeRateCommand(
+                          working: _working,
+                          setWorking: setWorking,
+                          functionCallModel: _functionCallModel,
+                          addGeneratedContent: (content) =>
+                              _generatedContent.add(content)),
+                      ImageQueryCommand(
+                          working: _working,
+                          setWorking: setWorking,
+                          addGeneratedContent: (content) =>
+                              _generatedContent.add(content),
+                          model: _model,
+                          showError: _showError,
+                          textController: _textController,
+                          textFieldFocus: _textFieldFocus),
+                      StorageQueryCommand(
+                          working: _working,
+                          setWorking: setWorking,
+                          addGeneratedContent: (content) =>
+                              _generatedContent.add(content),
+                          model: _model,
+                          showError: _showError,
+                          textController: _textController,
+                          textFieldFocus: _textFieldFocus),
+                      if (!_working)
+                        TextSendCommand(
+                          textFieldFocus: _textFieldFocus,
+                          textController: _textController,
+                          setWorking: setWorking,
+                          addGeneratedContent: (content) =>
+                              _generatedContent.add(content),
+                          showError: _showError,
+                          chat: _chat,
+                        )
+                      else
+                        const CircularProgressIndicator(),
+                    ]),
+                  ])),
             ],
           ),
         ));

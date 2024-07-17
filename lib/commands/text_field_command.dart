@@ -74,7 +74,7 @@ class TextFieldCommand extends StatelessWidget {
         focusNode: textFieldFocus,
         decoration: textFieldDecoration,
         controller: textController,
-        onSubmitted: _sendChatMessage,
+        // onSubmitted: _sendChatMessage,
       ),
     );
   }

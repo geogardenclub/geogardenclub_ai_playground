@@ -10,22 +10,25 @@ class GgcCommand extends StatelessWidget {
       required this.working,
       required this.setWorking,
       required this.functionCallModel,
-      required this.addGeneratedContent});
+      required this.addGeneratedContent,
+      required this.textFieldFocus,
+      required this.textController});
 
   final void Function(bool, {bool scrollDown}) setWorking;
   final bool working;
   final GenerativeModel? functionCallModel;
   final void Function(({Image? image, String? text, bool fromUser}))
       addGeneratedContent;
+  final TextEditingController textController;
+  final FocusNode textFieldFocus;
 
-  Future<void> _ggcChat() async {
+  Future<void> _ggcChat(String message) async {
     setWorking(true);
     final chat = functionCallModel!.startChat();
-    const prompt = 'How many gardeners are in GeoGardenClub?';
-    addGeneratedContent((image: null, text: prompt, fromUser: true));
+    addGeneratedContent((image: null, text: message, fromUser: true));
 
     // Send the message to the generative model.
-    var response = await chat.sendMessage(Content.text(prompt));
+    var response = await chat.sendMessage(Content.text(message));
 
     final functionCalls = response.functionCalls.toList();
     // When the model response with a function call, invoke the function.
@@ -48,7 +51,9 @@ class GgcCommand extends StatelessWidget {
     // When the model responds with non-null text content, print it.
     if (response.text case final text?) {
       addGeneratedContent((image: null, text: text, fromUser: false));
+      textController.clear();
       setWorking(false);
+      textFieldFocus.requestFocus();
     }
   }
 
@@ -58,7 +63,7 @@ class GgcCommand extends StatelessWidget {
         icon: Icons.yard,
         working: working,
         onPressed: () async {
-          await _ggcChat();
+          await _ggcChat(textController.text);
         });
   }
 }
