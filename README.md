@@ -49,8 +49,8 @@ The ChatScreen UI is implemented using the following classes:
 At the bottom of the ChatScreen is full width text field along with a row of icons, each representing a different "command" that enables the user to interact with the Gemini model in various ways. These commands are located in the commands/ subdirectory. The following commands implement the functionality available as part of the sample app:
 
 * Sigma icon (ExchangeRateCommand): Illustrates how to define and invoke a Gemini "function call". In this case, the command implements a fake API to an exchange rate application. Type in a query such as "What is the exchange rate of Dollars to Swedish Krona?" and press this icon to invoke the function call and print the response.
-* Image icon (ImageQueryCommand): Pressing this icon sends a hardcoded image to the Gemini model, along with the prompt text. You can edit the image to be sent by editing the code in the ImageQueryCommand class. 
-* Folder icon (StorageQueryCommand): This works just like the ImageQueryCommand, except that instead of sending an image (encoded as a byte stream) to the Gemini Model, the command instead sends the URI to a Google Storage file along with the prompt text. This URI is hardcoded in the StorageQueryCommand file.
+* Image icon (ImageQueryCommand): Pressing this icon sends a hardcoded image to the Gemini model, along with the prompt text. Type a query such as "What is this?" and press this icon to obtain a description of the image. You can edit the image to be sent by editing the code in the ImageQueryCommand class. 
+* Folder icon (StorageQueryCommand): This works just like the ImageQueryCommand, except that instead of sending an image (encoded as a byte stream) to the Gemini Model, the command instead sends the URI to a Google Storage file along with the prompt text. This URI is hardcoded in the StorageQueryCommand file. (The response does not display the image at the URI at this time, just the prompt and the response.)
 * Send icon (TextSendCommand): Sends just the prompt text.  Both the text and the Gemini model's response are printed.
 
 ## Reasoning about GeoGardenClub data

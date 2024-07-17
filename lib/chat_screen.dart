@@ -138,6 +138,7 @@ class _ChatScreenState extends State<ChatScreen> {
                           textFieldFocus: _textFieldFocus),
                       TextSendCommand(
                         textFieldFocus: _textFieldFocus,
+                        working: _working,
                         textController: _textController,
                         setWorking: setWorking,
                         addGeneratedContent: (content) =>

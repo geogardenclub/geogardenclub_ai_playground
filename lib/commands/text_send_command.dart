@@ -11,6 +11,7 @@ class TextSendCommand extends StatelessWidget {
       required this.setWorking,
       required this.addGeneratedContent,
       required this.showError,
+      required this.working,
       required this.chat});
 
   final void Function(bool) setWorking;
@@ -18,6 +19,7 @@ class TextSendCommand extends StatelessWidget {
       addGeneratedContent;
   final ChatSession? chat;
   final void Function(String) showError;
+  final bool working;
 
   final FocusNode textFieldFocus;
   final TextEditingController textController;
@@ -52,7 +54,7 @@ class TextSendCommand extends StatelessWidget {
   Widget build(BuildContext context) {
     return CommandButton(
         icon: Icons.send,
-        working: false,
+        working: working,
         onPressed: () async {
           await _sendChatMessage(textController.text);
         });
