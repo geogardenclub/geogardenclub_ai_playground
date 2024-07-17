@@ -13,7 +13,7 @@ class TextSendCommand extends StatelessWidget {
       required this.showError,
       required this.chat});
 
-  final void Function(bool, {bool scrollDown}) setWorking;
+  final void Function(bool) setWorking;
   final void Function(({Image? image, String? text, bool fromUser}))
       addGeneratedContent;
   final ChatSession? chat;
@@ -36,7 +36,7 @@ class TextSendCommand extends StatelessWidget {
         showError('No response from API.');
         return;
       } else {
-        setWorking(false, scrollDown: true);
+        setWorking(false);
       }
     } catch (e) {
       showError(e.toString());

@@ -14,7 +14,7 @@ class GgcCommand extends StatelessWidget {
       required this.textFieldFocus,
       required this.textController});
 
-  final void Function(bool, {bool scrollDown}) setWorking;
+  final void Function(bool) setWorking;
   final bool working;
   final GenerativeModel? functionCallModel;
   final void Function(({Image? image, String? text, bool fromUser}))

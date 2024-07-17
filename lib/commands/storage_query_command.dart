@@ -16,7 +16,7 @@ class StorageQueryCommand extends StatelessWidget {
       required this.textFieldFocus});
 
   final bool working;
-  final void Function(bool, {bool scrollDown}) setWorking;
+  final void Function(bool) setWorking;
   final void Function(({Image? image, String? text, bool fromUser}))
       addGeneratedContent;
   final GenerativeModel? model;
@@ -46,7 +46,7 @@ class StorageQueryCommand extends StatelessWidget {
         showError('No response from API.');
         return;
       } else {
-        setWorking(false, scrollDown: true);
+        setWorking(false);
       }
     } catch (e) {
       showError(e.toString());

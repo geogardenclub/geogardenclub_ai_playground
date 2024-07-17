@@ -11,7 +11,7 @@ class ExchangeRateCommand extends StatelessWidget {
       required this.functionCallModel,
       required this.addGeneratedContent});
 
-  final void Function(bool, {bool scrollDown}) setWorking;
+  final void Function(bool) setWorking;
   final bool working;
   final GenerativeModel? functionCallModel;
   final void Function(({Image? image, String? text, bool fromUser}))

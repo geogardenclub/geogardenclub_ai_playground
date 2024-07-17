@@ -8,9 +8,9 @@ import 'commands/ggc_command.dart';
 import 'commands/ggc_tools.dart';
 import 'commands/image_query_command.dart';
 import 'commands/storage_query_command.dart';
-import 'commands/text_field_command.dart';
 import 'commands/text_send_command.dart';
 import 'generated_content.dart';
+import 'prompt_text_field.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key, required this.title});
@@ -71,10 +71,10 @@ class _ChatScreenState extends State<ChatScreen> {
     );
   }
 
-  void setWorking(bool working, {bool scrollDown = false}) {
+  void setWorking(bool working) {
     setState(() {
       _working = working;
-      if (scrollDown) {
+      if (!working) {
         _scrollDown();
       }
     });
@@ -103,15 +103,10 @@ class _ChatScreenState extends State<ChatScreen> {
                   ),
                   child: Column(children: [
                     Row(children: [
-                      TextFieldCommand(
-                        textFieldFocus: _textFieldFocus,
-                        textController: _textController,
-                        setWorking: setWorking,
-                        addGeneratedContent: (content) =>
-                            _generatedContent.add(content),
-                        showError: _showError,
-                        chat: _chat,
-                      )
+                      PromptTextField(
+                          textFieldFocus: _textFieldFocus,
+                          textController: _textController,
+                          setWorking: setWorking)
                     ]),
                     Row(children: [
                       GgcCommand(
