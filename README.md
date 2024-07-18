@@ -55,6 +55,11 @@ Each icon invokes the Gemini model with the text prompt in a different way:
 These icons implement the functions provided by the sample app.  The last icon implements the command of interest for this app:
 * Flower icon (GgcCommand): Sends the prompt along with information about GeoGardenClub "tools" so that the model can access a mockup version of the GGC database to support answering the question.
 
+For example, here is a conversation with the chatbot about a mockup version of a GGC database hardcoded into this app:
+
+<img width="300px" src="example-screen-3.png">
+
+
 ## Design
 
 As noted above, I refactored the single main.dart file of the sample app into a set of files in order to more clearly indicate its structure, and to facilitate its use to explore what the Gemini model can do when provided with GGC data.
@@ -72,10 +77,6 @@ The ChatScreen UI is implemented using the following classes:
 * GeneratedContent: A Widget displaying the sequence of commands and responses as a list of MessageWidgets.
 
 ## Reasoning about GeoGardenClub data
-
-All of the above is just preliminary to the real focus of this app: exploring the best approach to enabling a Gemini model to reason about and answer questions regarding GeoGardenClub data. To do this, this app emulates the approach taken by the original sample to illustrate how a model can interact with an external API. The original app implements the "exchange rate tool" as an async function that, instead of actually calling an external service, immediately returns a JSON-style object that emulates what such as service might return. 
-
-Similarly, this app implements a variety of tools that return objects similar to what might be returned by a call to an actual GeoGardenClub database. 
 
 To explore the ability of a Gemini model to reason about GeoGardenClub data, this app contains two files in the commands directory:
 
