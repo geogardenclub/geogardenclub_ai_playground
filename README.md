@@ -42,17 +42,24 @@ If all goes according to plan, the app will come up and look something like this
 
 <img width="300px" src="example-screen.png">
 
-The basic interaction with the app is to type a prompt into the text field, then press one of the icons below to send the query to the connected Gemini model. The model generates a response and both the prompt and the response are printed in the screen. For example, after typing "Where is Bellingham?" and pressing the Send icon, the following appears in the screen:
+The basic interaction with the app is to type a prompt into the text field, then press one of the icons below to send the query to the connected Gemini model. The model generates a response and both the prompt and the response are printed in the screen. For example, after typing "Where is Bellingham?" and pressing the Send (arrow) icon, the following appears in the screen:
 
 <img width="300px" src="example-screen-2.png">
 
-Note that the set of icons at the bottom of the screen may differ from what appears in this image. That's because each icon is connected to a different "command" (explained below) and not all of them might be enabled in the UI at the time you install the system.
+Each icon invokes the Gemini model with the text prompt in a different way:
+* Sigma icon (ExchangeRateCommand): Illustrates how to define and invoke a Gemini "function call". In this case, the command implements a fake API to an exchange rate application. Type in a query such as "What is the exchange rate of Dollars to Swedish Krona?" and press this icon to invoke the function call and print the response.
+* Image icon (ImageQueryCommand): Pressing this icon sends a hardcoded image to the Gemini model, along with the prompt text. Type a query such as "What is this?" and press this icon to obtain a description of the image. You can edit the image to be sent by editing the code in the ImageQueryCommand class.
+* Folder icon (StorageQueryCommand): This works just like the ImageQueryCommand, except that instead of sending an image (encoded as a byte stream) to the Gemini Model, the command instead sends the URI to a Google Storage file along with the prompt text. This URI is hardcoded in the StorageQueryCommand file. (The response does not display the image at the URI at this time, just the prompt and the response.)
+* Send icon (TextSendCommand): Sends just the prompt text.  Both the text and the Gemini model's response are printed.
+
+These icons implement the functions provided by the sample app.  The last icon implements the command of interest for this app:
+* Flower icon (GgcCommand): Sends the prompt along with information about GeoGardenClub "tools" so that the model can access a mockup version of the GGC database to support answering the question.
 
 ## Design
 
 As noted above, I refactored the single main.dart file of the sample app into a set of files in order to more clearly indicate its structure, and to facilitate its use to explore what the Gemini model can do when provided with GGC data.
 
-The current structure encapsulates each type of interaction with the Gemini model as an instance of a "command".  This makes it straightforward to create a new "command" like "GgcDataCommand" that sets up function calls to the GGC database and allows the user to ask questions about it. 
+The current structure encapsulates each type of interaction with the Gemini model as an instance of a "command".  This makes it straightforward to create a new "command" like "GgcCommand" that sets up function calls to the GGC database and allows the user to ask questions about it. 
 
 The main.dart file invokes GeoGardenClubAiPlayground() to kick things off.
 
@@ -63,13 +70,6 @@ The two most important top-level classes are:
 The ChatScreen UI is implemented using the following classes:
 * MessageWidget: Displays a single command from the user and the results from the AI in the ChatWidget window to that prompt.
 * GeneratedContent: A Widget displaying the sequence of commands and responses as a list of MessageWidgets.
-
-At the bottom of the ChatScreen is full width text field along with a row of icons, each representing a different "command" that enables the user to interact with the Gemini model in various ways. These commands are located in the commands/ subdirectory. The following commands implement the functionality available as part of the sample app:
-
-* Sigma icon (ExchangeRateCommand): Illustrates how to define and invoke a Gemini "function call". In this case, the command implements a fake API to an exchange rate application. Type in a query such as "What is the exchange rate of Dollars to Swedish Krona?" and press this icon to invoke the function call and print the response.
-* Image icon (ImageQueryCommand): Pressing this icon sends a hardcoded image to the Gemini model, along with the prompt text. Type a query such as "What is this?" and press this icon to obtain a description of the image. You can edit the image to be sent by editing the code in the ImageQueryCommand class. 
-* Folder icon (StorageQueryCommand): This works just like the ImageQueryCommand, except that instead of sending an image (encoded as a byte stream) to the Gemini Model, the command instead sends the URI to a Google Storage file along with the prompt text. This URI is hardcoded in the StorageQueryCommand file. (The response does not display the image at the URI at this time, just the prompt and the response.)
-* Send icon (TextSendCommand): Sends just the prompt text.  Both the text and the Gemini model's response are printed.
 
 ## Reasoning about GeoGardenClub data
 
