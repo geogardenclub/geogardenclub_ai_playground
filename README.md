@@ -58,3 +58,12 @@ At the bottom of the ChatScreen is full width text field along with a row of ico
 All of the above is just preliminary to the real focus of this app: exploring the best approach to enabling a Gemini model to reason about and answer questions regarding GeoGardenClub data. To do this, this app emulates the approach taken by the original sample to illustrate how a model can interact with an external API. The original app implements the "exchange rate tool" as an async function that, instead of actually calling an external service, immediately returns a JSON-style object that emulates what such as service might return. 
 
 Similarly, this app implements a variety of tools that return objects similar to what might be returned by a call to an actual GeoGardenClub database. 
+
+To explore the ability of a Gemini model to reason about GeoGardenClub data, this app contains two files in the commands directory:
+
+* ggc_command.dart: Implements the UI (the flower icon, appearing last in the row of icons), plus the "processing logic", which means invoking the function calls requested by the model in sequence until the model returns a text response, which is then printed. 
+* ggc_tools.dart:  Implements the "business logic", which is a set of functions that enable the Gemini model to query the underlying GGC database.  These functions do not currently connect to the GGC database; instead, they return mockup data. Nevertheless, they serve to help explore the capabilities of the model and what functions might be required to provide a good user experience.
+
+Here is an example interaction that shows the capabilities of the model:
+
+<img width="300px" src="ggc-dialog.png">
