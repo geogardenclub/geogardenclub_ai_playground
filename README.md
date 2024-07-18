@@ -1,6 +1,6 @@
 # GeoGardenClub_AI_Playground
 
-The goal of this app is to support the design of a chatbot to answer questions about a GeoGardenClub chapter by accessing the chapter database.  Some potential questions might be:
+The goal of this app is to support the design of a chatbot to answer questions about a GeoGardenClub chapter. The chatbot is implemented using Google's Gemini technology and its function call API which enables it to access the GGC chapter database.  Some potential questions might be:
 
 * How many gardens (or gardeners, crops, varieties, plantings, etc) are in this chapter?
 * What variety of basil is best to grow?
@@ -41,6 +41,10 @@ flutter run
 If all goes according to plan, the app will come up and look something like this:
 
 <img width="300px" src="example-screen.png">
+
+The basic interaction with the app is to type a prompt into the text field, then press one of the icons below to send the query to the connected Gemini model. The model generates a response and both the prompt and the response are printed in the screen. For example, after typing "Where is Bellingham?" and pressing the Send icon, the following appears in the screen:
+
+<img width="300px" src="example-screen-2.png">
 
 Note that the set of icons at the bottom of the screen may differ from what appears in this image. That's because each icon is connected to a different "command" (explained below) and not all of them might be enabled in the UI at the time you install the system.
 
