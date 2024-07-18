@@ -1,14 +1,28 @@
 # GeoGardenClub_AI_Playground
 
-GeoGardenClub_AI_Playground is a refactored and extended version of the [sample app](https://github.com/firebase/flutterfire/tree/master/packages/firebase_vertexai/firebase_vertexai/example) in [Get started with the Gemini API using the Vertex AI for Firebase SDKs](https://firebase.google.com/docs/vertex-ai/get-started?platform=flutter). 
+The goal of this app is to support the design of a chatbot to answer questions about a GeoGardenClub chapter by accessing the chapter database.  Some potential questions might be:
 
-The original sample app is pretty cool because it provides a nice illustration of several important concepts:
+* How many gardens (or gardeners, crops, varieties, plantings, etc) are in this chapter?
+* What variety of basil is best to grow?
+* Who has a lot of experience growing ground cherries?
+* What kind of problems might come up if I grow cherry tomatos?
+* Please use the information in this photo of a seed packet to define this seed, variety, and crop in the chapter database.
+
+## Background
+
+GeoGardenClub_AI_Playground is a refactored and extended version of the [sample app](https://github.com/firebase/flutterfire/tree/master/packages/firebase_vertexai/firebase_vertexai/example) in [Get started with the Gemini API using the Vertex AI for Firebase SDKs](https://firebase.google.com/docs/vertex-ai/get-started?platform=flutter).
+
+The original sample app is useful because it implements several relevant features:
 
 1. How to choose and initialize a Gemini model in Flutter, using the (currently recommended) Firebase VertexAI interface.
 2. How to implement a UI in Flutter for displaying a chat session between a user and the Gemini model. This includes preventing the user from initiating another request while the model is still working on the previous request.
-3. How to use several important Gemini interaction modalities, including text only, text plus image(s), text plus Firebase Storage file(s), and text plus a "Gemini Function Call" (which is the way you get Gemini models to interact with external APIs).
+3. How to implement several important Gemini interaction modalities, including:
+  * text only, 
+  * text plus image(s), 
+  * text plus Firebase Storage file(s), and 
+  * text plus a "Gemini Function Call" (which is how the model interacts with the GeoGardenClub database).
 
-For this app, the original sample app was first refactored from a single main.dart file containing all of the code into a dozen files.  This refactoring helped clarify the design and separate UI code from "business logic". More importantly, it made it easier to extend the system with new functionality to explore the integration of Gemini models with GeoGardenClub data.
+To build this app, the original sample app was first refactored from a single main.dart file containing all of the code into around a dozen files.  This refactoring helped clarify the design and separate UI code from "business logic". More importantly, it made it easier to extend the system with new functionality to explore the integration of Gemini models with GeoGardenClub data.
 
 ## Installation
 
