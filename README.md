@@ -52,10 +52,10 @@ Each icon invokes the Gemini model with the text prompt in a different way:
 * Folder icon (StorageQueryCommand): This works just like the ImageQueryCommand, except that instead of sending an image (encoded as a byte stream) to the Gemini Model, the command instead sends the URI to a Google Storage file along with the prompt text. This URI is hardcoded in the StorageQueryCommand file. (The response does not display the image at the URI at this time, just the prompt and the response.)
 * Send icon (TextSendCommand): Sends just the prompt text.  Both the text and the Gemini model's response are printed.
 
-These icons implement the functions provided by the sample app.  The last icon implements the command of interest for this app:
+The above icons implement the functions provided by the sample app.  The final icon in the row implements a new, custom GeoGardenClub command:
 * Flower icon (GgcCommand): Sends the prompt along with information about GeoGardenClub "tools" so that the model can access a mockup version of the GGC database to support answering the question.
 
-For example, here is a conversation with the chatbot about a mockup version of a GGC database hardcoded into this app:
+For example, here is a conversation with the chatbot in which it accesses a mockup version of a GGC database in order to formulate its response:
 
 <img width="300px" src="example-screen-3.png">
 
