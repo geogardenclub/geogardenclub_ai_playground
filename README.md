@@ -67,3 +67,5 @@ To explore the ability of a Gemini model to reason about GeoGardenClub data, thi
 Here is an example interaction that shows the capabilities of the model:
 
 <img width="300px" src="ggc-dialog.png">
+
+Note that I got a "quota exceeded" error midway through, which went away when I re-requested. Also note that it gave the wrong answer to "How many gardens are in GeoGardenClub?" but the right answer when I reworded the prompt as "How many gardens are associated with gardeners in GeoGardenClub?"
