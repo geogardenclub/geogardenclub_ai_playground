@@ -60,7 +60,7 @@ For example, here is a conversation with an early implementation of the chatbot:
 
 <img width="300px" src="example-screen-3.png">
 
-This early design has a few problems:
+This early implementation has a few problems:
 
 1. There was a "quota exceeded" error midway through, which went away when I re-requested. 
 2. It gave the wrong answer to "How many gardens are in GeoGardenClub?" but the right answer when I reworded the prompt as "How many gardens are associated with gardeners in GeoGardenClub?"
