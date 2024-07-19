@@ -72,21 +72,30 @@ So, the goal of development is to gain expertise with "prompt engineering" in or
 As noted above, I refactored the single main.dart file of the sample app into a set of files in order to more clearly indicate its structure, and to facilitate its use to explore what the Gemini model can do when provided with GGC data.  Here's an outline of the app's design with a subset of files:
 
 ```
-lib/
-  main.dart                          # run the app
-  geogardenclub_ai_playground.dart   # the top-level Material App
-  chat_screen.dart                   # the top-level widget.
-  commands/
-    exchange_rate_command.dart       # Exchange Rate (sigma icon)
-    image_query_command.dart         # Image Query (image icon)
-    storage_query_command.dart       # Firebase Storage (folder icon)
-    ggc_command.dart                 # GeoGardenClub query (flower icon)
-  tools/
-    exchange_rate_tool.dart          # API for exchange rates.
-    ggc_find_gardens.dart            # find gardens associated with a gardener
-    ggc_find_gardeners.dart          # return all gardens in Chapter.  
+lib/                                 # top-level files implement the UI
+  main.dart                          
+  geogardenclub_ai_playground.dart   
+  chat_screen.dart
+    :                   
+  commands/                          # Implements the icons in the UI
+    exchange_rate_command.dart       
+    image_query_command.dart         
+    storage_query_command.dart       
+    ggc_command.dart
+     :                
+  tools/                             # Gemini Tools for mockup db access
+    exchange_rate_tool.dart          
+    ggc_find_gardens.dart            
+    ggc_find_gardeners.dart
+     :
+  data/                              # mockup GGC data
+    fixture1/
+      bed_data.dart
+      gardener_data.dart
+      garden_data.dart
+      :
 ```
 
-Basically, the top-level files in the lib/ directory implement the UI. Each file in the commands/ directory implements a Widget that interacts with the Gemini model in a certain way, and shows up as an icon underneath the text field. Finally, the tools/ directory more-or-less implements the "prompt engineering": how the model can access data about GeoGardenClub.
+Basically, the top-level files in the lib/ directory implement the UI. Each file in the commands/ directory implements a Widget that interacts with the Gemini model in a certain way (i.e. text only, text + image, text + firebase storage, etc), and shows up as an icon underneath the text field. The tools/ directory more-or-less implements the "prompt engineering": how the model accesses data about GeoGardenClub. Finally, the data/ directory supports multiple configurations of mockup data, each configuration called a "fixture". Currently there is only one fixture.
 
 ## Prompt Engineering for GeoGardenClub
