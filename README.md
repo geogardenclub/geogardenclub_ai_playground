@@ -52,18 +52,24 @@ Each icon invokes the Gemini model with the text prompt in a different way:
 * Folder icon (StorageQueryCommand): This works just like the ImageQueryCommand, except that instead of sending an image (encoded as a byte stream) to the Gemini Model, the command instead sends the URI to a Google Storage file along with the prompt text. This URI is hardcoded in the StorageQueryCommand file. (The response does not display the image at the URI at this time, just the prompt and the response.)
 * Send icon (TextSendCommand): Sends just the prompt text.  Both the text and the Gemini model's response are printed.
 
-The above icons implement the functions provided by the sample app.  The final icon in the row implements a new, custom GeoGardenClub command:
-* Flower icon (GgcCommand): Sends the prompt along with information about GeoGardenClub "tools" so that the model can access a mockup version of the GGC database to support answering the question.
+The above icons implement the functions provided by the sample app, and are provided just to ensure that this refactoring has not inadvertently introduced a bug into the system.  
 
-For example, here is a conversation with the chatbot in which it accesses a mockup version of a GGC database in order to formulate its response:
+The actual motivation for this app is the final flower icon in the row, which implements an interface to a mockup of a GeoGardenClub database and allows experimentation with the quality of responses provided by the model. 
+
+For example, here is a conversation with an early implementation of the chatbot:
 
 <img width="300px" src="example-screen-3.png">
 
-Note that I got a "quota exceeded" error midway through, which went away when I re-requested. Also note that it gave the wrong answer to "How many gardens are in GeoGardenClub?" but the right answer when I reworded the prompt as "How many gardens are associated with gardeners in GeoGardenClub?"
+This early design has a few problems:
+
+1. There was a "quota exceeded" error midway through, which went away when I re-requested. 
+2. It gave the wrong answer to "How many gardens are in GeoGardenClub?" but the right answer when I reworded the prompt as "How many gardens are associated with gardeners in GeoGardenClub?"
+
+So, the goal of development is to gain expertise with "prompt engineering" in order to provide a high quality chat bot to end users. 
 
 ## Design
 
-As noted above, I refactored the single main.dart file of the sample app into a set of files in order to more clearly indicate its structure, and to facilitate its use to explore what the Gemini model can do when provided with GGC data.  Here's an outline of the app's design with a selection of important files:
+As noted above, I refactored the single main.dart file of the sample app into a set of files in order to more clearly indicate its structure, and to facilitate its use to explore what the Gemini model can do when provided with GGC data.  Here's an outline of the app's design with a subset of files:
 
 ```
 lib/
@@ -81,6 +87,6 @@ lib/
     ggc_find_gardeners.dart          # return all gardens in Chapter.  
 ```
 
-Basically, the top-level files in the lib/ directory implement the basic UI. Each file in the commands/ directory implements a Widget that interacts with the Gemini model in a certain way. Finally, the tools/ directory more-or-less implements the "prompt engineering": how the model can access data about GeoGardenClub.
+Basically, the top-level files in the lib/ directory implement the UI. Each file in the commands/ directory implements a Widget that interacts with the Gemini model in a certain way, and shows up as an icon underneath the text field. Finally, the tools/ directory more-or-less implements the "prompt engineering": how the model can access data about GeoGardenClub.
 
 ## Prompt Engineering for GeoGardenClub
