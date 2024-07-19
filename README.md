@@ -54,7 +54,7 @@ Each icon invokes the Gemini model with the text prompt in a different way:
 
 The above icons implement the functions provided by the sample app, and are provided just to ensure that this refactoring has not inadvertently introduced a bug into the system.  
 
-The actual motivation for this app is the final flower icon in the row, which implements an interface to a mockup of a GeoGardenClub database and allows experimentation with the quality of responses provided by the model. 
+The actual motivation for this app is the final (flower) icon in the row, which implements an interface to a mockup of a GeoGardenClub database and allows experimentation with the quality of responses provided by the model. 
 
 For example, here is a conversation with an early implementation of the chatbot:
 
