@@ -1,8 +1,9 @@
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
 
+import '../tools/ggc_find_gardeners.dart';
+import '../tools/ggc_find_gardens.dart';
 import 'command_button.dart';
-import 'ggc_tools.dart';
 
 class GgcCommand extends StatelessWidget {
   const GgcCommand(
@@ -41,8 +42,8 @@ class GgcCommand extends StatelessWidget {
         print('Function call: ${functionCall.name}');
         Map<String, Object?> result = switch (functionCall.name) {
           // Forward arguments to the mockup GGC API.
-          'findGgcGardeners' => await findGgcGardeners(functionCall.args),
-          'findGgcGardens' => await findGgcGardens(functionCall.args),
+          'ggcFindGardeners' => await ggcFindGardeners(functionCall.args),
+          'ggcFindGardens' => await ggcFindGardens(functionCall.args),
           _ => throw UnimplementedError('Not implemented: ${functionCall.name}')
         };
         // Send the response to the model.

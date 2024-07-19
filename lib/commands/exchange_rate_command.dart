@@ -1,8 +1,8 @@
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
 
+import '../tools/exchange_rate_tool.dart';
 import 'command_button.dart';
-import 'exchange_rate_tool.dart';
 
 class ExchangeRateCommand extends StatelessWidget {
   const ExchangeRateCommand(

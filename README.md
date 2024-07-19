@@ -63,23 +63,24 @@ Note that I got a "quota exceeded" error midway through, which went away when I 
 
 ## Design
 
-As noted above, I refactored the single main.dart file of the sample app into a set of files in order to more clearly indicate its structure, and to facilitate its use to explore what the Gemini model can do when provided with GGC data.
+As noted above, I refactored the single main.dart file of the sample app into a set of files in order to more clearly indicate its structure, and to facilitate its use to explore what the Gemini model can do when provided with GGC data.  Here's an outline of the app's design with a selection of important files:
 
-The current structure encapsulates each type of interaction with the Gemini model as an instance of a "command".  This makes it straightforward to create a new "command" like "GgcCommand" that sets up function calls to the GGC database and allows the user to ask questions about it. 
+```
+lib/
+  main.dart                          # run the app
+  geogardenclub_ai_playground.dart   # the top-level Material App
+  chat_screen.dart                   # the top-level widget.
+  commands/
+    exchange_rate_command.dart       # Exchange Rate (sigma icon)
+    image_query_command.dart         # Image Query (image icon)
+    storage_query_command.dart       # Firebase Storage (folder icon)
+    ggc_command.dart                 # GeoGardenClub query (flower icon)
+  tools/
+    exchange_rate_tool.dart          # API for exchange rates.
+    ggc_find_gardens.dart            # find gardens associated with a gardener
+    ggc_find_gardeners.dart          # return all gardens in Chapter.  
+```
 
-The main.dart file invokes GeoGardenClubAiPlayground() to kick things off.
+Basically, the top-level files in the lib/ directory implement the basic UI. Each file in the commands/ directory implements a Widget that interacts with the Gemini model in a certain way. Finally, the tools/ directory more-or-less implements the "prompt engineering": how the model can access data about GeoGardenClub.
 
-The two most important top-level classes are:
-* GeoGardenClubAiExample: Creates a MaterialApp that displays a ChatScreen.
-* ChatScreen: Selects and initializes a Gemini AI model, and then displays a screen that processes a "command" invoked the user. Each command gets the user's prompt from the text field, passes it (potentially along with other prompt-related information) to the Gemini model, and displays the prompt and the response in the screen.
-
-The ChatScreen UI is implemented using the following classes:
-* MessageWidget: Displays a single command from the user and the results from the AI in the ChatWidget window to that prompt.
-* GeneratedContent: A Widget displaying the sequence of commands and responses as a list of MessageWidgets.
-
-## Reasoning about GeoGardenClub data
-
-To explore the ability of a Gemini model to reason about GeoGardenClub data, this app contains two files in the commands directory:
-
-* ggc_command.dart: Implements the UI (the flower icon, appearing last in the row of icons), plus the "processing logic", which means invoking the function calls requested by the model in sequence until the model returns a text response, which is then printed. 
-* ggc_tools.dart:  Implements the "business logic", which is a set of functions that enable the Gemini model to query the underlying GGC database.  These functions do not currently connect to the GGC database; instead, they return mockup data. Nevertheless, they serve to help explore the capabilities of the model and what functions might be required to provide a good user experience.
+## Prompt Engineering for GeoGardenClub

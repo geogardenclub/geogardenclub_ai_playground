@@ -1,16 +1,17 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
+import 'package:geogardenclub_ai_playground/tools/ggc_find_gardens.dart';
 
 import 'commands/exchange_rate_command.dart';
-import 'commands/exchange_rate_tool.dart';
 import 'commands/ggc_command.dart';
-import 'commands/ggc_tools.dart';
 import 'commands/image_query_command.dart';
 import 'commands/storage_query_command.dart';
 import 'commands/text_send_command.dart';
 import 'generated_content.dart';
 import 'prompt_text_field.dart';
+import 'tools/exchange_rate_tool.dart';
+import 'tools/ggc_find_gardeners.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key, required this.title});
@@ -44,8 +45,8 @@ class _ChatScreenState extends State<ChatScreen> {
           tools: [
             Tool(functionDeclarations: [
               exchangeRateTool,
-              gardenerNamesTool,
-              gardenNamesTool
+              ggcFindGardenersTool,
+              ggcFindGardensTool
             ]),
           ],
         );
