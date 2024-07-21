@@ -1,6 +1,8 @@
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
 
+import '../tools/ggc_current_chapter.dart';
+import '../tools/ggc_current_gardener.dart';
 import '../tools/ggc_find_gardeners.dart';
 import '../tools/ggc_find_gardens.dart';
 import 'command_button.dart';
@@ -39,12 +41,16 @@ class GgcCommand extends StatelessWidget {
       // While the model responds with a desire to call functions, do it.
       while (functionCalls.isNotEmpty) {
         FunctionCall functionCall = functionCalls.first;
-        print('Function call: ${functionCall.name}');
+        print(
+            'About to call: ${functionCall.name}. There are ${functionCalls.length} function calls requested.');
         Map<String, Object?> result = switch (functionCall.name) {
           // Forward arguments to the mockup GGC API.
           'ggcFindGardeners' => await ggcFindGardeners(functionCall.args),
           'ggcFindGardens' => await ggcFindGardens(functionCall.args),
-          _ => throw UnimplementedError('Not implemented: ${functionCall.name}')
+          'ggcCurrentGardener' => await ggcCurrentGardener(functionCall.args),
+          'ggcCurrentChapter' => await ggcCurrentChapter(functionCall.args),
+          _ => throw UnimplementedError(
+              'Not implemented: ${functionCall.name}. Please add it to the ggcCommand widget.')
         };
         // Send the response to the model.
         response = await chat

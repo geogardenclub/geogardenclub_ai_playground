@@ -3,7 +3,7 @@ import 'package:firebase_vertexai/firebase_vertexai.dart';
 
 Future<Map<String, Object?>> ggcCurrentGardener(
     Map<String, Object?> arguments) async {
-  return {'gardener': '@jenna'};
+  return {'gardener': '@joe'};
 }
 
 final ggcCurrentGardenerTool = FunctionDeclaration(
