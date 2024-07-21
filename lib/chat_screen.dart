@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
+import 'package:geogardenclub_ai_playground/tools/ggc_current_gardener.dart';
 import 'package:geogardenclub_ai_playground/tools/ggc_find_gardens.dart';
 
 import 'commands/exchange_rate_command.dart';
@@ -8,9 +9,11 @@ import 'commands/ggc_command.dart';
 import 'commands/image_query_command.dart';
 import 'commands/storage_query_command.dart';
 import 'commands/text_send_command.dart';
+import 'data/system_instruction.dart';
 import 'generated_content.dart';
 import 'prompt_text_field.dart';
 import 'tools/exchange_rate_tool.dart';
+import 'tools/ggc_current_chapter.dart';
 import 'tools/ggc_find_gardeners.dart';
 
 class ChatScreen extends StatefulWidget {
@@ -38,15 +41,18 @@ class _ChatScreenState extends State<ChatScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       initFirebase().then((value) {
         _model = FirebaseVertexAI.instance.generativeModel(
-          model: 'gemini-1.5-flash-preview-0514',
-        );
+            model: 'gemini-1.5-flash-preview-0514',
+            systemInstruction: Content.system(systemInstruction));
         _functionCallModel = FirebaseVertexAI.instance.generativeModel(
           model: 'gemini-1.5-flash-preview-0514',
+          systemInstruction: Content.system(systemInstruction),
           tools: [
             Tool(functionDeclarations: [
               exchangeRateTool,
               ggcFindGardenersTool,
-              ggcFindGardensTool
+              ggcFindGardensTool,
+              ggcCurrentChapterTool,
+              ggcCurrentGardenerTool
             ]),
           ],
         );
