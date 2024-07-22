@@ -99,3 +99,5 @@ lib/                                 # top-level files implement the UI
 Basically, the top-level files in the lib/ directory implement the UI. Each file in the commands/ directory implements a Widget that interacts with the Gemini model in a certain way (i.e. text only, text + image, text + firebase storage, etc), and shows up as an icon underneath the text field. The tools/ directory more-or-less implements the "prompt engineering": how the model accesses data about GeoGardenClub. Finally, the data/ directory supports multiple configurations of mockup data, each configuration called a "fixture". Currently there is only one fixture.
 
 ## Prompt Engineering for GeoGardenClub
+
+(more to come)
