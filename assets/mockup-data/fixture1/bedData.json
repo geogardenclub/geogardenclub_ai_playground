@@ -1,4 +1,4 @@
-final bedData = [
+[
   {
     "bedID": "bed-US-98225-101-001-3456",
     "chapterID": "chapter-US-001",
@@ -342,4 +342,4 @@ final bedData = [
     "gardenerID": "unknown@example.com",
     "name": "01"
   }
-];
+]

@@ -1,0 +1,940 @@
+[
+  {
+    "varietyID": "variety-US-001-801-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-503-5678",
+    "cachedCropName": "Asparagus",
+    "name": "Jersey Knight"
+  },
+  {
+    "varietyID": "variety-US-001-802-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-507-5678",
+    "cachedCropName": "Broccoli",
+    "name": "Solstice"
+  },
+  {
+    "varietyID": "variety-US-001-803-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-509-5678",
+    "cachedCropName": "Carrot",
+    "name": "Scarlet Nantes"
+  },
+  {
+    "varietyID": "variety-US-001-804-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-524-5678",
+    "cachedCropName": "Lettuce",
+    "name": "Blue Rock"
+  },
+  {
+    "varietyID": "variety-US-001-805-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-521-5678",
+    "cachedCropName": "Kale",
+    "name": "Dwarf Blue"
+  },
+  {
+    "varietyID": "variety-US-001-806-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-522-5678",
+    "cachedCropName": "Leek",
+    "name": "PrizeTaker"
+  },
+  {
+    "varietyID": "variety-US-001-807-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-535-5678",
+    "cachedCropName": "Radish",
+    "name": "French Breakfast"
+  },
+  {
+    "varietyID": "variety-US-001-808-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-542-5678",
+    "cachedCropName": "Sugar Pea",
+    "name": "Oregon Giant"
+  },
+  {
+    "varietyID": "variety-US-001-809-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-545-5678",
+    "cachedCropName": "Tomato",
+    "name": "Orange King"
+  },
+  {
+    "varietyID": "variety-US-001-810-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-511-5678",
+    "cachedCropName": "Chard",
+    "name": "Rainbow"
+  },
+  {
+    "varietyID": "variety-US-001-811-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-524-5678",
+    "cachedCropName": "Lettuce",
+    "name": "Royal Red"
+  },
+  {
+    "varietyID": "variety-US-001-812-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-529-5678",
+    "cachedCropName": "Pea",
+    "isGold": true,
+    "name": "Sugar Snap"
+  },
+  {
+    "varietyID": "variety-US-001-813-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-521-5678",
+    "cachedCropName": "Kale",
+    "name": "Dazzling Blue Lacinato"
+  },
+  {
+    "varietyID": "variety-US-001-814-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-545-5678",
+    "cachedCropName": "Tomato",
+    "isGold": true,
+    "name": "Pinky"
+  },
+  {
+    "varietyID": "variety-US-001-815-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-504-5678",
+    "cachedCropName": "Basil",
+    "name": "Italian"
+  },
+  {
+    "varietyID": "variety-US-001-816-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-507-5678",
+    "cachedCropName": "Broccoli",
+    "isGold": true,
+    "name": "Spring Raab"
+  },
+  {
+    "varietyID": "variety-US-001-817-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-530-5678",
+    "cachedCropName": "Pepper",
+    "name": "Pimiento de Padron"
+  },
+  {
+    "varietyID": "variety-US-001-818-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-505-5678",
+    "cachedCropName": "Bean",
+    "isGold": true,
+    "name": "Empress Snap"
+  },
+  {
+    "varietyID": "variety-US-001-820-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-511-5678",
+    "cachedCropName": "Chard",
+    "name": "Garden Rainbow"
+  },
+  {
+    "varietyID": "variety-US-001-821-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-517-5678",
+    "cachedCropName": "Eggplant",
+    "name": "Violetta di Firenze"
+  },
+  {
+    "varietyID": "variety-US-001-822-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-521-5678",
+    "cachedCropName": "Kale",
+    "name": "Red Russian"
+  },
+  {
+    "varietyID": "variety-US-001-824-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-524-5678",
+    "cachedCropName": "Lettuce",
+    "name": "Red Oak Leaf"
+  },
+  {
+    "varietyID": "variety-US-001-825-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-545-5678",
+    "cachedCropName": "Tomato",
+    "name": "Sun Gold"
+  },
+  {
+    "varietyID": "variety-US-001-826-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-505-5678",
+    "cachedCropName": "Bean",
+    "isGold": true,
+    "name": "Scarlet Runner"
+  },
+  {
+    "varietyID": "variety-US-001-828-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-505-5678",
+    "cachedCropName": "Bean",
+    "name": "Soldier"
+  },
+  {
+    "varietyID": "variety-US-001-829-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-546-5678",
+    "cachedCropName": "Zucchini",
+    "name": "Cocozelle"
+  },
+  {
+    "varietyID": "variety-US-001-830-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-546-5678",
+    "cachedCropName": "Zucchini",
+    "name": "Dark Star"
+  },
+  {
+    "varietyID": "variety-US-001-831-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-521-5678",
+    "cachedCropName": "Kale",
+    "name": "Dwarf Blue Scotch"
+  },
+  {
+    "varietyID": "variety-US-001-832-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-545-5678",
+    "cachedCropName": "Tomato",
+    "name": "Sheboygan"
+  },
+  {
+    "varietyID": "variety-US-001-833-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-524-5678",
+    "cachedCropName": "Lettuce",
+    "isGold": true,
+    "name": "Flashy Trout's Back"
+  },
+  {
+    "varietyID": "variety-US-001-834-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-545-5678",
+    "cachedCropName": "Tomato",
+    "name": "Matina"
+  },
+  {
+    "varietyID": "variety-US-001-835-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-545-5678",
+    "cachedCropName": "Tomato",
+    "name": "Fiaschetto di Manduria"
+  },
+  {
+    "varietyID": "variety-US-001-836-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-530-5678",
+    "cachedCropName": "Pepper",
+    "name": "Bridge to Paris"
+  },
+  {
+    "varietyID": "variety-US-001-837-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-530-5678",
+    "cachedCropName": "Pepper",
+    "name": "Petit Marseillais"
+  },
+  {
+    "varietyID": "variety-US-001-838-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-530-5678",
+    "cachedCropName": "Pepper",
+    "name": "Criolla di Cochina"
+  },
+  {
+    "varietyID": "variety-US-001-839-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-530-5678",
+    "cachedCropName": "Pepper",
+    "name": "Marta Polka"
+  },
+  {
+    "varietyID": "variety-US-001-840-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-506-5678",
+    "cachedCropName": "Beet",
+    "name": "Touchstone Gold"
+  },
+  {
+    "varietyID": "variety-US-001-841-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-540-5678",
+    "cachedCropName": "Squash",
+    "name": "Zeppelin Delicata"
+  },
+  {
+    "varietyID": "variety-US-001-842-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-540-5678",
+    "cachedCropName": "Squash",
+    "name": "Potimarron"
+  },
+  {
+    "varietyID": "variety-US-001-843-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-515-5678",
+    "cachedCropName": "Cucumber",
+    "name": "Vorgebirgstrauben"
+  },
+  {
+    "varietyID": "variety-US-001-844-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-533-5678",
+    "cachedCropName": "Pumpkin",
+    "name": "Winter Luxury"
+  },
+  {
+    "varietyID": "variety-US-001-845-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-509-5678",
+    "cachedCropName": "Carrot",
+    "name": "Rainbow Mix"
+  },
+  {
+    "varietyID": "variety-US-001-846-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-520-5678",
+    "cachedCropName": "Ground Cherry",
+    "isGold": true,
+    "name": "Aunt Molly's"
+  },
+  {
+    "varietyID": "variety-US-001-847-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-543-5678",
+    "cachedCropName": "Sunflower",
+    "name": "Garden Anarchy Mix"
+  },
+  {
+    "varietyID": "variety-US-001-848-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-516-5678",
+    "cachedCropName": "Dill",
+    "name": "Goldkrone"
+  },
+  {
+    "varietyID": "variety-US-001-849-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-536-5678",
+    "cachedCropName": "Raspberry",
+    "name": "Golden"
+  },
+  {
+    "varietyID": "variety-US-001-850-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-526-5678",
+    "cachedCropName": "Mesclun",
+    "isGold": true,
+    "name": "Mild Mix"
+  },
+  {
+    "varietyID": "variety-US-001-851-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-519-5678",
+    "cachedCropName": "Garlic",
+    "isGold": true,
+    "name": "Softneck"
+  },
+  {
+    "varietyID": "variety-US-001-852-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-502-5678",
+    "cachedCropName": "Arugula",
+    "isGold": true,
+    "name": "Astro"
+  },
+  {
+    "varietyID": "variety-US-001-853-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-518-5678",
+    "cachedCropName": "Fava Bean",
+    "name": "Karmazyn"
+  },
+  {
+    "varietyID": "variety-US-001-854-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-529-5678",
+    "cachedCropName": "Pea",
+    "name": "Austrian"
+  },
+  {
+    "varietyID": "variety-US-001-855-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-540-5678",
+    "cachedCropName": "Squash",
+    "name": "Delicata"
+  },
+  {
+    "varietyID": "variety-US-001-856-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-515-5678",
+    "cachedCropName": "Cucumber",
+    "isGold": true,
+    "name": "Pickling"
+  },
+  {
+    "varietyID": "variety-US-001-857-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-501-5678",
+    "cachedCropName": "Amaranth",
+    "name": "unknown"
+  },
+  {
+    "varietyID": "variety-US-001-858-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-531-5678",
+    "cachedCropName": "Poppy",
+    "name": "Breadseed Rattle"
+  },
+  {
+    "varietyID": "variety-US-001-859-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-530-5678",
+    "cachedCropName": "Pepper",
+    "name": "Criolla Sella"
+  },
+  {
+    "varietyID": "variety-US-001-860-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-545-5678",
+    "cachedCropName": "Tomato",
+    "name": "Galina"
+  },
+  {
+    "varietyID": "variety-US-001-861-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-546-5678",
+    "cachedCropName": "Zucchini",
+    "name": "Costata Romanesco"
+  },
+  {
+    "varietyID": "variety-US-001-862-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-540-5678",
+    "cachedCropName": "Squash",
+    "name": "Burpee's Butterbush"
+  },
+  {
+    "varietyID": "variety-US-001-863-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-515-5678",
+    "cachedCropName": "Cucumber",
+    "name": "Cengelkoy"
+  },
+  {
+    "varietyID": "variety-US-001-864-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-512-5678",
+    "cachedCropName": "Cilantro",
+    "name": "Pokey Joe"
+  },
+  {
+    "varietyID": "variety-US-001-865-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-506-5678",
+    "cachedCropName": "Beet",
+    "isGold": true,
+    "name": "3 Beet Mix"
+  },
+  {
+    "varietyID": "variety-US-001-866-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-514-5678",
+    "cachedCropName": "Corn",
+    "name": "Tuxana"
+  },
+  {
+    "varietyID": "variety-US-001-867-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-505-5678",
+    "cachedCropName": "Bean",
+    "isGold": true,
+    "name": "Dragon Langerie"
+  },
+  {
+    "varietyID": "variety-US-001-868-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-505-5678",
+    "cachedCropName": "Bean",
+    "name": "Tanya's Pink Pod"
+  },
+  {
+    "varietyID": "variety-US-001-869-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-532-5678",
+    "cachedCropName": "Potato",
+    "name": "Rozette"
+  },
+  {
+    "varietyID": "variety-US-001-870-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-514-5678",
+    "cachedCropName": "Corn",
+    "name": "unknown"
+  },
+  {
+    "varietyID": "variety-US-001-871-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-541-5678",
+    "cachedCropName": "Strawberry",
+    "name": "Alpine"
+  },
+  {
+    "varietyID": "variety-US-001-872-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-521-5678",
+    "cachedCropName": "Kale",
+    "name": "Lacinato"
+  },
+  {
+    "varietyID": "variety-US-001-873-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-521-5678",
+    "cachedCropName": "Kale",
+    "name": "White Russian"
+  },
+  {
+    "varietyID": "variety-US-001-874-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-508-5678",
+    "cachedCropName": "Cabbage",
+    "name": "Green"
+  },
+  {
+    "varietyID": "variety-US-001-875-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-508-5678",
+    "cachedCropName": "Cabbage",
+    "name": "Red"
+  },
+  {
+    "varietyID": "variety-US-001-876-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-532-5678",
+    "cachedCropName": "Potato",
+    "name": "Yukon Nugget"
+  },
+  {
+    "varietyID": "variety-US-001-877-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-532-5678",
+    "cachedCropName": "Potato",
+    "name": "Red Norland"
+  },
+  {
+    "varietyID": "variety-US-001-878-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-515-5678",
+    "cachedCropName": "Cucumber",
+    "name": "Slicer"
+  },
+  {
+    "varietyID": "variety-US-001-879-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-540-5678",
+    "cachedCropName": "Squash",
+    "name": "Spaghetti"
+  },
+  {
+    "varietyID": "variety-US-001-880-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-540-5678",
+    "cachedCropName": "Squash",
+    "name": "Butternut"
+  },
+  {
+    "varietyID": "variety-US-001-881-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-545-5678",
+    "cachedCropName": "Tomato",
+    "name": "Stupice"
+  },
+  {
+    "varietyID": "variety-US-001-882-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-545-5678",
+    "cachedCropName": "Tomato",
+    "name": "Cherry"
+  },
+  {
+    "varietyID": "variety-US-001-883-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-545-5678",
+    "cachedCropName": "Tomato",
+    "name": "Giant Paste"
+  },
+  {
+    "varietyID": "variety-US-001-884-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-545-5678",
+    "cachedCropName": "Tomato",
+    "name": "Principe Borghese"
+  },
+  {
+    "varietyID": "variety-US-001-885-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-527-5678",
+    "cachedCropName": "Onion",
+    "name": "Sweet"
+  },
+  {
+    "varietyID": "variety-US-001-886-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-527-5678",
+    "cachedCropName": "Onion",
+    "name": "Walla Walla"
+  },
+  {
+    "varietyID": "variety-US-001-887-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-506-5678",
+    "cachedCropName": "Beet",
+    "name": "Early Wonder Tall Top"
+  },
+  {
+    "varietyID": "variety-US-001-888-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-506-5678",
+    "cachedCropName": "Beet",
+    "name": "Gourmet Blend"
+  },
+  {
+    "varietyID": "variety-US-001-889-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-513-5678",
+    "cachedCropName": "Collard",
+    "name": "unknown"
+  },
+  {
+    "varietyID": "variety-US-001-890-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-540-5678",
+    "cachedCropName": "Squash",
+    "name": "Yellow Crookneck"
+  },
+  {
+    "varietyID": "variety-US-001-891-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-514-5678",
+    "cachedCropName": "Corn",
+    "name": "Early Golden Bantam"
+  },
+  {
+    "varietyID": "variety-US-001-892-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-529-5678",
+    "cachedCropName": "Pea",
+    "name": "Shelling"
+  },
+  {
+    "varietyID": "variety-US-001-893-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-505-5678",
+    "cachedCropName": "Bean",
+    "name": "Saxa"
+  },
+  {
+    "varietyID": "variety-US-001-894-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-505-5678",
+    "cachedCropName": "Bean",
+    "name": "Black Garbanzo"
+  },
+  {
+    "varietyID": "variety-US-001-895-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-538-5678",
+    "cachedCropName": "Shallot",
+    "name": "unknown"
+  },
+  {
+    "varietyID": "variety-US-001-897-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-540-5678",
+    "cachedCropName": "Squash",
+    "name": "Crookneck"
+  },
+  {
+    "varietyID": "variety-US-001-898-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-530-5678",
+    "cachedCropName": "Pepper",
+    "name": "Poblano"
+  },
+  {
+    "varietyID": "variety-US-001-899-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-530-5678",
+    "cachedCropName": "Pepper",
+    "name": "Thai Chili"
+  },
+  {
+    "varietyID": "variety-US-001-900-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-530-5678",
+    "cachedCropName": "Pepper",
+    "name": "Sweet"
+  },
+  {
+    "varietyID": "variety-US-001-901-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-533-5678",
+    "cachedCropName": "Pumpkin",
+    "name": "Sugar Pie"
+  },
+  {
+    "varietyID": "variety-US-001-902-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-540-5678",
+    "cachedCropName": "Squash",
+    "name": "Kabocha"
+  },
+  {
+    "varietyID": "variety-US-001-903-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-537-5678",
+    "cachedCropName": "Rhubarb",
+    "name": "Speckled"
+  },
+  {
+    "varietyID": "variety-US-001-904-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-544-5678",
+    "cachedCropName": "Tomatillo",
+    "name": "De Milpa"
+  },
+  {
+    "varietyID": "variety-US-001-905-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-524-5678",
+    "cachedCropName": "Lettuce",
+    "isGold": true,
+    "name": "Mix"
+  },
+  {
+    "varietyID": "variety-US-001-906-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-539-5678",
+    "cachedCropName": "Spinach",
+    "name": "unknown"
+  },
+  {
+    "varietyID": "variety-US-001-907-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-532-5678",
+    "cachedCropName": "Potato",
+    "name": "Yukon Gold"
+  },
+  {
+    "varietyID": "variety-US-001-908-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-532-5678",
+    "cachedCropName": "Potato",
+    "name": "Russian Blue"
+  },
+  {
+    "varietyID": "variety-US-001-909-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-532-5678",
+    "cachedCropName": "Potato",
+    "name": "Colorado Rose"
+  },
+  {
+    "varietyID": "variety-US-001-910-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-532-5678",
+    "cachedCropName": "Potato",
+    "name": "Russet"
+  },
+  {
+    "varietyID": "variety-US-001-911-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-523-5678",
+    "cachedCropName": "Lemongrass",
+    "name": "unknown"
+  },
+  {
+    "varietyID": "variety-US-001-912-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-540-5678",
+    "cachedCropName": "Squash",
+    "name": "Winter"
+  },
+  {
+    "varietyID": "variety-US-001-913-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-505-5678",
+    "cachedCropName": "Bean",
+    "name": "Bush Snap"
+  },
+  {
+    "varietyID": "variety-US-001-914-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-545-5678",
+    "cachedCropName": "Tomato",
+    "name": "Slicer"
+  },
+  {
+    "varietyID": "variety-US-001-915-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-530-5678",
+    "cachedCropName": "Pepper",
+    "name": "Hot"
+  },
+  {
+    "varietyID": "variety-US-001-917-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-510-5678",
+    "cachedCropName": "Cauliflower",
+    "name": "unknown"
+  },
+  {
+    "varietyID": "variety-US-001-918-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-525-5678",
+    "cachedCropName": "Melon",
+    "name": "Watermelon"
+  },
+  {
+    "varietyID": "variety-US-001-919-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-524-5678",
+    "cachedCropName": "Lettuce",
+    "name": "Bibb"
+  },
+  {
+    "varietyID": "variety-US-001-920-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-524-5678",
+    "cachedCropName": "Lettuce",
+    "name": "Parris Island"
+  },
+  {
+    "varietyID": "variety-US-001-921-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-527-5678",
+    "cachedCropName": "Onion",
+    "name": "Storage"
+  },
+  {
+    "varietyID": "variety-US-001-922-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-528-5678",
+    "cachedCropName": "Parsnip",
+    "name": "unknown"
+  },
+  {
+    "varietyID": "variety-US-001-923-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-534-5678",
+    "cachedCropName": "Radicchio",
+    "name": "Pasqualino"
+  },
+  {
+    "varietyID": "variety-US-001-924-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-519-5678",
+    "cachedCropName": "Garlic",
+    "name": "Hardneck"
+  },
+  {
+    "varietyID": "variety-US-001-925-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-505-5678",
+    "cachedCropName": "Bean",
+    "name": "Borlotto Gaston"
+  },
+  {
+    "varietyID": "variety-US-001-926-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-545-5678",
+    "cachedCropName": "Tomato",
+    "name": "Sweet Orange"
+  },
+  {
+    "varietyID": "variety-US-001-927-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-539-5678",
+    "cachedCropName": "Spinach",
+    "name": "Winter Bloomsdale"
+  },
+  {
+    "varietyID": "variety-US-001-928-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-539-5678",
+    "cachedCropName": "Spinach",
+    "name": "Beaujolais"
+  },
+  {
+    "varietyID": "variety-US-001-929-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-547-5678",
+    "cachedCropName": "Parsley",
+    "name": "Mersin"
+  },
+  {
+    "varietyID": "variety-US-001-930-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-521-5678",
+    "cachedCropName": "Kale",
+    "name": "Redbor"
+  },
+  {
+    "varietyID": "variety-US-001-932-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-521-5678",
+    "cachedCropName": "Kale",
+    "name": "Nash's Green"
+  },
+  {
+    "varietyID": "variety-US-001-934-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-530-5678",
+    "cachedCropName": "Pepper",
+    "name": "Serrano"
+  },
+  {
+    "varietyID": "variety-US-001-935-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-530-5678",
+    "cachedCropName": "Pepper",
+    "name": "Lunchbox Red Pepper"
+  },
+  {
+    "varietyID": "variety-US-001-936-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-530-5678",
+    "cachedCropName": "Pepper",
+    "name": "Corno Di Toro"
+  },
+  {
+    "varietyID": "variety-US-001-937-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-530-5678",
+    "cachedCropName": "Pepper",
+    "name": "Padron"
+  },
+  {
+    "varietyID": "variety-US-001-938-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-517-5678",
+    "cachedCropName": "Eggplant",
+    "name": "Galina"
+  },
+  {
+    "varietyID": "variety-US-001-939-9012",
+    "chapterID": "chapter-US-001",
+    "cropID": "crop-US-001-517-5678",
+    "cachedCropName": "Eggplant",
+    "name": "Orient Express"
+  }
+]

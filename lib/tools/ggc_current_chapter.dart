@@ -12,7 +12,4 @@ Future<Map<String, Object?>> ggcCurrentChapter(
 final ggcCurrentChapterTool = FunctionDeclaration(
     'ggcCurrentChapter',
     'Returns the name and geographic location of the current GeoGardenClub chapter.',
-    Schema(
-      SchemaType.object,
-      properties: {'name': Schema(SchemaType.string)},
-    ));
+    null);

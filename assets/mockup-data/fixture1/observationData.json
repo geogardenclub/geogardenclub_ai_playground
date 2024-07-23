@@ -1,0 +1,57 @@
+[
+  {
+    "observationID": "observation-US-98225-101-701-4567",
+    "chapterID": "chapter-US-001",
+    "gardenID": "garden-US-98225-101-7890",
+    "gardenerID": "jennacorindeane@gmail.com",
+    "plantingID": "planting-US-98225-101-1126-1234",
+    "cachedCropID": "crop-US-001-546-5678",
+    "cachedVarietyID": "variety-US-001-829-9012",
+    "cachedBedName": "10",
+    "cachedCropName": "Zucchini",
+    "cachedGardenName": "Alderwood",
+    "cachedVarietyName": "Cocozelle",
+    "cachedStartDate": "2021-06-01T00:00:00.000",
+    "observationDate": "2021-09-05T00:00:00.000",
+    "tagIDs": [
+      "tag-001"
+    ],
+    "comments": [],
+    "description": "Powdery mildew found on zuchinni, but still ample flowers and fruit production.",
+    "title": "Powdery Mildew found on zuchinni",
+    "pictureUrl": "https://firebasestorage.googleapis.com/v0/b/ggc-app-2de7b.appspot.com/o/observations%2F001-101-701.jpg?alt=media&token=5668ebf5-f6c8-4e96-97d9-5c6292e52608",
+    "lastUpdate": "2023-04-01T00:00:00.000Z",
+    "isPrivate": true
+  },
+  {
+    "observationID": "observation-US-98225-101-702-4567",
+    "chapterID": "chapter-US-001",
+    "gardenID": "garden-US-98225-101-7890",
+    "gardenerID": "jennacorindeane@gmail.com",
+    "plantingID": "planting-US-98225-101-1002-1234",
+    "cachedBedName": "01",
+    "cachedCropID": "crop-US-001-524-5678",
+    "cachedVarietyID": "variety-US-001-905-9012",
+    "cachedGardenName": "Alderwood",
+    "cachedCropName": "Lettuce",
+    "cachedVarietyName": "Mix",
+    "cachedStartDate": "2021-06-01T00:00:00.000",
+    "observationDate": "2021-09-10T00:00:00.000",
+    "tagIDs": [
+      "tag-011"
+    ],
+    "comments": [
+      {
+        "description": "Fuzzy Screaming Meanie",
+        "gardenerID": "johnson@hawaii.edu",
+        "lastUpdate": "2022-06-20T00:00:00.000Z",
+        "observationCommentID": "observation-comment-001-101-702-001"
+      }
+    ],
+    "description": "Two unknown caterpillar species on lettuce. What are these?",
+    "title": "Two unknown caterpillar species on lettuce",
+    "pictureUrl": "https://firebasestorage.googleapis.com/v0/b/ggc-app-2de7b.appspot.com/o/observations%2F001-101-702.jpg?alt=media&token=e3e414e7-8bd5-4ef4-b8a8-ad4ba4aa4bd6",
+    "lastUpdate": "2023-04-01T00:00:00.000Z",
+    "isPrivate": false
+  }
+]

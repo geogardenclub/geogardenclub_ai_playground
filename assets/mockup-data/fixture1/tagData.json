@@ -1,0 +1,164 @@
+[
+  {
+    "tagID": "tag-001",
+    "name": "#Biodiversity",
+    "description": "Use of practices to increase biodiversity, including attracting birds, butterflies, pollinators, water sources, logs or rocks, native plants, and limiting use of pesticides and herbicides.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-002",
+    "name": "#CommunityGarden",
+    "description": "Support for community gardening.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-003",
+    "name": "#Compost",
+    "description": "Use or storage of compost",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-004",
+    "name": "#CompostTea",
+    "description": "Use of vermiculture fluid byproducts for fertilization or pest control.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-005",
+    "name": "#CoverCrops",
+    "description": "Crops grown to slow erosion, improve soil health, enhance water availability, smother weeds, help control pests and diseases, and/or increase biodiversity.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-006",
+    "name": "#DitchChemicals",
+    "description": "Use of alternatives to chemicals for pest control or fertilization.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-007",
+    "name": "#DripIrrigation",
+    "description": "Use of drip irrigation to reduce water use and evaporation.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-008",
+    "name": "#Habitat",
+    "description": "Creation of habitat friendly to birds, butterflies, pollinators, and other wildlife",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-009",
+    "name": "#Hugelculture",
+    "description": "Use of hugelculture for composting.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-010",
+    "name": "#Hummingbirds",
+    "description": "Practices to attract hummingbirds or pictures of them in the garden.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-011",
+    "name": "#LarvalHostPlants",
+    "description": "Plants that can be used by caterpillars for growth and development.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-012",
+    "name": "#MasterGardenerAtWork",
+    "description": "A master gardener volunteering to help others in some way.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-013",
+    "name": "#MasterGardenerCertificate",
+    "description": "Verification of completion of a master gardener course.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-014",
+    "name": "#NativeBees",
+    "description": "Appearance of native (as opposed to honey) bees. Native bees are more effective for pollination.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-015",
+    "name": "#NativePlants",
+    "description": "Use of native plants that are adapted to local soil and climate and attract native butterflies, insects, birds, and other animals.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-016",
+    "name": "#PermacultureCertificate",
+    "description": "Verification of completion of a permaculture workshop or course.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-017",
+    "name": "#PesticideFree",
+    "description": "Use of alternatives to chemicals for pest control.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-018",
+    "name": "#PollinatorFriendly",
+    "description": "Creation of foraging habitat, native plants that serve as sources of nectar, pollen for adult pollinators, and plants with flowers shapes that are accessible to pollinators.  Also, use of pesticides that are not harmful to pollinators.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-019",
+    "name": "#Rainwater",
+    "description": "Use of rain water for irrigation.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-020",
+    "name": "#SaltLick",
+    "description": "Use of a damp salt lick to attract butterflies and bees",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-021",
+    "name": "#SchoolGarden",
+    "description": "Support for a school garden.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-022",
+    "name": "#SeedSaving",
+    "description": "Growth of plants to harvest seeds for future planting.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-023",
+    "name": "#SeedSharing",
+    "description": "Sharing home-grown seeds with others.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-024",
+    "name": "#SheetMulch",
+    "description": "Use of plastic sheets for mulching.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-025",
+    "name": "#Vermiculture",
+    "description": "Cultivation of worms to convert organic waste into nutrient-rich compost.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+  "tagID": "tag-026",
+  "name": "#WaterTimer",
+  "description": "Use of a timer to use water more efficiently.",
+  "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "tagID": "tag-027",
+    "name": "#Worms",
+    "description": "Use worms for vermiculture or presence of worms in the garden.",
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  }
+]

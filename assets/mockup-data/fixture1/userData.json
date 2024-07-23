@@ -1,0 +1,58 @@
+[
+  {
+    "userID": "jennacorindeane@gmail.com",
+    "chapterID": "chapter-US-001",
+    "name": "Jenna Deane",
+    "username": "@fluke",
+    "country": "US",
+    "postalCode": "98225",
+    "uid": "user-001",
+    "pictureURL": "https://firebasestorage.googleapis.com/v0/b/ggc-app-2de7b.appspot.com/o/jennacorindeane%40gmail.com%2Fuser-001.jpg?alt=media&token=3913c17c-80bc-42e6-9660-33b1266cd884"
+  },
+  {
+    "userID": "jbeck913360@hotmail.com",
+    "chapterID": "chapter-US-001",
+    "name": "Jessie Beck",
+    "username": "@jessie",
+    "country": "US",
+    "postalCode": "98225",
+    "uid": "user-002"
+  },
+  {
+    "userID": "joanne.amberg@gmail.com",
+    "chapterID": "chapter-US-001",
+    "name": "Joanne Amberg",
+    "username": "@joanne",
+    "country": "US",
+    "postalCode": "98225",
+    "uid": "user-003"
+  },
+  {
+    "userID": "johnson@hawaii.edu",
+    "chapterID": "chapter-US-001",
+    "name": "Philip Johnson",
+    "username": "@fiveoclockphil",
+    "country": "US",
+    "postalCode": "98225",
+    "uid": "user-004"
+  },
+  {
+    "userID": "katieambergjohnson@gmail.com",
+    "chapterID": "chapter-US-001",
+    "name": "Katie Amberg-Johnson",
+    "username": "@katiekai",
+    "country": "US",
+    "postalCode": "98225",
+    "uid": "user-005",
+    "pictureURL": "https://firebasestorage.googleapis.com/v0/b/ggc-app-2de7b.appspot.com/o/katieambergjohnson%40gmail.com%2Fuser-001.jpg?alt=media&token=ce2e0654-9afd-45f6-9b03-9029e17a8039"
+  },
+  {
+    "userID": "system@ggc.org",
+    "chapterID": "chapter-US-001",
+    "name": "GGC System",
+    "username": "@GGC",
+    "country": "US",
+    "postalCode": "98225",
+    "uid": "user-006"
+  }
+]

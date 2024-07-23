@@ -14,8 +14,11 @@
 
 import 'package:flutter/material.dart';
 
+import 'data/mockup_db.dart';
 import 'geogardenclub_ai_playground.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await mockupDb.initializeDb();
   runApp(const GeoGardenClubAiPlayground());
 }

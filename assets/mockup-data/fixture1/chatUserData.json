@@ -1,0 +1,46 @@
+[
+  {
+    "chapterID": "chapter-US-001",
+    "firstName": "@fluke",
+    "id": "user-001",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ggc-app-2de7b.appspot.com/o/jennacorindeane%40gmail.com%2Fuser-001.jpg?alt=media&token=3913c17c-80bc-42e6-9660-33b1266cd884",
+    "lastName": "",
+    "role": "admin"
+  },
+  {
+    "chapterID": "chapter-US-001",
+    "firstName": "@jessie",
+    "id": "user-002",
+    "lastName": "",
+    "role": "admin"
+  },
+  {
+    "chapterID": "chapter-US-001",
+    "firstName": "@joanne",
+    "id": "user-003",
+    "lastName": "",
+    "role": "admin"
+  },
+  {
+    "chapterID": "chapter-US-001",
+    "firstName": "@fiveoclockphil",
+    "id": "user-004",
+    "lastName": "",
+    "role": "admin"
+  },
+  {
+    "chapterID": "chapter-US-001",
+    "firstName": "@katiekai",
+    "id": "user-005",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ggc-app-2de7b.appspot.com/o/katieambergjohnson%40gmail.com%2Fuser-001.jpg?alt=media&token=ce2e0654-9afd-45f6-9b03-9029e17a8039",
+    "lastName": "",
+    "role": "admin"
+  },
+  {
+    "chapterID": "chapter-US-001",
+    "firstName": "@GGC",
+    "id": "user-006",
+    "lastName": "",
+    "role": "admin"
+  }
+]

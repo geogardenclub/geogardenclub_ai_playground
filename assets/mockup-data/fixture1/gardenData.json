@@ -1,0 +1,390 @@
+[
+  {
+    "gardenID": "garden-US-98225-101-7890",
+    "chapterID": "chapter-US-001",
+    "name": "Alderwood",
+    "ownerID": "jennacorindeane@gmail.com",
+    "cachedCropIDs": [
+      "crop-US-001-529-5678",
+      "crop-US-001-524-5678",
+      "crop-US-001-539-5678",
+      "crop-US-001-534-5678",
+      "crop-US-001-546-5678",
+      "crop-US-001-521-5678",
+      "crop-US-001-518-5678",
+      "crop-US-001-515-5678",
+      "crop-US-001-504-5678",
+      "crop-US-001-509-5678",
+      "crop-US-001-512-5678",
+      "crop-US-001-547-5678",
+      "crop-US-001-505-5678",
+      "crop-US-001-506-5678",
+      "crop-US-001-511-5678",
+      "crop-US-001-533-5678",
+      "crop-US-001-540-5678",
+      "crop-US-001-525-5678",
+      "crop-US-001-519-5678",
+      "crop-US-001-545-5678",
+      "crop-US-001-526-5678",
+      "crop-US-001-530-5678",
+      "crop-US-001-517-5678",
+      "crop-US-001-520-5678",
+      "crop-US-001-502-5678",
+      "crop-US-001-536-5678",
+      "crop-US-001-503-5678",
+      "crop-US-001-543-5678",
+      "crop-US-001-507-5678",
+      "crop-US-001-535-5678",
+      "crop-US-001-501-5678",
+      "crop-US-001-514-5678",
+      "crop-US-001-516-5678",
+      "crop-US-001-532-5678",
+      "crop-US-001-531-5678"
+    ],
+    "cachedVarietyIDs": [],
+    "cachedYears": [
+      2023
+    ],
+    "cachedNumPlantings": 231,
+    "attestations": [],
+    "pictureUrl": "/img/gardens/45ght3cf/garden-001.jpg",
+    "isVendor": false,
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "gardenID": "garden-US-98225-102-7890",
+    "chapterID": "chapter-US-001",
+    "name": "Kale is for Kids",
+    "ownerID": "jbeck913360@hotmail.com",
+    "cachedCropIDs": [
+      "crop-US-001-545-5678",
+      "crop-US-001-515-5678",
+      "crop-US-001-529-5678",
+      "crop-US-001-505-5678",
+      "crop-US-001-504-5678",
+      "crop-US-001-512-5678",
+      "crop-US-001-516-5678",
+      "crop-US-001-527-5678",
+      "crop-US-001-520-5678",
+      "crop-US-001-519-5678",
+      "crop-US-001-503-5678",
+      "crop-US-001-541-5678",
+      "crop-US-001-521-5678",
+      "crop-US-001-507-5678",
+      "crop-US-001-511-5678",
+      "crop-US-001-514-5678",
+      "crop-US-001-533-5678",
+      "crop-US-001-532-5678",
+      "crop-US-001-540-5678",
+      "crop-US-001-525-5678",
+      "crop-US-001-546-5678",
+      "crop-US-001-544-5678",
+      "crop-US-001-537-5678",
+      "crop-US-001-524-5678",
+      "crop-US-001-502-5678",
+      "crop-US-001-509-5678",
+      "crop-US-001-506-5678",
+      "crop-US-001-528-5678",
+      "crop-US-001-508-5678",
+      "crop-US-001-513-5678",
+      "crop-US-001-538-5678",
+      "crop-US-001-539-5678",
+      "crop-US-001-530-5678",
+      "crop-US-001-523-5678"
+    ],
+    "cachedVarietyIDs": [],
+    "cachedYears": [
+      2023
+    ],
+    "cachedNumPlantings": 231,
+    "attestations": [],
+    "pictureUrl": "/img/gardens/67abh39db/jessie-1.jpg",
+    "isVendor": false,
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "gardenID": "garden-US-98225-103-7890",
+    "chapterID": "chapter-US-001",
+    "name": "Friend/Store",
+    "ownerID": "friend@example.com",
+    "cachedCropIDs": [
+      "crop-US-001-529-5678",
+      "crop-US-001-519-5678",
+      "crop-US-001-501-5678",
+      "crop-US-001-532-5678",
+      "crop-US-001-537-5678",
+      "crop-US-001-523-5678",
+      "crop-US-001-510-5678",
+      "crop-US-001-525-5678",
+      "crop-US-001-524-5678",
+      "crop-US-001-527-5678",
+      "crop-US-001-528-5678"
+    ],
+    "cachedVarietyIDs": [],
+    "cachedYears": [
+      2023
+    ],
+    "cachedNumPlantings": 231,
+    "attestations": [],
+    "isVendor": true,
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "gardenID": "garden-US-98225-104-7890",
+    "chapterID": "chapter-US-001",
+    "name": "Johnny's Selected Seeds",
+    "ownerID": "info@johnnyseeds.com",
+    "cachedCropIDs": [
+      "crop-US-001-524-5678"
+    ],
+    "cachedVarietyIDs": [],
+    "cachedYears": [
+      2023
+    ],
+    "cachedNumPlantings": 231,
+    "attestations": [],
+    "isVendor": true,
+    "isClimateVictoryGarden": false,
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "gardenID": "garden-US-98225-105-7890",
+    "chapterID": "chapter-US-001",
+    "name": "Uprising Seeds",
+    "ownerID": "info@uprisingorganics.com",
+    "cachedCropIDs": [
+      "crop-US-001-507-5678",
+      "crop-US-001-509-5678",
+      "crop-US-001-535-5678",
+      "crop-US-001-524-5678",
+      "crop-US-001-521-5678",
+      "crop-US-001-545-5678",
+      "crop-US-001-504-5678",
+      "crop-US-001-530-5678",
+      "crop-US-001-505-5678",
+      "crop-US-001-511-5678",
+      "crop-US-001-517-5678",
+      "crop-US-001-546-5678",
+      "crop-US-001-506-5678",
+      "crop-US-001-540-5678",
+      "crop-US-001-515-5678",
+      "crop-US-001-533-5678",
+      "crop-US-001-520-5678",
+      "crop-US-001-543-5678",
+      "crop-US-001-516-5678",
+      "crop-US-001-526-5678",
+      "crop-US-001-502-5678",
+      "crop-US-001-518-5678",
+      "crop-US-001-512-5678",
+      "crop-US-001-514-5678",
+      "crop-US-001-544-5678",
+      "crop-US-001-534-5678",
+      "crop-US-001-539-5678",
+      "crop-US-001-547-5678"
+    ],
+    "cachedVarietyIDs": [],
+    "cachedYears": [
+      2023
+    ],
+    "cachedNumPlantings": 231,
+    "attestations": [],
+    "isVendor": true,
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "gardenID": "garden-US-98225-106-7890",
+    "chapterID": "chapter-US-001",
+    "name": "Seed Savers Exchange",
+    "ownerID": "info@seedsavers.org",
+    "cachedCropIDs": [
+      "crop-US-001-521-5678",
+      "crop-US-001-522-5678"
+    ],
+    "cachedVarietyIDs": [],
+    "cachedYears": [
+      2023
+    ],
+    "cachedNumPlantings": 231,
+    "attestations": [],
+    "isVendor": true,
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "gardenID": "garden-US-98225-107-7890",
+    "chapterID": "chapter-US-001",
+    "name": "Baker Creek Heirloom Seeds",
+    "ownerID": "info@rareseeds.com",
+    "cachedCropIDs": [],
+    "cachedVarietyIDs": [],
+    "cachedYears": [
+      2023
+    ],
+    "cachedNumPlantings": 231,
+    "attestations": [],
+    "isVendor": true,
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "gardenID": "garden-US-98225-108-7890",
+    "chapterID": "chapter-US-001",
+    "name": "Resilient Seeds",
+    "ownerID": "info@resilientseeds.com",
+    "cachedCropIDs": [
+      "crop-US-001-542-5678",
+      "crop-US-001-545-5678",
+      "crop-US-001-511-5678"
+    ],
+    "cachedVarietyIDs": [],
+    "cachedYears": [
+      2023
+    ],
+    "cachedNumPlantings": 231,
+    "attestations": [],
+    "isVendor": true,
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "gardenID": "garden-US-98225-109-7890",
+    "chapterID": "chapter-US-001",
+    "name": "High Mowing Organic Seeds",
+    "ownerID": "info@highmowingseeds.com",
+    "cachedCropIDs": [
+      "crop-US-001-524-5678"
+    ],
+    "cachedVarietyIDs": [],
+    "cachedYears": [
+      2023
+    ],
+    "cachedNumPlantings": 231,
+    "attestations": [],
+    "isVendor": true,
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "gardenID": "garden-US-98225-110-7890",
+    "chapterID": "chapter-US-001",
+    "name": "Renee's Garden",
+    "ownerID": "info@reneesgarden.com",
+    "cachedCropIDs": [
+      "crop-US-001-511-5678"
+    ],
+    "cachedVarietyIDs": [],
+    "cachedYears": [
+      2023
+    ],
+    "cachedNumPlantings": 231,
+    "attestations": [],
+    "isVendor": true,
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "gardenID": "garden-US-98225-111-7890",
+    "chapterID": "chapter-US-001",
+    "name": "Sunseed Farm and Nursery",
+    "ownerID": "info@sunseedfarm.com",
+    "cachedCropIDs": [
+      "crop-US-001-504-5678",
+      "crop-US-001-545-5678",
+      "crop-US-001-521-5678",
+      "crop-US-001-546-5678",
+      "crop-US-001-540-5678",
+      "crop-US-001-515-5678",
+      "crop-US-001-530-5678",
+      "crop-US-001-517-5678"
+    ],
+    "cachedVarietyIDs": [],
+    "cachedYears": [
+      2023
+    ],
+    "cachedNumPlantings": 231,
+    "attestations": [],
+    "isVendor": true,
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "gardenID": "garden-US-98225-112-7890",
+    "chapterID": "chapter-US-001",
+    "name": "Ed Hume Seeds",
+    "ownerID": "info@humeseeds.com",
+    "cachedCropIDs": [
+      "crop-US-001-505-5678"
+    ],
+    "cachedVarietyIDs": [],
+    "cachedYears": [
+      2023
+    ],
+    "cachedNumPlantings": 231,
+    "attestations": [],
+    "isVendor": true,
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "gardenID": "garden-US-98225-113-7890",
+    "chapterID": "chapter-US-001",
+    "name": "Cloud Mountain Farm",
+    "ownerID": "info@cloudmountainfarmcenter.org",
+    "cachedCropIDs": [
+      "crop-US-001-503-5678"
+    ],
+    "cachedVarietyIDs": [],
+    "cachedYears": [
+      2023
+    ],
+    "cachedNumPlantings": 231,
+    "attestations": [],
+    "isVendor": true,
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "gardenID": "garden-US-98225-114-7890",
+    "chapterID": "chapter-US-001",
+    "name": "Floret FLowers",
+    "ownerID": "info@floretflowers.com",
+    "cachedCropIDs": [
+      "crop-US-001-531-5678"
+    ],
+    "cachedVarietyIDs": [],
+    "cachedYears": [
+      2023
+    ],
+    "cachedNumPlantings": 231,
+    "attestations": [],
+    "isVendor": true,
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  },
+  {
+    "gardenID": "garden-US-98225-115-7890",
+    "chapterID": "chapter-US-001",
+    "name": "Unknown vendor",
+    "ownerID": "unknown@example.com",
+    "cachedCropIDs": [
+      "crop-US-001-536-5678",
+      "crop-US-001-529-5678",
+      "crop-US-001-514-5678",
+      "crop-US-001-541-5678",
+      "crop-US-001-521-5678",
+      "crop-US-001-508-5678",
+      "crop-US-001-532-5678",
+      "crop-US-001-515-5678",
+      "crop-US-001-540-5678",
+      "crop-US-001-545-5678",
+      "crop-US-001-527-5678",
+      "crop-US-001-506-5678",
+      "crop-US-001-513-5678",
+      "crop-US-001-505-5678",
+      "crop-US-001-538-5678",
+      "crop-US-001-530-5678",
+      "crop-US-001-533-5678",
+      "crop-US-001-524-5678",
+      "crop-US-001-539-5678"
+    ],
+    "cachedVarietyIDs": [],
+    "cachedYears": [
+      2023
+    ],
+    "cachedNumPlantings": 231,
+    "attestations": [],
+    "isVendor": true,
+    "lastUpdate": "2023-04-01T00:00:00.000Z"
+  }
+]

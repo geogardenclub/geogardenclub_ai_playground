@@ -1,0 +1,43 @@
+[
+  {
+    "chapterID": "chapter-US-001",
+    "id": "chat-room-001",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ggc-app-2de7b.appspot.com/o/chapter-001%2Fbellingham-chapter-map.png?alt=media&token=f78614c1-60a4-4c08-a375-4f352182b7fe",
+    "name": "Whatcom-WA Chapter",
+    "type": "group",
+    "userIds": ["user-001", "user-002", "user-003", "user-004", "user-005", "user-006"],
+    "userRoles": {
+      "user-001": "admin"
+    }
+  },
+  {
+    "chapterID": "chapter-US-001",
+    "gardenID": "garden-US-98225-101-7890",
+    "id": "chat-room-002",
+    "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ggc-app-2de7b.appspot.com/o/garden-001-101%2Fgarden-001.jpg?alt=media&token=621e2537-4b03-4d75-b05e-b3687b7d46d9",
+    "name": "Alderwood",
+    "type": "group",
+    "userIds": ["user-001", "user-002", "user-003", "user-004", "user-005", "user-006"],
+    "userRoles": {
+      "user-001": "admin"
+    }
+  },
+  {
+    "chapterID": "chapter-US-001",
+    "gardenID": "garden-US-98225-102-7890",
+    "id": "chat-room-003",
+    "name": "Kale is for Kids",
+    "type": "group",
+    "userIds": [
+      "user-001",
+      "user-002",
+      "user-003",
+      "user-004",
+      "user-005",
+      "user-006"
+    ],
+    "userRoles": {
+      "user-002": "admin"
+    }
+  }
+]

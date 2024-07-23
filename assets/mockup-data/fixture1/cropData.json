@@ -1,0 +1,284 @@
+[
+  {
+    "cropID": "crop-US-001-501-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-402",
+    "name": "Amaranth"
+  },
+  {
+    "cropID": "crop-US-001-502-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-403",
+    "name": "Arugula"
+  },
+  {
+    "cropID": "crop-US-001-503-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-411",
+    "name": "Asparagus"
+  },
+  {
+    "cropID": "crop-US-001-504-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-407",
+    "name": "Basil"
+  },
+  {
+    "cropID": "crop-US-001-505-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-406",
+    "name": "Bean"
+  },
+  {
+    "cropID": "crop-US-001-506-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-404",
+    "name": "Beet"
+  },
+  {
+    "cropID": "crop-US-001-507-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-403",
+    "name": "Broccoli"
+  },
+  {
+    "cropID": "crop-US-001-508-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-403",
+    "name": "Cabbage"
+  },
+  {
+    "cropID": "crop-US-001-509-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-409",
+    "name": "Carrot"
+  },
+  {
+    "cropID": "crop-US-001-510-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-403",
+    "name": "Cauliflower"
+  },
+  {
+    "cropID": "crop-US-001-511-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-404",
+    "name": "Chard"
+  },
+  {
+    "cropID": "crop-US-001-512-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-409",
+    "name": "Cilantro"
+  },
+  {
+    "cropID": "crop-US-001-513-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-403",
+    "name": "Collard"
+  },
+  {
+    "cropID": "crop-US-001-514-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-407",
+    "name": "Corn"
+  },
+  {
+    "cropID": "crop-US-001-515-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-405",
+    "name": "Cucumber"
+  },
+  {
+    "cropID": "crop-US-001-516-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-409",
+    "name": "Dill"
+  },
+  {
+    "cropID": "crop-US-001-517-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-408",
+    "name": "Eggplant"
+  },
+  {
+    "cropID": "crop-US-001-518-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-406",
+    "name": "Fava Bean"
+  },
+  {
+    "cropID": "crop-US-001-519-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-401",
+    "name": "Garlic"
+  },
+  {
+    "cropID": "crop-US-001-520-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-408",
+    "name": "Ground Cherry"
+  },
+  {
+    "cropID": "crop-US-001-521-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-403",
+    "name": "Kale"
+  },
+  {
+    "cropID": "crop-US-001-522-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-401",
+    "name": "Leek"
+  },
+  {
+    "cropID": "crop-US-001-523-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-407",
+    "name": "Lemongrass"
+  },
+  {
+    "cropID": "crop-US-001-524-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-410",
+    "name": "Lettuce"
+  },
+  {
+    "cropID": "crop-US-001-525-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-405",
+    "name": "Melon"
+  },
+  {
+    "cropID": "crop-US-001-526-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-410",
+    "name": "Mesclun"
+  },
+  {
+    "cropID": "crop-US-001-527-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-401",
+    "name": "Onion"
+  },
+  {
+    "cropID": "crop-US-001-528-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-409",
+    "name": "Parsnip"
+  },
+  {
+    "cropID": "crop-US-001-529-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-406",
+    "name": "Pea"
+  },
+  {
+    "cropID": "crop-US-001-530-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-408",
+    "name": "Pepper"
+  },
+  {
+    "cropID": "crop-US-001-531-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-412",
+    "name": "Poppy"
+  },
+  {
+    "cropID": "crop-US-001-532-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-408",
+    "name": "Potato"
+  },
+  {
+    "cropID": "crop-US-001-533-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-405",
+    "name": "Pumpkin"
+  },
+  {
+    "cropID": "crop-US-001-534-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-410",
+    "name": "Radicchio"
+  },
+  {
+    "cropID": "crop-US-001-535-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-403",
+    "name": "Radish"
+  },
+  {
+    "cropID": "crop-US-001-536-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-413",
+    "name": "Raspberry"
+  },
+  {
+    "cropID": "crop-US-001-537-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-411",
+    "name": "Rhubarb"
+  },
+  {
+    "cropID": "crop-US-001-538-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-401",
+    "name": "Shallot"
+  },
+  {
+    "cropID": "crop-US-001-539-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-404",
+    "name": "Spinach"
+  },
+  {
+    "cropID": "crop-US-001-540-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-405",
+    "name": "Squash"
+  },
+  {
+    "cropID": "crop-US-001-541-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-413",
+    "name": "Strawberry"
+  },
+  {
+    "cropID": "crop-US-001-542-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-406",
+    "name": "Sugar Pea"
+  },
+  {
+    "cropID": "crop-US-001-543-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-410",
+    "name": "Sunflower"
+  },
+  {
+    "cropID": "crop-US-001-544-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-408",
+    "name": "Tomatillo"
+  },
+  {
+    "cropID": "crop-US-001-545-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-408",
+    "name": "Tomato"
+  },
+  {
+    "cropID": "crop-US-001-546-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-405",
+    "name": "Zucchini"
+  },
+  {
+    "cropID": "crop-US-001-547-5678",
+    "chapterID": "chapter-US-001",
+    "familyID": "family-409",
+    "name": "Parsley"
+  }
+]

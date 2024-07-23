@@ -1,0 +1,80 @@
+[
+  {
+    "familyID": "family-401",
+    "formal": "Amaryllidaceae",
+    "common": "Allium",
+    "examples": "onion, garlic, leek, shallot"
+  },
+  {
+    "familyID": "family-402",
+    "formal": "Amaranthaceae",
+    "common": "Amaranth",
+    "examples": "amaranth, quinoa"
+  },
+  {
+    "familyID": "family-403",
+    "formal": "Brassicaceae",
+    "common": "Mustard",
+    "examples": "broccoli, brussels sprout, cabbage, cauliflower, kale, arugula, turnip, pak choi, radish, mustard, kohlrabi, cress, collard"
+  },
+  {
+    "familyID": "family-404",
+    "formal": "Chenopodioideae",
+    "common": "Beetroot",
+    "examples": "chard, spinach, beet"
+  },
+  {
+    "familyID": "family-405",
+    "formal": "Cucurbitaceae",
+    "common": "Gourd",
+    "examples": "squash, zucchini, cucumber, melon, cantaloupe, pumpkin"
+  },
+  {
+    "familyID": "family-406",
+    "formal": "Fabaaceae",
+    "common": "Legume",
+    "examples": "bean, pea, peanuts"
+  },
+  {
+    "familyID": "family-407",
+    "formal": "Misc_Annuals",
+    "common": "Misc_Annuals",
+    "examples": "corn, buckwheat, okra, wheat, basil, lemongrass"
+  },
+  {
+    "familyID": "family-408",
+    "formal": "Solanaceae",
+    "common": "Nightshade",
+    "examples": "tomato, potato, eggplant, pepper, ground cherry, tomatillo"
+  },
+  {
+    "familyID": "family-409",
+    "formal": "Umbelliferae",
+    "common": "Umbell",
+    "examples": "carrot, celeriac, cilantro, fennel, parsley, dill, parsnip, chervil"
+  },
+  {
+    "familyID": "family-410",
+    "formal": "Asteraceae",
+    "common": "Daisy",
+    "examples": "lettuce, mesclun, radicchio, endive, sunflowers, chamomile, salsify"
+  },
+  {
+    "familyID": "family-411",
+    "formal": "Misc_Perennials",
+    "common": "Misc_Perennials",
+    "examples": "mint, rosemary, sage, lemon balm, asparagus, sorrel, artichoke, sweet potato, rhubarb"
+  },
+  {
+    "familyID": "family-412",
+    "formal": "Poppaveraceae",
+    "common": "Poppy",
+    "examples": "poppy"
+  },
+  {
+    "familyID": "family-413",
+    "formal": "Rosaceae",
+    "common": "Rose",
+    "examples": "raspberry, strawberry"
+  }
+]
