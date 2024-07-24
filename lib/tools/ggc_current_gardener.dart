@@ -8,8 +8,5 @@ Future<Map<String, Object?>> ggcCurrentGardener(
 
 final ggcCurrentGardenerTool = FunctionDeclaration(
     'ggcCurrentGardener',
-    'Returns the username of the GeoGardenClub gardener asking questions of you.',
-    Schema(
-      SchemaType.object,
-      properties: {'gardener': Schema(SchemaType.string)},
-    ));
+    'Returns the username of the GeoGardenClub gardener asking questions.',
+    null);

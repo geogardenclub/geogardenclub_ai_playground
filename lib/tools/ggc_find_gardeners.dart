@@ -12,23 +12,5 @@ Future<Map<String, Object?>> ggcFindGardeners(
       ]
     };
 
-final ggcFindGardenersTool = FunctionDeclaration(
-    'ggcFindGardeners',
-    'Returns a list of gardener names in GeoGardenClub',
-    Schema(
-      SchemaType.object,
-      properties: {
-        'gardeners': Schema(
-          SchemaType.array,
-          items: Schema(
-            SchemaType.object,
-            properties: {
-              'name': Schema(
-                SchemaType.string,
-                description: 'The name of a gardener in GeoGardenClub.',
-              ),
-            },
-          ),
-        )
-      },
-    ));
+final ggcFindGardenersTool = FunctionDeclaration('ggcFindGardeners',
+    'Returns a list of the gardener usernames in GeoGardenClub', null);

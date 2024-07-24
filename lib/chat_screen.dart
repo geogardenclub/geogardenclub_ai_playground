@@ -41,10 +41,10 @@ class _ChatScreenState extends State<ChatScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       initFirebase().then((value) {
         _model = FirebaseVertexAI.instance.generativeModel(
-            model: 'gemini-1.5-flash-preview-0514',
+            model: 'gemini-1.5-flash-latest', // 'gemini-1.5-flash-preview-0514'
             systemInstruction: Content.system(systemInstruction));
         _functionCallModel = FirebaseVertexAI.instance.generativeModel(
-          model: 'gemini-1.5-flash-preview-0514',
+          model: 'gemini-1.5-flash-latest',
           systemInstruction: Content.system(systemInstruction),
           tools: [
             Tool(functionDeclarations: [
@@ -53,8 +53,12 @@ class _ChatScreenState extends State<ChatScreen> {
               ggcFindGardensTool,
               ggcCurrentChapterTool,
               ggcCurrentGardenerTool
-            ]),
+            ])
           ],
+          toolConfig: ToolConfig(
+            functionCallingConfig:
+                FunctionCallingConfig(mode: FunctionCallingMode.any),
+          ),
         );
         _chat = _model!.startChat();
         setState(() {});

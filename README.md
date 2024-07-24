@@ -67,9 +67,9 @@ This early implementation has a few problems:
 
 So, the goal of development is to gain expertise with "prompt engineering" in order to provide a high quality chat bot to end users. 
 
-## Design
+## Architecture
 
-As noted above, I refactored the single main.dart file of the sample app into a set of files in order to more clearly indicate its structure, and to facilitate its use to explore what the Gemini model can do when provided with GGC data.  Here's an outline of the app's design with a subset of files:
+As noted above, I refactored the single main.dart file of the sample app into a set of files in order to more clearly indicate its structure, and to facilitate its use to explore what the Gemini model can do when provided with GGC data.  Here's an outline of the app's architecture with a subset of files for each directory:
 
 ```
 lib/                                 # top-level files implement the UI
@@ -88,16 +88,46 @@ lib/                                 # top-level files implement the UI
     ggc_find_gardens.dart            
     ggc_find_gardeners.dart
      :
-  data/                              # mockup GGC data
-    fixture1/
-      bed_data.dart
-      gardener_data.dart
-      garden_data.dart
+  data/                              
+    mockup_db.dart                   # Implement the mockup database as a singleton
+    system_instruction.dart          # The (quite lengthy) system instruction for the model
+
+assets/                              
+  mockup-data/                       # Mockup data for the database.
+    fixture1/                        # In future, could have more than one dataset.
+      bedData.json
+      chapterData.json
       :
 ```
 
-Basically, the top-level files in the lib/ directory implement the UI. Each file in the commands/ directory implements a Widget that interacts with the Gemini model in a certain way (i.e. text only, text + image, text + firebase storage, etc), and shows up as an icon underneath the text field. The tools/ directory more-or-less implements the "prompt engineering": how the model accesses data about GeoGardenClub. Finally, the data/ directory supports multiple configurations of mockup data, each configuration called a "fixture". Currently there is only one fixture.
+Basically, the top-level files in the lib/ directory implement the UI. Each file in the commands/ directory implements a Widget that interacts with the Gemini model in a certain way (i.e. text only, text + image, text + firebase storage, etc), and shows up as an icon underneath the text field. The tools/ directory more-or-less implements the "prompt engineering": how the model accesses data about GeoGardenClub. Finally, the data/ directory implements a mockup database which loads data from an assets/ subdirectory on startup. 
 
 ## Prompt Engineering for GeoGardenClub
 
-(more to come)
+This section documents my approach to designing the chatbot.   
+
+### Google's function calling best practices
+
+Here's what I can find in the official docs.
+
+From [Best practices for function declarations](https://ai.google.dev/gemini-api/docs/function-calling#key-parameters-best-practices):
+
+*name:* Use clear, descriptive names without space, period (.), or dash (-) characters. Instead, use underscore (_) characters or camel case.
+
+*description:* Provide detailed, clear, and specific in function descriptions, providing examples if necessary. For example, instead of find theaters, use find theaters based on location and optionally movie title that is currently playing in theaters. Avoid overly broad or ambiguous descriptions.
+
+*properties > type:* Use strongly typed parameters to reduce model hallucinations. For example, if the parameter values are from a finite set, use an enum field instead of listing the values in the description (e.g., "type": "enum", "values": ["now_playing", "upcoming"]). If the parameter value is always an integer, set the type to integer rather than number.
+
+*properties > description:* Provide concrete examples and constraints. For example, instead of the location to search, use The city and state, e.g. San Francisco, CA or a zip code e.g. 95616.
+
+From [Best Practices](https://ai.google.dev/gemini-api/docs/function-calling#best-practices):
+
+*User prompt*: 
+For best results, prepend the user query with the following details:
+* Additional context for the model. For example, You are a movie API assistant to help users find movies and showtimes based on their preferences.
+* Details or instructions on how and when to use the functions. For example, Don't make assumptions on showtimes. Always use a future date for showtimes.
+* Instructions to ask clarifying questions if user queries are ambiguous. For example, Ask clarifying questions if not enough information is available to complete the request.
+
+*Sampling parameters*: For the temperature parameter, use 0 or another low value. This instructs the model to generate more confident results and reduces hallucinations.
+
+*API invocation*: If the model proposes the invocation of a function that would send an order, update a database, or otherwise have significant consequences, validate the function call with the user before executing it.
