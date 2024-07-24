@@ -33,7 +33,8 @@ class _ChatScreenState extends State<ChatScreen> {
   bool _working = false;
   final String _initialMessage = 'Welcome to GeoBot, a chatbot '
       'for answering questions about this GeoGardenClub Chapter. '
-      'For example, try asking "Describe this chapter." '
+      'For example, try typing "Describe this chapter" '
+      'and then pressing the flower icon to submit your question. '
       'Note that GeoBot is in beta and may not answer correctly in all cases.';
 
   @override
@@ -42,8 +43,9 @@ class _ChatScreenState extends State<ChatScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       initFirebase().then((value) {
         _model = FirebaseVertexAI.instance.generativeModel(
-            model: 'gemini-1.5-flash', // 'gemini-1.5-flash-preview-0514'
-            systemInstruction: Content.system(systemInstruction));
+          model: 'gemini-1.5-flash', // 'gemini-1.5-flash-preview-0514'
+          // systemInstruction: Content.system(systemInstruction)
+        );
         _functionCallModel = FirebaseVertexAI.instance.generativeModel(
           model: 'gemini-1.5-flash',
           systemInstruction: Content.system(systemInstruction),
