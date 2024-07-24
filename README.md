@@ -56,16 +56,10 @@ The above icons implement the functions provided by the sample app, and are prov
 
 The actual motivation for this app is the final (flower) icon in the row, which implements an interface to a mockup of a GeoGardenClub database and allows experimentation with the quality of responses provided by the model. 
 
-For example, here is a conversation with an early implementation of the chatbot:
+For example, here is a conversation with an early implementation of the chatbot in which the queries were submitted using the flower icon. This meant that the model was invoking the Function Calling API to access the mockup database to answer the questions.
 
 <img width="300px" src="example-screen-3.png">
-
-This early implementation has a few problems:
-
-1. There was a "quota exceeded" error midway through, which went away when I re-requested. 
-2. It gave the wrong answer to "How many gardens are in GeoGardenClub?" but the right answer when I reworded the prompt as "How many gardens are associated with gardeners in GeoGardenClub?"
-
-So, the goal of development is to gain expertise with "prompt engineering" in order to provide a high quality chat bot to end users. 
+ 
 
 ## Architecture
 

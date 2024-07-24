@@ -2,6 +2,8 @@ import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
 
 import '../tools/ggc_chapter_data.dart';
+import '../tools/ggc_current_chapter_name.dart';
+import '../tools/ggc_current_gardener_username.dart';
 import 'command_button.dart';
 
 class GgcCommand extends StatelessWidget {
@@ -43,6 +45,10 @@ class GgcCommand extends StatelessWidget {
         Map<String, Object?> result = switch (functionCall.name) {
           // Forward arguments to the mockup GGC API.
           'ggcChapterData' => await ggcChapterData(functionCall.args),
+          'ggcCurrentChapterName' =>
+            await ggcCurrentChapterName(functionCall.args),
+          'ggcCurrentGardenerUsername' =>
+            await ggcCurrentGardenerUsername(functionCall.args),
           _ => throw UnimplementedError(
               'Not implemented: ${functionCall.name}. Please add it to the ggcCommand widget.')
         };

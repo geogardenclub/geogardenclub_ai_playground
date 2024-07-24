@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
-import 'package:geogardenclub_ai_playground/tools/ggc_chapter_data.dart';
 
 import 'commands/exchange_rate_command.dart';
 import 'commands/ggc_command.dart';
@@ -12,6 +11,9 @@ import 'data/system_instruction.dart';
 import 'generated_content.dart';
 import 'prompt_text_field.dart';
 import 'tools/exchange_rate_tool.dart';
+import 'tools/ggc_chapter_data.dart';
+import 'tools/ggc_current_chapter_name.dart';
+import 'tools/ggc_current_gardener_username.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key, required this.title});
@@ -49,8 +51,14 @@ class _ChatScreenState extends State<ChatScreen> {
         _functionCallModel = FirebaseVertexAI.instance.generativeModel(
           model: 'gemini-1.5-flash',
           systemInstruction: Content.system(systemInstruction),
+          generationConfig: GenerationConfig(temperature: 0),
           tools: [
-            Tool(functionDeclarations: [exchangeRateTool, ggcChapterDataTool])
+            Tool(functionDeclarations: [
+              exchangeRateTool,
+              ggcChapterDataTool,
+              ggcCurrentChapterNameTool,
+              ggcCurrentGardenerUsernameTool
+            ])
           ],
           // gemini pro required for FunctionCallingMode.any, so let's try without for now.
           // toolConfig: ToolConfig(

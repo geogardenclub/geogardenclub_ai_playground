@@ -54,6 +54,10 @@ class MockupDb {
         '${getCount(DbType.task)} tasks, ${getCount(DbType.user)} users, and '
         '${getCount(DbType.variety)} varieties.');
     print('ChapterData: ${getChapterData()}');
+    print('Current Chapter Name: ${getCurrentChapterName()}');
+    print('Current Gardener Username: ${getCurrentGardenerUsername()}');
+    print(
+        'Gardener data: ${getGardenerData(getCurrentGardenerUsername()).toString()}');
   }
 
   int getCount(DbType dbType) {
@@ -64,6 +68,31 @@ class MockupDb {
     return data[DbType.user]!.map<String>((user) => user['username']).toList();
   }
 
+  String getCurrentGardenerUsername() {
+    Map<String, dynamic> chapterData = getChapterData();
+    return chapterData['gardenerUsernames'][0];
+  }
+
+  String getCurrentChapterName() {
+    Map<String, dynamic> chapterData = getChapterData();
+    return chapterData['name'];
+  }
+
+  Map<String, dynamic> getGardenerData(String username) {
+    String userID = data[DbType.user]!
+        .firstWhere((user) => user['username'] == username)['userID'];
+    List<dynamic> ownedGardens = data[DbType.garden]!
+        .where((garden) => garden['ownerID'] == userID)
+        .toList();
+    List<String> ownedGardenNames =
+        ownedGardens.map<String>((garden) => garden['name']).toList();
+    return {
+      'username': username,
+      'gardensOwned': ownedGardenNames,
+      'gardensEdited': [],
+    };
+  }
+
   Map<String, dynamic> getChapterData() {
     Map<String, dynamic> chapterData = data[DbType.chapter]!.first;
     final nonVendorGardens = data[DbType.garden]!
@@ -71,7 +100,7 @@ class MockupDb {
         .toList();
     List<String> gardenNames =
         nonVendorGardens.map<String>((garden) => garden['name']).toList();
-    List<String> gardenerUserNames =
+    List<String> gardenerUsernames =
         data[DbType.user]!.map<String>((user) => user['username']).toList();
     // Note we really should iterate through the plantings to get crops and varieties
     Set<String> cropNames = {};
@@ -85,7 +114,7 @@ class MockupDb {
     List<String> varietyNameList = varietyNames.toList();
     varietyNameList.sort();
     chapterData['gardenNames'] = gardenNames;
-    chapterData['gardenerUserNames'] = gardenerUserNames;
+    chapterData['gardenerUsernames'] = gardenerUsernames;
     chapterData['cropNames'] = cropNameList;
     chapterData['varietyNames'] = varietyNameList;
     return chapterData;
