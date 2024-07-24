@@ -31,6 +31,10 @@ class _ChatScreenState extends State<ChatScreen> {
   final List<({Image? image, String? text, bool fromUser})> _generatedContent =
       <({Image? image, String? text, bool fromUser})>[];
   bool _working = false;
+  final String _initialMessage = 'Welcome to GeoBot, a chatbot '
+      'for answering questions about this GeoGardenClub Chapter. '
+      'For example, try asking "Describe this chapter." '
+      'Note that GeoBot is in beta and may not answer correctly in all cases.';
 
   @override
   void initState() {
@@ -53,6 +57,8 @@ class _ChatScreenState extends State<ChatScreen> {
           // ),
         );
         _chat = _model!.startChat();
+        _generatedContent
+            .add((image: null, text: _initialMessage, fromUser: false));
         setState(() {});
       });
     });
@@ -168,6 +174,7 @@ class _ChatScreenState extends State<ChatScreen> {
   }
 
   void _showError(String message) {
+    print(message);
     showDialog<void>(
       context: context,
       builder: (context) {
