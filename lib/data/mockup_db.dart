@@ -53,7 +53,7 @@ class MockupDb {
         '${getCount(DbType.planting)} plantings, ${getCount(DbType.seed)} seeds, '
         '${getCount(DbType.task)} tasks, ${getCount(DbType.user)} users, and '
         '${getCount(DbType.variety)} varieties.');
-    print('Usernames: ${getUsernames()}');
+    print('ChapterData: ${getChapterData()}');
   }
 
   int getCount(DbType dbType) {
@@ -62,6 +62,33 @@ class MockupDb {
 
   List<String> getUsernames() {
     return data[DbType.user]!.map<String>((user) => user['username']).toList();
+  }
+
+  Map<String, dynamic> getChapterData() {
+    Map<String, dynamic> chapterData = data[DbType.chapter]!.first;
+    final nonVendorGardens = data[DbType.garden]!
+        .where((garden) => garden['isVendor'] == false)
+        .toList();
+    List<String> gardenNames =
+        nonVendorGardens.map<String>((garden) => garden['name']).toList();
+    List<String> gardenerUserNames =
+        data[DbType.user]!.map<String>((user) => user['username']).toList();
+    // Note we really should iterate through the plantings to get crops and varieties
+    Set<String> cropNames = {};
+    cropNames.addAll(data[DbType.planting]!
+        .map<String>((planting) => planting['cachedCropName']));
+    Set<String> varietyNames = {};
+    varietyNames.addAll(data[DbType.planting]!.map<String>((planting) =>
+        '${planting["cachedCropName"]} (${planting["cachedVarietyName"]})'));
+    List<String> cropNameList = cropNames.toList();
+    cropNameList.sort();
+    List<String> varietyNameList = varietyNames.toList();
+    varietyNameList.sort();
+    chapterData['gardenNames'] = gardenNames;
+    chapterData['gardenerUserNames'] = gardenerUserNames;
+    chapterData['cropNames'] = cropNameList;
+    chapterData['varietyNames'] = varietyNameList;
+    return chapterData;
   }
 }
 

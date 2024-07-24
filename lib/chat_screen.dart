@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
+import 'package:geogardenclub_ai_playground/tools/ggc_chapter_data.dart';
 
 import 'commands/exchange_rate_command.dart';
 import 'commands/ggc_command.dart';
@@ -11,10 +12,6 @@ import 'data/system_instruction.dart';
 import 'generated_content.dart';
 import 'prompt_text_field.dart';
 import 'tools/exchange_rate_tool.dart';
-import 'tools/ggc_current_chapter.dart';
-import 'tools/ggc_current_gardener.dart';
-import 'tools/ggc_find_gardeners.dart';
-import 'tools/ggc_find_gardens.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({super.key, required this.title});
@@ -41,24 +38,19 @@ class _ChatScreenState extends State<ChatScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       initFirebase().then((value) {
         _model = FirebaseVertexAI.instance.generativeModel(
-            model: 'gemini-1.5-flash-latest', // 'gemini-1.5-flash-preview-0514'
+            model: 'gemini-1.5-flash', // 'gemini-1.5-flash-preview-0514'
             systemInstruction: Content.system(systemInstruction));
         _functionCallModel = FirebaseVertexAI.instance.generativeModel(
-          model: 'gemini-1.5-flash-latest',
+          model: 'gemini-1.5-flash',
           systemInstruction: Content.system(systemInstruction),
           tools: [
-            Tool(functionDeclarations: [
-              exchangeRateTool,
-              ggcFindGardenersTool,
-              ggcFindGardensTool,
-              ggcCurrentChapterTool,
-              ggcCurrentGardenerTool
-            ])
+            Tool(functionDeclarations: [exchangeRateTool, ggcChapterDataTool])
           ],
-          toolConfig: ToolConfig(
-            functionCallingConfig:
-                FunctionCallingConfig(mode: FunctionCallingMode.any),
-          ),
+          // gemini pro required for FunctionCallingMode.any, so let's try without for now.
+          // toolConfig: ToolConfig(
+          //   functionCallingConfig:
+          //       FunctionCallingConfig(mode: FunctionCallingMode.any),
+          // ),
         );
         _chat = _model!.startChat();
         setState(() {});

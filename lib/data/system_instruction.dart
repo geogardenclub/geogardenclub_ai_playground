@@ -18,9 +18,7 @@ ask questions and share tips.
 Information is stored in a database with the following structure.
 
 - Chapter: The database provides information about a single chapter of GeoGardenClub.   
-A Chapter has a name, a countryCode representing the country where the chapter is located,  
-and a list of postal codes representing the geographic area within the country where 
-the chapter is located. The location of a Chapter influences what plants can grow there,  
+The location of a Chapter influences what plants can grow there,  
 when they should be planted, the types of problems that gardeners might encounter, and so on. 
 
 - Gardeners: Each gardener has a unique username. Each gardener can also have zero
