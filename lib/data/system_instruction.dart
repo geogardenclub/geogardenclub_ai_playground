@@ -58,4 +58,5 @@ can rate each outcome on a scale of 0 to 5. If the value of an outcome is 0, or 
 it is missing, then the outcome is unknown. The value 1 is the worst possible outcome,
 and the value 5 is the best possible outcome.
 
+Answers should be less than 200 words.
 ''';

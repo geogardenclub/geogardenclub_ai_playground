@@ -1,9 +1,11 @@
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
 
-import '../tools/ggc_chapter_data.dart';
-import '../tools/ggc_current_chapter_name.dart';
-import '../tools/ggc_current_gardener_username.dart';
+import '../tools/ggc_crop_data.dart';
+import '../tools/ggc_gardener_data.dart';
+import '../tools/ggc_my_chapter_data.dart';
+import '../tools/ggc_my_chapter_name.dart';
+import '../tools/ggc_my_username.dart';
 import 'command_button.dart';
 
 class GgcCommand extends StatelessWidget {
@@ -41,14 +43,14 @@ class GgcCommand extends StatelessWidget {
       while (functionCalls.isNotEmpty) {
         FunctionCall functionCall = functionCalls.first;
         print(
-            'About to call: ${functionCall.name}. There are ${functionCalls.length} function calls requested.');
+            'About to call: ${functionCall.name} with ${functionCall.args}. There are ${functionCalls.length} function calls requested.');
         Map<String, Object?> result = switch (functionCall.name) {
           // Forward arguments to the mockup GGC API.
-          'ggcChapterData' => await ggcChapterData(functionCall.args),
-          'ggcCurrentChapterName' =>
-            await ggcCurrentChapterName(functionCall.args),
-          'ggcCurrentGardenerUsername' =>
-            await ggcCurrentGardenerUsername(functionCall.args),
+          'ggcMyChapterData' => await ggcMyChapterData(functionCall.args),
+          'ggcMyUsername' => await ggcMyUsername(functionCall.args),
+          'ggcGardenerData' => await ggcGardenerData(functionCall.args),
+          'ggcCropData' => await ggcCropData(functionCall.args),
+          'ggcMyChapterName' => await ggcMyChapterName(functionCall.args),
           _ => throw UnimplementedError(
               'Not implemented: ${functionCall.name}. Please add it to the ggcCommand widget.')
         };

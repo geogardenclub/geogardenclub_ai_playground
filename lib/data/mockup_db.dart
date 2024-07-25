@@ -53,11 +53,10 @@ class MockupDb {
         '${getCount(DbType.planting)} plantings, ${getCount(DbType.seed)} seeds, '
         '${getCount(DbType.task)} tasks, ${getCount(DbType.user)} users, and '
         '${getCount(DbType.variety)} varieties.');
-    print('ChapterData: ${getChapterData()}');
-    print('Current Chapter Name: ${getCurrentChapterName()}');
-    print('Current Gardener Username: ${getCurrentGardenerUsername()}');
-    print(
-        'Gardener data: ${getGardenerData(getCurrentGardenerUsername()).toString()}');
+    // print('ChapterData: ${getMyChapterData()}');
+    // print('My Chapter Name: ${getMyChapterName()}');
+    // print('My Username: ${getMyUsername()}');
+    // print('Bean data: ${getCropData('Bean')}');
   }
 
   int getCount(DbType dbType) {
@@ -68,14 +67,56 @@ class MockupDb {
     return data[DbType.user]!.map<String>((user) => user['username']).toList();
   }
 
-  String getCurrentGardenerUsername() {
-    Map<String, dynamic> chapterData = getChapterData();
+  String getMyUsername() {
+    Map<String, dynamic> chapterData = getMyChapterData();
     return chapterData['gardenerUsernames'][0];
   }
 
-  String getCurrentChapterName() {
-    Map<String, dynamic> chapterData = getChapterData();
+  String getMyChapterName() {
+    Map<String, dynamic> chapterData = getMyChapterData();
     return chapterData['name'];
+  }
+
+  Map<String, dynamic> getCropData(String cropName) {
+    List<dynamic> plantings = data[DbType.planting]!
+        .where((planting) =>
+            (planting['cachedCropName'] == cropName) &&
+            (planting['isVendor'] == false))
+        .toList();
+    List<String> gardenNames = plantings
+        .map<String>((planting) => planting['gardenID'])
+        .map<String>((gardenID) => getGardenName(gardenID))
+        .toSet()
+        .toList();
+    List<String> gardenerUsernames = plantings
+        .map<String>((planting) => planting['gardenID'])
+        .map<String>((gardenID) => data[DbType.garden]!
+            .firstWhere((garden) => garden['gardenID'] == gardenID)['ownerID'])
+        .map<String>((userID) => getUsername(userID))
+        .toSet()
+        .toList();
+    List<Map<String, dynamic>> plantingData = plantings
+        .map<Map<String, dynamic>>((planting) => makePlanting(planting))
+        .toList();
+    return {
+      'gardens': gardenNames,
+      'gardeners': gardenerUsernames,
+      'numPlantings': plantings.length,
+      'plantings': plantingData,
+    };
+  }
+
+  Map<String, dynamic> makePlanting(Map<String, dynamic> planting) {
+    return {
+      'garden': getGardenName(planting['gardenID']),
+      'gardener': getUsernameFromGardenID(planting['gardenID']),
+      'variety':
+          '${planting["cachedCropName"]} (${planting["cachedVarietyName"]})',
+      'crop': planting['cachedCropName'],
+      'startDate': planting['startDate'],
+      'pullDate': planting['pullDate'],
+      'usedGreenhouse': planting['usedGreenhouse'],
+    };
   }
 
   Map<String, dynamic> getGardenerData(String username) {
@@ -90,10 +131,72 @@ class MockupDb {
       'username': username,
       'gardensOwned': ownedGardenNames,
       'gardensEdited': [],
+      'numPlantings': getNumPlantings(gardens: ownedGardenNames),
+      'cropNames': getCrops(gardens: ownedGardenNames),
+      'varietyNames': getVarieties(gardens: ownedGardenNames),
     };
   }
 
-  Map<String, dynamic> getChapterData() {
+  int getNumPlantings({List<String> gardens = const []}) {
+    int numPlantings = 0;
+    for (String gardenName in gardens) {
+      String gardenID = getGardenID(gardenName);
+      numPlantings += data[DbType.planting]!
+          .where((planting) => planting['gardenID'] == gardenID)
+          .length;
+    }
+    return numPlantings;
+  }
+
+  List<String> getCrops({List<String> gardens = const []}) {
+    Set<String> cropNames = {};
+    for (String gardenName in gardens) {
+      String gardenID = getGardenID(gardenName);
+      cropNames.addAll(data[DbType.planting]!
+          .where((planting) => planting['gardenID'] == gardenID)
+          .map<String>((planting) => planting['cachedCropName']));
+    }
+    List<String> cropNameList = cropNames.toList();
+    cropNameList.sort();
+    return cropNameList;
+  }
+
+  List<String> getVarieties({List<String> gardens = const []}) {
+    Set<String> varietyNames = {};
+    for (String gardenName in gardens) {
+      String gardenID = getGardenID(gardenName);
+      varietyNames.addAll(data[DbType.planting]!
+          .where((planting) => planting['gardenID'] == gardenID)
+          .map<String>((planting) =>
+              '${planting["cachedCropName"]} (${planting["cachedVarietyName"]})'));
+    }
+    List<String> varietyNameList = varietyNames.toList();
+    varietyNameList.sort();
+    return varietyNameList;
+  }
+
+  String getGardenID(String gardenName) {
+    return data[DbType.garden]!
+        .firstWhere((garden) => garden['name'] == gardenName)['gardenID'];
+  }
+
+  String getGardenName(String gardenID) {
+    return data[DbType.garden]!
+        .firstWhere((garden) => garden['gardenID'] == gardenID)['name'];
+  }
+
+  String getUsername(String userID) {
+    return data[DbType.user]!
+        .firstWhere((user) => user['userID'] == userID)['username'];
+  }
+
+  String getUsernameFromGardenID(String gardenID) {
+    String userID = data[DbType.garden]!
+        .firstWhere((garden) => garden['gardenID'] == gardenID)['ownerID'];
+    return getUsername(userID);
+  }
+
+  Map<String, dynamic> getMyChapterData() {
     Map<String, dynamic> chapterData = data[DbType.chapter]!.first;
     final nonVendorGardens = data[DbType.garden]!
         .where((garden) => garden['isVendor'] == false)

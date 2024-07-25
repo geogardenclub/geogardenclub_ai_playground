@@ -35,7 +35,8 @@ class MessageWidget extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: 8),
             child: Column(
               children: [
-                if (text case final text?) MarkdownBody(data: text),
+                if (text case final text?)
+                  MarkdownBody(data: text, selectable: true),
                 if (image case final image?) image,
               ],
             ),

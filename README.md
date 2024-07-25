@@ -1,11 +1,14 @@
 # GeoGardenClub_AI_Playground
 
-The goal of this app is to support the design of a chatbot to answer questions about a GeoGardenClub chapter. The chatbot is implemented using Google's Gemini technology and its function call API which enables it to access the GGC chapter database.  Some potential questions might be:
+GeoGardenClub is a technology for bringing groups of gardeners in a small geographic region together to share data about past, present, and future gardens. This data includes information about crops, varieties, planting outcomes, and planting techniques. There can be up to several hundred gardeners in each "chapter", each gardener can participate in multiple gardens, and there can be a thousand or more data points collected about each garden per season.  
+
+The goal of this playground app is to support the design of a chatbot to act as a "data scientist" and answer questions about a GeoGardenClub chapter. The chatbot is implemented using Google's Gemini technology and its function call API which enables it to access a mockup of a GGC chapter database.  Some potential questions might be:
 
 * How many gardens (or gardeners, crops, varieties, plantings, etc) are in this chapter?
 * What variety of basil is best to grow?
 * Who has a lot of experience growing ground cherries?
-* What kind of problems might come up if I grow cherry tomatos?
+* Who has had the best outcomes growing any variety of beans?
+* What kind of problems might come up if I grow paste tomatoes?
 * Please use the information in this photo of a seed packet to define this seed, variety, and crop in the chapter database.
 
 ## Background
@@ -22,7 +25,7 @@ The original sample app is useful because it implements several relevant feature
   * text plus Firebase Storage file(s), and 
   * text plus a "Gemini Function Call" (which is how the model interacts with the GeoGardenClub database).
 
-To build this app, the original sample app was first refactored from a single main.dart file containing all of the code into around a dozen files.  This refactoring helped clarify the design and separate UI code from "business logic". More importantly, it made it easier to extend the system with new functionality to explore the integration of Gemini models with GeoGardenClub data.
+To build this app, the original sample app was first refactored from a single main.dart file containing all the code into around a dozen files.  This refactoring helped clarify the design and separate UI code from "business logic". More importantly, it made it easier to extend the system with new functionality to explore the integration of Gemini models with GeoGardenClub data.
 
 ## Installation
 
@@ -30,7 +33,7 @@ Install this system according to the documentation in [Get started with the Gemi
 
 Specifically, you must [Set up a Firebase project and connect your app to Firebase](https://firebase.google.com/docs/vertex-ai/get-started?platform=flutter).   You do not need to perform the remaining steps in this documentation page (i.e. "Add the SDK", "Initialize the Vertex AI service and the generative model", "Call the Vertex AI Gemini API"); these have already been done in the app.
 
-Note that GeoGardeClub_AI_Playground does not actually read or write to the connected Firebase database; you just need this connection in order to define and use the Gemini models through the Vertex AI APIs.
+Note that GeoGardeClub_AI_Playground does not actually read or write to the connected Firebase database; you just need this connection in order to define and use the Gemini models through the Vertex AI APIs. Instead, the model's function calls access a mockup database loaded from the assets directory.
 
 Once you've connected your instance of the app to Firebase, you should be able to run the app as a normal Flutter project. For example, with:
 
@@ -52,14 +55,21 @@ Each icon invokes the Gemini model with the text prompt in a different way:
 * Folder icon (StorageQueryCommand): This works just like the ImageQueryCommand, except that instead of sending an image (encoded as a byte stream) to the Gemini Model, the command instead sends the URI to a Google Storage file along with the prompt text. This URI is hardcoded in the StorageQueryCommand file. (The response does not display the image at the URI at this time, just the prompt and the response.)
 * Send icon (TextSendCommand): Sends just the prompt text.  Both the text and the Gemini model's response are printed.
 
-The above icons implement the functions provided by the sample app, and are provided just to ensure that this refactoring has not inadvertently introduced a bug into the system.  
+The above icons implement the functions provided by Google's sample app, and are available just to ensure that this refactoring has not inadvertently introduced a bug into the system.
 
-The actual motivation for this app is the final (flower) icon in the row, which implements an interface to a mockup of a GeoGardenClub database and allows experimentation with the quality of responses provided by the model. 
+The actual motivation for this app is the final (flower) icon in the row, which implements the interface to the GeoGardenClub chatbot and allows experimentation with the quality of responses provided by the model. 
 
-For example, here is a conversation with an early implementation of the chatbot in which the queries were submitted using the flower icon. This meant that the model was invoking the Function Calling API to access the mockup database to answer the questions.
+For example, here is a conversation with an early implementation of the chatbot in which the queries were submitted using the flower icon. 
 
 <img width="300px" src="example-screen-3.png">
- 
+
+## Quota issues
+
+The Vertex AI API defaults to a limit of 5 content queries per minute. Since some queries lead to chained function calls, it is easily possible to exceed this limit, resulting in an error message like this:
+
+*Quota exceeded for aiplatform.googleapis.com/generate_content_requests_per_minute_per_project_per_base_model with base model: gemini-1.5-flash. Please submit a quota increase request. https://cloud.google.com/vertex-ai/docs/generative-ai/quotas-genai.*
+
+I submitted a request to increase the limit from 5 to 15, which was granted immediately and took effect within a few minutes. 
 
 ## Architecture
 
@@ -75,20 +85,19 @@ lib/                                 # top-level files implement the UI
     exchange_rate_command.dart       
     image_query_command.dart         
     storage_query_command.dart       
-    ggc_command.dart
+    ggc_command.dart                 # the one that actually matters
      :                
-  tools/                             # Gemini Tools for mockup db access
-    exchange_rate_tool.dart          
+  tools/                             # Gemini Tools for GGC mockup db access          
     ggc_find_gardens.dart            
     ggc_find_gardeners.dart
      :
   data/                              
     mockup_db.dart                   # Implement the mockup database as a singleton
-    system_instruction.dart          # The (quite lengthy) system instruction for the model
+    system_instruction.dart          # The (lengthy) system instruction for the model
 
 assets/                              
   mockup-data/                       # Mockup data for the database.
-    fixture1/                        # In future, could have more than one dataset.
+    fixture1/                        # In future, might try a different dataset.
       bedData.json
       chapterData.json
       :
