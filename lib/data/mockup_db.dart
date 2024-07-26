@@ -3,16 +3,13 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 enum DbType {
-  bed,
   chapter,
   crop,
-  editor,
   garden,
   gardener,
   outcome,
   planting,
   seed,
-  task,
   user,
   variety
 }
@@ -22,14 +19,10 @@ class MockupDb {
 
   Future<void> initializeDb() async {
     String path = 'assets/mockup-data/fixture1';
-    data[DbType.bed] =
-        json.decode(await rootBundle.loadString('$path/bedData.json'));
     data[DbType.chapter] =
         json.decode(await rootBundle.loadString('$path/chapterData.json'));
     data[DbType.crop] =
         json.decode(await rootBundle.loadString('$path/cropData.json'));
-    data[DbType.editor] =
-        json.decode(await rootBundle.loadString('$path/editorData.json'));
     data[DbType.garden] =
         json.decode(await rootBundle.loadString('$path/gardenData.json'));
     data[DbType.gardener] =
@@ -40,23 +33,22 @@ class MockupDb {
         json.decode(await rootBundle.loadString('$path/plantingData.json'));
     data[DbType.seed] =
         json.decode(await rootBundle.loadString('$path/seedData.json'));
-    data[DbType.task] =
-        json.decode(await rootBundle.loadString('$path/taskData.json'));
     data[DbType.user] =
         json.decode(await rootBundle.loadString('$path/userData.json'));
     data[DbType.variety] =
         json.decode(await rootBundle.loadString('$path/varietyData.json'));
-    print('MockupDb initialized with ${getCount(DbType.bed)} beds, '
+    print('MockupDb initialized with '
         '${getCount(DbType.chapter)} chapters, ${getCount(DbType.crop)} crops, '
-        '${getCount(DbType.editor)} editors, ${getCount(DbType.garden)} gardens, '
+        '${getCount(DbType.garden)} gardens, '
         '${getCount(DbType.gardener)} gardeners, ${getCount(DbType.outcome)} outcomes, '
         '${getCount(DbType.planting)} plantings, ${getCount(DbType.seed)} seeds, '
-        '${getCount(DbType.task)} tasks, ${getCount(DbType.user)} users, and '
+        '${getCount(DbType.user)} users, and '
         '${getCount(DbType.variety)} varieties.');
     // print('ChapterData: ${getMyChapterData()}');
     // print('My Chapter Name: ${getMyChapterName()}');
     // print('My Username: ${getMyUsername()}');
     // print('Bean data: ${getCropData('Bean')}');
+    // print('Carrot data: ${getVarietyData('Carrot', 'Scarlet Nantes')}');
   }
 
   int getCount(DbType dbType) {
@@ -77,6 +69,34 @@ class MockupDb {
     return chapterData['name'];
   }
 
+  Map<String, dynamic> getVarietyData(String cropName, String varietyName) {
+    List<dynamic> plantings = data[DbType.planting]!
+        .where((planting) =>
+            (planting['cachedCropName'] == cropName) &&
+            (planting['cachedVarietyName'] == varietyName) &&
+            (planting['isVendor'] == false))
+        .toList();
+    List<String> gardenNames = plantings
+        .map<String>((planting) => planting['gardenID'])
+        .map<String>((gardenID) => getGardenName(gardenID))
+        .toSet()
+        .toList();
+    List<String> gardenerUsernames = plantings
+        .map<String>((planting) => planting['gardenID'])
+        .map<String>((gardenID) => getUsernameFromGardenID(gardenID))
+        .toSet()
+        .toList();
+    List<Map<String, dynamic>> plantingData = plantings
+        .map<Map<String, dynamic>>((planting) => makePlanting(planting))
+        .toList();
+    return {
+      'gardens': gardenNames,
+      'gardeners': gardenerUsernames,
+      'numPlantings': plantings.length,
+      'plantings': plantingData,
+    };
+  }
+
   Map<String, dynamic> getCropData(String cropName) {
     List<dynamic> plantings = data[DbType.planting]!
         .where((planting) =>
@@ -90,17 +110,23 @@ class MockupDb {
         .toList();
     List<String> gardenerUsernames = plantings
         .map<String>((planting) => planting['gardenID'])
-        .map<String>((gardenID) => data[DbType.garden]!
-            .firstWhere((garden) => garden['gardenID'] == gardenID)['ownerID'])
-        .map<String>((userID) => getUsername(userID))
+        .map<String>((gardenID) => getUsernameFromGardenID(gardenID))
         .toSet()
         .toList();
+    Set<String> varietySet = {};
+    for (var planting in plantings) {
+      if (planting['cachedVarietyName'] != null) {
+        varietySet.add(planting['cachedVarietyName']!);
+      }
+    }
+    List<String> varieties = varietySet.toList();
     List<Map<String, dynamic>> plantingData = plantings
         .map<Map<String, dynamic>>((planting) => makePlanting(planting))
         .toList();
     return {
       'gardens': gardenNames,
       'gardeners': gardenerUsernames,
+      'varieties': varieties,
       'numPlantings': plantings.length,
       'plantings': plantingData,
     };

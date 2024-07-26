@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:geogardenclub_ai_playground/tools/ggc_crop_data.dart';
 import 'package:geogardenclub_ai_playground/tools/ggc_gardener_data.dart';
 import 'package:geogardenclub_ai_playground/tools/ggc_my_username.dart';
+import 'package:geogardenclub_ai_playground/tools/ggc_variety_data.dart';
 
 import 'commands/exchange_rate_command.dart';
 import 'commands/ggc_command.dart';
@@ -29,6 +30,7 @@ class _ChatScreenState extends State<ChatScreen> {
   GenerativeModel? _model;
   GenerativeModel? _functionCallModel;
   ChatSession? _chat;
+  ChatSession? _functionCallChat;
   final ScrollController _scrollController = ScrollController();
   final TextEditingController _textController = TextEditingController();
   final FocusNode _textFieldFocus = FocusNode();
@@ -62,6 +64,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ggcMyUsernameTool,
               ggcGardenerDataTool,
               ggcCropDataTool,
+              ggcVarietyDataTool,
             ])
           ],
           // gemini pro required for FunctionCallingMode.any, so let's try without for now.
@@ -71,6 +74,7 @@ class _ChatScreenState extends State<ChatScreen> {
           // ),
         );
         _chat = _model!.startChat();
+        _functionCallChat = _functionCallModel!.startChat();
         _generatedContent
             .add((image: null, text: _initialMessage, fromUser: false));
         setState(() {});
@@ -172,7 +176,7 @@ class _ChatScreenState extends State<ChatScreen> {
                       GgcCommand(
                         working: _working,
                         setWorking: setWorking,
-                        functionCallModel: _functionCallModel,
+                        chat: _functionCallChat,
                         textController: _textController,
                         textFieldFocus: _textFieldFocus,
                         showError: _showError,

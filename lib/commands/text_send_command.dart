@@ -28,9 +28,7 @@ class TextSendCommand extends StatelessWidget {
     setWorking(true);
     try {
       addGeneratedContent((image: null, text: message, fromUser: true));
-      var response = await chat!.sendMessage(
-        Content.text(message),
-      );
+      var response = await chat!.sendMessage(Content.text(message));
       var text = response.text;
       addGeneratedContent((image: null, text: text, fromUser: false));
 

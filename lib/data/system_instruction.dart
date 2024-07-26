@@ -22,23 +22,28 @@ The location of a Chapter influences what plants can grow there,
 when they should be planted, the types of problems that gardeners might encounter, and so on. 
 
 - Gardeners: Each gardener has a unique username. Each gardener can also have zero
-or more gardens for which they are the owner, as well as zero or more gardens for
-which they are an editor.
+or more gardens for which they are the owner.
 
 - Gardens: Each garden has a unique name and a single gardener with the role of 
-"owner". In addition, one or more additional gardeners can be given the role of  
-"editor" for one or more gardens. Being an owner or editor of a garden enables a gardener 
+"owner". Being an owner of a garden enables a gardener 
 to view, add, edit, or delete information about that garden. If a gardener is not 
-an owner or an editor, they can still view information about any garden, but they 
-cannot modify any information about that garden.  Each garden has at least one bed 
-associated with it. 
+the owner, they can still view information about any garden, but they 
+cannot modify any information about that garden.
 
-- Beds: A bed represents a location in a garden where plans are grown. Each garden 
-has one or more beds.  A bed has a name, which is unique within the garden. A bed 
-can contain zero, one, or many plantings. 
+- Crops: A crop is a type of plant that is grown in a garden. Each crop has a unique name. 
+When creating function calls to the database, always use the singular version of the crop name.
+ For example, use "Bean" instead of "Beans", and "Onion" instead of "Onions". 
+ Each crop can have one or more varieties associated with it.
+
+- Varieties: A variety is a specific type of a crop. Each variety has a unique name.
+Varieties are used to distinguish between different types of the same crop. For example, 
+the Carrot crop has varieties such as "Scarlet Nantes" and "Rainbow Mix". You can refer to a variety 
+using just its name, such as "Scarlet Nantes", or by using the crop name followed by 
+the variety in parentheses, such as "Carrot (Scarlet Nantes)".  When calling functions, supply 
+the crop name parameter as a string, such as "Carrot", and the variety name parameter as a string, such as "Scarlet Nantes".
 
 - Plantings: A planting represents one or more plants of a given crop that is growing 
-in a specific bed in a specific garden. A planting is required to have a start date, 
+in a specific garden. A planting is required to have a start date, 
 which is when the planting began growing (or is planned to begin growing) in the garden. 
 It must also have an end date, which is when the plant was pulled (or is planned to be pulled) 
 from the garden. 
@@ -59,4 +64,5 @@ it is missing, then the outcome is unknown. The value 1 is the worst possible ou
 and the value 5 is the best possible outcome.
 
 Answers should be less than 200 words.
+
 ''';

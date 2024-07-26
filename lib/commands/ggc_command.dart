@@ -6,6 +6,7 @@ import '../tools/ggc_gardener_data.dart';
 import '../tools/ggc_my_chapter_data.dart';
 import '../tools/ggc_my_chapter_name.dart';
 import '../tools/ggc_my_username.dart';
+import '../tools/ggc_variety_data.dart';
 import 'command_button.dart';
 
 class GgcCommand extends StatelessWidget {
@@ -13,7 +14,7 @@ class GgcCommand extends StatelessWidget {
       {super.key,
       required this.working,
       required this.setWorking,
-      required this.functionCallModel,
+      required this.chat,
       required this.addGeneratedContent,
       required this.textFieldFocus,
       required this.showError,
@@ -21,7 +22,7 @@ class GgcCommand extends StatelessWidget {
 
   final void Function(bool) setWorking;
   final bool working;
-  final GenerativeModel? functionCallModel;
+  final ChatSession? chat;
   final void Function(({Image? image, String? text, bool fromUser}))
       addGeneratedContent;
   final TextEditingController textController;
@@ -31,12 +32,11 @@ class GgcCommand extends StatelessWidget {
   Future<void> _ggcChat(String message) async {
     setWorking(true);
     try {
-      final chat = functionCallModel!.startChat();
       addGeneratedContent((image: null, text: message, fromUser: true));
 
       // Send the message to the generative model.
       GenerateContentResponse response =
-          await chat.sendMessage(Content.text(message));
+          await chat!.sendMessage(Content.text(message));
       List<FunctionCall> functionCalls = response.functionCalls.toList();
 
       // While the model responds with a desire to call functions, do it.
@@ -50,12 +50,13 @@ class GgcCommand extends StatelessWidget {
           'ggcMyUsername' => await ggcMyUsername(functionCall.args),
           'ggcGardenerData' => await ggcGardenerData(functionCall.args),
           'ggcCropData' => await ggcCropData(functionCall.args),
+          'ggcVarietyData' => await ggcVarietyData(functionCall.args),
           'ggcMyChapterName' => await ggcMyChapterName(functionCall.args),
           _ => throw UnimplementedError(
               'Not implemented: ${functionCall.name}. Please add it to the ggcCommand widget.')
         };
         // Send the response to the model.
-        response = await chat
+        response = await chat!
             .sendMessage(Content.functionResponse(functionCall.name, result));
         // see if the model wants to call more functions
         functionCalls = response.functionCalls.toList();
