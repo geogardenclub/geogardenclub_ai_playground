@@ -49,6 +49,9 @@ class MockupDb {
     // print('My Username: ${getMyUsername()}');
     // print('Bean data: ${getCropData('Bean')}');
     // print('Carrot data: ${getVarietyData('Carrot', 'Scarlet Nantes')}');
+    // print('todays date: ${await todaysDate({})}');
+    print(
+        'outcomes ${getPlantingsWithOutcomes(outcomeType: 'germination', outcomeValue: 1)}');
   }
 
   int getCount(DbType dbType) {
@@ -172,6 +175,19 @@ class MockupDb {
           .length;
     }
     return numPlantings;
+  }
+
+  List<Map<String, dynamic>> getPlantingsWithOutcomes(
+      {required String outcomeType, required int outcomeValue}) {
+    List outcomes = data[DbType.outcome]!
+        .where((outcome) => outcome[outcomeType] == outcomeValue)
+        .toList();
+    List plantingIDs =
+        outcomes.map((outcome) => outcome['plantingID']).toList();
+    List plantings = data[DbType.planting]!
+        .where((planting) => plantingIDs.contains(planting['plantingID']))
+        .toList();
+    return plantings.map((planting) => makePlanting(planting)).toList();
   }
 
   List<String> getCrops({List<String> gardens = const []}) {

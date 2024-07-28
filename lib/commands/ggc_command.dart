@@ -7,6 +7,7 @@ import '../tools/ggc_my_chapter_data.dart';
 import '../tools/ggc_my_chapter_name.dart';
 import '../tools/ggc_my_username.dart';
 import '../tools/ggc_variety_data.dart';
+import '../tools/todays_date.dart';
 import 'command_button.dart';
 
 class GgcCommand extends StatelessWidget {
@@ -52,6 +53,7 @@ class GgcCommand extends StatelessWidget {
           'ggcCropData' => await ggcCropData(functionCall.args),
           'ggcVarietyData' => await ggcVarietyData(functionCall.args),
           'ggcMyChapterName' => await ggcMyChapterName(functionCall.args),
+          'todaysDate' => await todaysDate(functionCall.args),
           _ => throw UnimplementedError(
               'Not implemented: ${functionCall.name}. Please add it to the ggcCommand widget.')
         };

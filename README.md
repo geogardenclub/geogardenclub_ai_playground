@@ -2,7 +2,7 @@
 
 GeoGardenClub is a technology for bringing groups of gardeners in a small geographic region together to share data about past, present, and future gardens. This data includes information about crops, varieties, planting outcomes, and planting techniques. There can be up to several hundred gardeners in each "chapter", each gardener can participate in multiple gardens, and there can be a thousand or more data points collected about each garden per season.  
 
-The goal of this playground app is to support the design of "GeoBot", a chatbot that acts as a "data scientist" in order to answer questions about the data collected by members of a GeoGardenClub chapter. The chatbot is implemented using Google's Gemini technology and its function call API which enables it to access a mockup of a GGC chapter database.  Some potential questions might be:
+The goal of this playground app is to support the design of "GeoBot", a retrieval-augmented generation (RAG) chatbot that acts as a kind of "data scientist" to answer questions about the data collected by members of a GeoGardenClub chapter. The chatbot is implemented using Google's Gemini technology and its function call API which enables it to access a mockup of a GGC chapter database.  Some potential questions might be:
 
 * How many gardens (or gardeners, crops, varieties, plantings, etc) are in this chapter?
 * What variety of basil is best to grow?
