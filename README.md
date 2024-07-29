@@ -69,7 +69,7 @@ The Vertex AI API defaults to a limit of 5 content queries per minute. Since som
 
 *Quota exceeded for aiplatform.googleapis.com/generate_content_requests_per_minute_per_project_per_base_model with base model: gemini-1.5-flash. Please submit a quota increase request. https://cloud.google.com/vertex-ai/docs/generative-ai/quotas-genai.*
 
-I submitted a request to increase the limit from 5 to 15, which was granted immediately and took effect within a few minutes. 
+I submitted a request to increase the limit from 5 to 15 (and later to 60), both of which were granted immediately and took effect within a few minutes. 
 
 ## Architecture
 
@@ -149,3 +149,33 @@ From [Context best practices](https://cloud.google.com/vertex-ai/generative-ai/d
 *Help the chatbot adhere to the instructions in the context deep into the conversation.* "Before you reply, attend, think and remember all the instructions set here."
 
 *Help the chatbot give more factual answers.* "You are truthful and never lie. Never make up facts and if you are not 100% sure, reply with why you cannot answer in a truthful way."
+
+## Sample queries and answers
+
+To provide a sense for what GeoBot can do, here are some sample queries and answers:
+
+*Describe my chapter*
+
+The Whatcom-WA chapter of GeoGardenClub is located in the US and includes the following zip codes: 98225, 98226, 98227, 98228, and 98229.  Gardeners in this chapter grow a wide variety of crops, including Amaranth, Arugula, Asparagus, Basil, Bean, Beet, Broccoli, Cabbage, Carrot, Cauliflower, Chard, Cilantro, Collard, Corn, Cucumber, Dill, Eggplant, Fava Bean, Garlic, Ground Cherry, Kale, Leek, Lemongrass, Lettuce, Melon, Mesclun, Onion, Parsley, Parsnip, Pea, Pepper, Poppy, Potato, Pumpkin, Radicchio, Radish, Raspberry, Rhubarb, Shallot, Spinach, Squash, Strawberry, Sugar Pea, Sunflower, Tomatillo, Tomato, and Zucchini.  There are two gardens in this chapter: Alderwood and Kale is for Kids.  The gardeners in this chapter are @fluke, @jessie, @joanne, @fiveoclockphil, @katiekai, and @GGC.
+
+*When has Italian basil been started in the past?*
+
+In the past, Italian basil has been started in Alderwood as early as March 15th and as late as May 8th.  It looks like @fluke has had the most success starting basil in March, but @jessie has had some success starting basil in April.  Do you have any other questions about basil?
+
+*What are my gardens?*
+
+You own one garden, Alderwood.  Is there anything else I can help you with?
+
+*What crops have been planted this month?*
+
+This month, July 2024, only peas have been planted in our chapter.  @fluke planted Sugar Snap peas in Alderwood on February 15th, and they are scheduled to be pulled on July 17th.  Is there anything else I can help you with?
+
+(Editor's note: notice that the model interprets this query as asking about which plantings are still in the ground as of July 2024, not which plants are being started this month)
+
+*Are there spinach varieties with excellent germination outcomes?*
+
+Based on the data available, there is one planting of Spinach in the chapter.  The variety is unknown, and the germination outcome is 0, which means there is no data available.  Therefore, I cannot tell you if there are spinach varieties with excellent germination outcomes.
+
+*Which basil has the best flavor?*
+
+Based on the data available, the best-tasting basil variety in our chapter is Italian.  It has received a flavor rating of 5 (Excellent) in two plantings, and a rating of 4 (Good) in one planting.
