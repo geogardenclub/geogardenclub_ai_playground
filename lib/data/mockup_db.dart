@@ -50,8 +50,9 @@ class MockupDb {
     // print('Bean data: ${getCropData('Bean')}');
     // print('Carrot data: ${getVarietyData('Carrot', 'Scarlet Nantes')}');
     // print('todays date: ${await todaysDate({})}');
-    print(
-        'outcomes ${getPlantingsWithOutcomes(outcomeType: 'germination', outcomeValue: 1)}');
+    // print(
+    // 'outcomes ${getPlantingsWithOutcomes(outcomeType: 'germination', outcomeValue: 0)}');
+    print('gardener data: ${getGardenerData('@fluke')}');
   }
 
   int getCount(DbType dbType) {
@@ -139,13 +140,31 @@ class MockupDb {
     return {
       'garden': getGardenName(planting['gardenID']),
       'gardener': getUsernameFromGardenID(planting['gardenID']),
-      'variety':
-          '${planting["cachedCropName"]} (${planting["cachedVarietyName"]})',
+      'variety': planting['cachedVarietyName'],
+      //'${planting["cachedCropName"]} (${planting["cachedVarietyName"]})',
       'crop': planting['cachedCropName'],
       'startDate': planting['startDate'],
       'pullDate': planting['pullDate'],
       'usedGreenhouse': planting['usedGreenhouse'],
+      'germination': getDbOutcome(planting['plantingID'], 'germination'),
+      'yield': getDbOutcome(planting['plantingID'], 'yieldd'),
+      'appearance': getDbOutcome(planting['plantingID'], 'appearance'),
+      'flavor': getDbOutcome(planting['plantingID'], 'flavor'),
+      'resistance': getDbOutcome(planting['plantingID'], 'resistance'),
     };
+  }
+
+  int getDbOutcome(String plantingID, String dbOutcomeType) {
+    Map<String, dynamic>? outcome = data[DbType.outcome]!.firstWhere(
+        (outcome) => outcome['plantingID'] == plantingID,
+        orElse: () => null);
+    if (outcome == null) {
+      return 0;
+    }
+    if (outcome[dbOutcomeType] == null) {
+      return 0;
+    }
+    return outcome[dbOutcomeType];
   }
 
   Map<String, dynamic> getGardenerData(String username) {
@@ -161,6 +180,7 @@ class MockupDb {
       'gardensOwned': ownedGardenNames,
       'gardensEdited': [],
       'numPlantings': getNumPlantings(gardens: ownedGardenNames),
+      'plantings': getGardensPlantings(ownedGardenNames),
       'cropNames': getCrops(gardens: ownedGardenNames),
       'varietyNames': getVarieties(gardens: ownedGardenNames),
     };
@@ -179,15 +199,33 @@ class MockupDb {
 
   List<Map<String, dynamic>> getPlantingsWithOutcomes(
       {required String outcomeType, required int outcomeValue}) {
-    List outcomes = data[DbType.outcome]!
-        .where((outcome) => outcome[outcomeType] == outcomeValue)
+    // Create a list of plantings that includes their outcome data.
+    List nonVendorPlantings = data[DbType.planting]!
+        .where((planting) => planting['isVendor'] == false)
         .toList();
-    List plantingIDs =
-        outcomes.map((outcome) => outcome['plantingID']).toList();
-    List plantings = data[DbType.planting]!
-        .where((planting) => plantingIDs.contains(planting['plantingID']))
+    List<Map<String, dynamic>> plantings =
+        nonVendorPlantings.map((planting) => makePlanting(planting)).toList();
+    return plantings
+        .where((planting) => planting[outcomeType] == outcomeValue)
         .toList();
-    return plantings.map((planting) => makePlanting(planting)).toList();
+  }
+
+  List<Map<String, Object?>> getGardenPlantings(String garden) {
+    // Create a list of plantings that includes their outcome data.
+    String gardenID = getGardenID(garden);
+    List dbPlantings = data[DbType.planting]!
+        .where((planting) => planting['gardenID'] == gardenID)
+        .toList();
+    return dbPlantings.map((planting) => makePlanting(planting)).toList();
+  }
+
+  List<Map<String, Object?>> getGardensPlantings(List<String> gardens) {
+    // Create a list of plantings that includes their outcome data.
+    List<Map<String, Object?>> plantings = [];
+    for (String garden in gardens) {
+      plantings.addAll(getGardenPlantings(garden));
+    }
+    return plantings;
   }
 
   List<String> getCrops({List<String> gardens = const []}) {

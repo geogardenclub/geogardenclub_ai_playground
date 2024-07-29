@@ -14,7 +14,11 @@ final ggcGardenerDataTool = FunctionDeclaration(
         'gardensEdited is a list naming the gardens that this gardener can edit. '
         'crops is a list naming the crops that have been grown in the gardens owned or edited by this gardener. '
         'varieties is a list naming the varieties that have been grown in the gardens owned or edited by this gardener. '
-        'numPlantings is an integer indicating the number of plantings in the gardens owned or edited by this gardener.',
+        'numPlantings is an integer indicating the number of plantings in the gardens owned or edited by this gardener. '
+        'plantings is a list of objects with data about the plantings associated with this crop. '
+        'Planting data includes the garden name, the gardener username, the crop name, the variety name, '
+        'the planting start date, the planting pull date, whether or not a greenhouse was used to start the plant '
+        'the germination outcome, the appearance outcome, the yield outcome, the flavor outcome, and the resistance outcome',
     Schema(
       SchemaType.object,
       properties: {
