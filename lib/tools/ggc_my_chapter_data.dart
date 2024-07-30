@@ -10,13 +10,13 @@ Future<Map<String, Object?>> ggcMyChapterData(
 
 final ggcMyChapterDataTool = FunctionDeclaration(
     'ggcMyChapterData',
-    'Returns the name, countryCode, postalCodes, gardenNames, gardenerUserNames, cropNames, '
-        'and varietyNames in my Chapter. '
+    'Returns the name, countryCode, postalCodes, gardens, gardenerUserNames, crops, '
+        'and varieties in my Chapter. '
         'name is a string that is the name of the Chapter. '
         'countryCode is a two character string that indicates the country of the Chapter. '
         'postalCodes is a list of strings, each of which is a zip code in the Chapter. '
-        'gardenNames is a list of strings, each of which is the name of a garden in the Chapter. '
+        'gardens is a list of strings, each of which is the name of a garden in the Chapter. '
         'gardenerUserNames is a list of strings, each of which is the username of a gardener in the Chapter. '
-        'cropNames is a list of strings, each of which is the name of a crop in the Chapter. '
-        'varietyNames is a list of strings, each of which is the name of a plant variety in the Chapter.',
+        'crops is a list of strings, each of which is the name of a crop in the Chapter. '
+        'varieties is a list of strings, each of which is the name of a plant variety in the Chapter.',
     null);

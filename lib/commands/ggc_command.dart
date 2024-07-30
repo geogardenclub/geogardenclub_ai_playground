@@ -2,6 +2,7 @@ import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
 
 import '../tools/ggc_crop_data.dart';
+import '../tools/ggc_garden_data.dart';
 import '../tools/ggc_gardener_data.dart';
 import '../tools/ggc_my_chapter_data.dart';
 import '../tools/ggc_my_chapter_name.dart';
@@ -50,6 +51,7 @@ class GgcCommand extends StatelessWidget {
           'ggcMyChapterData' => await ggcMyChapterData(functionCall.args),
           'ggcMyUsername' => await ggcMyUsername(functionCall.args),
           'ggcGardenerData' => await ggcGardenerData(functionCall.args),
+          'ggcGardenData' => await ggcGardenData(functionCall.args),
           'ggcCropData' => await ggcCropData(functionCall.args),
           'ggcVarietyData' => await ggcVarietyData(functionCall.args),
           'ggcMyChapterName' => await ggcMyChapterName(functionCall.args),

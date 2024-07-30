@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_vertexai/firebase_vertexai.dart';
 import 'package:flutter/material.dart';
+import 'package:geogardenclub_ai_playground/tools/ggc_garden_data.dart';
 
 import 'commands/exchange_rate_command.dart';
 import 'commands/ggc_command.dart';
@@ -64,6 +65,7 @@ class _ChatScreenState extends State<ChatScreen> {
               ggcMyChapterNameTool,
               ggcMyUsernameTool,
               ggcGardenerDataTool,
+              ggcGardenDataTool,
               ggcCropDataTool,
               ggcVarietyDataTool,
               todaysDateTool,

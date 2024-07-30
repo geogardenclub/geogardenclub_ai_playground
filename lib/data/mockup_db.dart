@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/services.dart';
 
 enum DbType {
+  bed,
   chapter,
   crop,
   garden,
@@ -19,6 +20,8 @@ class MockupDb {
 
   Future<void> initializeDb() async {
     String path = 'assets/mockup-data/fixture1';
+    data[DbType.bed] =
+        json.decode(await rootBundle.loadString('$path/bedData.json'));
     data[DbType.chapter] =
         json.decode(await rootBundle.loadString('$path/chapterData.json'));
     data[DbType.crop] =
@@ -52,7 +55,7 @@ class MockupDb {
     // print('todays date: ${await todaysDate({})}');
     // print(
     // 'outcomes ${getPlantingsWithOutcomes(outcomeType: 'germination', outcomeValue: 0)}');
-    print('gardener data: ${getGardenerData('@fluke')}');
+    print('garden data: ${getGardenData('Alderwood')}');
   }
 
   int getCount(DbType dbType) {
@@ -143,8 +146,15 @@ class MockupDb {
       'variety': planting['cachedVarietyName'],
       //'${planting["cachedCropName"]} (${planting["cachedVarietyName"]})',
       'crop': planting['cachedCropName'],
+      'bed': getBedName(planting['bedID']),
       'startDate': planting['startDate'],
       'pullDate': planting['pullDate'],
+      if (planting['transplantDate'] != null)
+        'transplantDate': planting['transplantDate'],
+      if (planting['firstHarvestDate'] != null)
+        'firstHarvestDate': planting['firstHarvestDate'],
+      if (planting['endHarvestDate'] != null)
+        'endHarvestDate': planting['endHarvestDate'],
       'usedGreenhouse': planting['usedGreenhouse'],
       'germination': getDbOutcome(planting['plantingID'], 'germination'),
       'yield': getDbOutcome(planting['plantingID'], 'yieldd'),
@@ -210,6 +220,35 @@ class MockupDb {
         .toList();
   }
 
+  Map<String, Object?> getGardenData(String garden) {
+    // Create a list of plantings that includes their outcome data.
+    String gardenID = getGardenID(garden);
+    String owner = getUsernameFromGardenID(gardenID);
+    List<String> bedNames = getBedNamesInGarden(gardenID);
+    List<String> crops = data[DbType.planting]!
+        .where((planting) => planting['gardenID'] == gardenID)
+        .map<String>((planting) => planting['cachedCropName'])
+        .toSet()
+        .toList();
+    List<String> varieties = data[DbType.planting]!
+        .where((planting) => planting['gardenID'] == gardenID)
+        .map<String>((planting) =>
+            "${planting['cachedCropName']} (${planting['cachedVarietyName']})")
+        .toSet()
+        .toList();
+    List dbPlantings = data[DbType.planting]!
+        .where((planting) => planting['gardenID'] == gardenID)
+        .toList();
+    return {
+      'name': garden,
+      'plantings': getGardenPlantings(garden),
+      'owner': owner,
+      'beds': bedNames,
+      'crops': crops,
+      'varieties': varieties,
+    };
+  }
+
   List<Map<String, Object?>> getGardenPlantings(String garden) {
     // Create a list of plantings that includes their outcome data.
     String gardenID = getGardenID(garden);
@@ -265,6 +304,17 @@ class MockupDb {
         .firstWhere((garden) => garden['gardenID'] == gardenID)['name'];
   }
 
+  String getBedName(String bedID) {
+    return data[DbType.bed]!.firstWhere((bed) => bed['bedID'] == bedID)['name'];
+  }
+
+  List<String> getBedNamesInGarden(String gardenID) {
+    return data[DbType.bed]!
+        .where((bed) => bed['gardenID'] == gardenID)
+        .map<String>((bed) => bed['name'])
+        .toList();
+  }
+
   String getUsername(String userID) {
     return data[DbType.user]!
         .firstWhere((user) => user['userID'] == userID)['username'];
@@ -296,10 +346,10 @@ class MockupDb {
     cropNameList.sort();
     List<String> varietyNameList = varietyNames.toList();
     varietyNameList.sort();
-    chapterData['gardenNames'] = gardenNames;
+    chapterData['gardens'] = gardenNames;
     chapterData['gardenerUsernames'] = gardenerUsernames;
-    chapterData['cropNames'] = cropNameList;
-    chapterData['varietyNames'] = varietyNameList;
+    chapterData['crops'] = cropNameList;
+    chapterData['varieties'] = varietyNameList;
     return chapterData;
   }
 }
