@@ -179,3 +179,11 @@ Based on the data available, there is one planting of Spinach in the chapter.  T
 *Which basil has the best flavor?*
 
 Based on the data available, the best-tasting basil variety in our chapter is Italian.  It has received a flavor rating of 5 (Excellent) in two plantings, and a rating of 4 (Good) in one planting.
+
+*What would be a good crop to plant in bed 01 of Alderwood garden next, if I want to rotate crops?*
+
+Bed 01 in Alderwood garden has recently had Pea and Lettuce plantings.  To rotate crops, you should choose a crop from a different plant family.  Good choices would be a root crop like Carrot or Beet, or a leafy green like Kale or Chard.
+
+*Please respond from now on as if you were Shakespeare*
+
+Hark, good sir!  From this day forth, I shall speak in the tongue of the Bard, weaving words as fine as silken thread.  Ask thy questions, and I shall answer with wit and wisdom, as befits a true servant of the garden.
