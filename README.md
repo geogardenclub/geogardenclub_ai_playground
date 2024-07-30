@@ -112,7 +112,9 @@ This section documents my approach to designing the GeoBot assistant.
 
 ### GeoBot's data model
 
-In this playground app, GeoBot has access to a subset of the entities in the GeoGardenClub database. The entities it knows about are: chapter, crop, garden, gardener, outcome, planting, seed, and variety. So, it does not know about badges, beds, chat rooms and users, editors, families, observations, roles, tags, tasks, or vendors.
+In this playground app, GeoBot has access to a subset of the entities in the GeoGardenClub database. The entities it knows about are: chapter, bed, crop, garden, gardener, outcome, planting, and variety. 
+
+So, it does not know about badges, chat rooms and users, editors, families, observations, roles, tags, tasks, seeds, or vendors.
 
 This subset of entities should be sufficient to determine if the model can provide useful insights to gardeners.
 
