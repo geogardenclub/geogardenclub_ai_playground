@@ -19,7 +19,8 @@ class TokenCountCommand extends StatelessWidget {
 
     if (model != null) {
       const prompt = 'tell a short story';
-      var response = await model!.countTokens([Content.text(prompt)]);
+      CountTokensResponse response =
+          await model!.countTokens([Content.text(prompt)]);
       print(
         'token: ${response.totalTokens}, billable characters: ${response.totalBillableCharacters}',
       );
